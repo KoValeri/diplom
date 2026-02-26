@@ -34,3 +34,14 @@ async function importBooks() {
 }
 
 importBooks();
+
+// node importBooks.js
+// ЧТОБ НЕ ДОБАВИТЬ ПОВТОРЫ
+// for (const book of books) {
+//   const existing = await sql.query`SELECT id FROM books WHERE title = ${book.title}`;
+//   if (existing.recordset.length === 0) {
+//     await sql.query`
+//       INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId)
+//       VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId})`;
+//   }
+// }
