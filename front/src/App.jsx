@@ -20,6 +20,7 @@ function App() {
               alt={book.title}
               style={{ width: "150px", height: "220px", objectFit: "cover" }}
             />
+            <div>{book.description}</div>
           </li>
         ))}
       </ul>
