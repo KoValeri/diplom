@@ -18,11 +18,37 @@ async function importBooks() {
   try {
     const books = JSON.parse(fs.readFileSync("./books.json", "utf8"));
     await sql.connect(config);
-
+    
     for (const book of books) {
-      await sql.query`
-        INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId)
-        VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId})`;
+      const existing = await sql.query`
+        SELECT id FROM books WHERE title = ${book.title}
+      `;
+
+      if (existing.recordset.length === 0) {
+        // если книги нет — добавляем
+        await sql.query`
+          INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId)
+          VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId})
+        `;
+      } else {
+        // если книга есть — обновляем данные
+        await sql.query`
+          UPDATE books
+          SET 
+            author = ${book.author},
+            description = ${book.description},
+            price = ${book.price},
+            genre = ${book.genre},
+            publishingHouse = ${book.publishingHouse},
+            yearOfPublication = ${book.yearOfPublication},
+            pages = ${book.pages},
+            cover = ${book.cover},
+            ageRestrictions = ${book.ageRestrictions},
+            imageUrl = ${book.imageUrl},
+            categoryId = ${book.categoryId}
+          WHERE title = ${book.title}
+        `;
+      }
     }
 
     console.log("Книги успешно импортированы!");
