@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
 import styles from "./AuthModal.module.css"
 
+import { IoMdClose } from "react-icons/io"
+
 function AuthModal() {
   const dispatch = useDispatch()
   const { isOpen, mode } = useSelector(state => state.authModal)
@@ -10,52 +12,66 @@ function AuthModal() {
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.modal}>
+        <div className={styles.modal}>
         
-        <button
-          className={styles.close}
-          onClick={() => dispatch(authModalActions.closeModal())}
-        >
-          ✖
-        </button>
-
-        <h2>
-          {mode === "login" ? "Вход" : "Регистрация"}
-        </h2>
-
-        <form>
-          <input placeholder="Email" />
-          <input type="password" placeholder="Пароль" />
-
-          <button type="submit">
-            {mode === "login" ? "Войти" : "Создать аккаунт"}
-          </button>
-        </form>
-
-        {mode === "login" ? (
-          <p>
-            Нет аккаунта?
-            <span
-              onClick={() =>
-                dispatch(authModalActions.openRegister())
-              }
+            <button
+            className={styles.close}
+            onClick={() => dispatch(authModalActions.closeModal())}
             >
-              {" "}Регистрация
-            </span>
-          </p>
-        ) : (
-          <p>
-            Уже есть аккаунт?
-            <span
-              onClick={() =>
-                dispatch(authModalActions.openLogin())
-              }
-            >
-              {" "}Войти
-            </span>
-          </p>
-        )}
-      </div>
+            <IoMdClose size={17}/>
+            </button>
+
+            <form>
+                {mode === 'login' ? (
+                    <div className={styles.fields}>  
+                        <div className={styles.inputFields}>
+                            <label htmlFor="loginEmail">Логин</label>
+                            <input placeholder="Введите Email" id="loginEmail"/>
+                        </div>
+
+                        <div className={styles.inputFields}>
+                            <label htmlFor="loginPassword">Пароль</label>
+                            <input type="password" placeholder="Пароль" id="loginPassword"/>
+                        </div>
+
+                        <button type="submit">
+                            Войти
+                        </button>
+
+                        <div>
+                            У вас нет аккаунта? <button>Зарегистрироваться</button>
+                        </div>
+                    </div>
+
+                ) : (
+                    <div className={styles.fields}>  
+                        <div className={styles.inputFields}>
+                            <label htmlFor="name">Имя</label>
+                            <input id="name"/>
+                        </div>
+
+                        <div className={styles.inputFields}>
+                            <label htmlFor="surname">Фамилия</label>
+                            <input id="surname"/>
+                        </div>
+
+                        <div className={styles.inputFields}>
+                            <label htmlFor="regEmail">Email</label>
+                            <input id="regEmail" />
+                        </div>
+
+                        <div className={styles.inputFields}>
+                            <label htmlFor="regPassword">Пароль</label>
+                            <input id="regPassword" />
+                        </div>
+
+                        <button type="submit">
+                            Зарегистрироваться
+                        </button>
+                    </div>
+                )}
+            </form>
+        </div>
     </div>
   )
 }
