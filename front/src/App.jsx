@@ -1,35 +1,11 @@
-import { useGetBooksQuery } from "../src/api/api.js"
-import Header from "./components/Header/Header.jsx";
+import AppRouter from "./router/AppRouter.jsx";
+import { ReduxProvider } from './providers/ReduxProvider';
 
 function App() {
-  const { data: books = [], isLoading, isError } = useGetBooksQuery();
-
-  if (isLoading) return <p>Загрузка...</p>;
-  if (isError) return <p>Ошибка загрузки</p>;
-
   return (
-    <>
-        <Header />
-
-        <div>
-          <h1>Книжный магазин</h1>
-          <ul>
-            {books.map(book => (
-              <li key={book.id} style={{ marginBottom: "20px" }}>
-                <h2>{book.title}</h2>
-                <p>Автор: {book.author}</p>
-                <p>Цена: {book.price} ₽</p>
-                <img
-                  src={book.imageUrl}
-                  alt={book.title}
-                  style={{ width: "150px", height: "220px", objectFit: "cover" }}
-                />
-                <div>{book.description}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
-    </>
+    <ReduxProvider>
+      <AppRouter />
+    </ReduxProvider>
   );
 }
 

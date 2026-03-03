@@ -12,6 +12,12 @@
 
 body {
   font-family: NunitoReg;
+  color: #3B2F2F;
+  background-color: #FFFCF8;
+}
+
+main {
+  padding: 0px 60px;
 }
 
 a {
