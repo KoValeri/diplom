@@ -42,14 +42,17 @@ function Header() {
                         <button className={styles.btnCatalog}><PiBooks size={30}/>Каталог</button>
                     </div>
                     <div className={styles.searchContainer}>
-                        <button>
+                        {/* <button>
                             <IoIosSearch size={20}/>
-                        </button>
+                        </button> */}
                         <input className={styles.search}
                                 name="search"
                                 type="text"
                                 placeholder="Найти книгу"
-                        />                        
+                        />
+                        <button>
+                            <IoIosSearch size={20}/>
+                        </button>                        
                     </div>
                     <nav className={styles.nav}>
                         <ul className={`${styles.downNavUl} ${styles.navUl}`}>
