@@ -3,9 +3,13 @@ USE book_store;
 GO
 
 -- Таблица пользователей
+DROP TABLE users
+GO
+
 CREATE TABLE users (
     id INT IDENTITY(1,1) PRIMARY KEY,
-    username NVARCHAR(50) NOT NULL,
+	firstName NVARCHAR(50),
+	lastName NVARCHAR(50),
     email NVARCHAR(100) NOT NULL UNIQUE,
     password NVARCHAR(255) NOT NULL,
     role NVARCHAR(10) DEFAULT 'user'
@@ -48,3 +52,8 @@ INSERT INTO categories (name) VALUES
 ('Научная литература'),
 ('Нехудожественная литература'),
 ('Бизнес-литература');
+
+--На всякий для удаления
+DELETE FROM users
+WHERE id = 2
+GO

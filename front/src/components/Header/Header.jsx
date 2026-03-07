@@ -9,12 +9,14 @@ import { NAV_ITEMS } from "../../configs/navItemsConfig"
 import { PiBooks } from "react-icons/pi"
 import styles from './Header.module.css'
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
+
+import { authActions } from "../../store/authSlice"
 
 function Header() {
     const dispatch = useDispatch()
-
+    const { isAuthenticated } = useSelector(state => state.auth)
 
     return(
         <header className={styles.header}>
@@ -52,11 +54,14 @@ function Header() {
                     <nav className={styles.nav}>
                         <ul className={`${styles.downNavUl} ${styles.navUl}`}>
                             <li>
-                                <button 
-                                    onClick={() => dispatch(authModalActions.openLogin())} 
+                                <button
+                                    onClick={() => isAuthenticated
+                                            ? dispatch(authActions.logout())
+                                            : dispatch(authModalActions.openLogin())
+                                    }
                                     className={styles.avatar}
                                 >
-                                    <RxAvatar size={30}/> Войти
+                                    <RxAvatar size={30}/> {isAuthenticated ? 'Выйти' : 'Войти'}
                                 </button>
                             </li>
                             <li>

@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 5;
 }
 
 .modal {
@@ -31,13 +31,79 @@
     justify-content: center;
 }
 
+.form{
+    width: 380px;
+}
+
 .fields{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 17px;
+}
+
+.divFields{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .inputFields{
+    background-color: #EADAC0;
+    border: 1px solid #e4c594;
+    height: 43px;
+    border-radius: 7px;
+    padding: 0 10px 0 10px;
+    color: #3b2f2f;
+}
+
+.btnAuth{
+    background-color: #c76146;
+    height: 43px;
+    color: #FFFCF8;
+    border-radius: 7px;
+    margin-top: 12px;
+}
+
+.dopInfo{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.linkBtn{
+    color: #3b2f2f;
+    text-decoration:underline;
+    text-decoration-thickness: 1.5px;
+}
+
+.passwordDiv{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.eyeBtn{
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3b2f2f;
+    display: flex;
+    align-items: center;
+}
+
+.passwordField{
+    width: 100%;
+    padding: 0 35px 0 10px;
+}
+
+.formError{
+    display: flex;
+    justify-content: center;
+    color: #c76146;
+}
+
+.formErrorHidden{
+    display: none;
 }

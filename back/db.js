@@ -1,11 +1,23 @@
-// db.js — это центр управления подключением к базе.
+const sql = require("mssql");
+require("dotenv").config();
 
-// Он нужен, когда:
+const config = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
+  port: parseInt(process.env.DB_PORT) || 1433,
+  options: {
+    encrypt: false,
+    trustServerCertificate: true,
+  },
+};
 
-// у тебя будет много API-маршрутов (books, users, cart, orders…)
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
 
-// ты вынесешь запросы в отдельные файлы / контроллеры
-
-// тебе понадобится переиспользовать подключение
-
-// То есть он нужен, чтобы не писать sql.connect(config) в каждом файле.
+module.exports = {
+  sql,
+  pool,
+  poolConnect
+};
