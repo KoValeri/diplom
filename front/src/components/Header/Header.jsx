@@ -1,5 +1,4 @@
-// import { useState, useEffect, useRef } from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { ROUTES } from '../../configs/routesConfig'
 import { IoIosSearch } from "react-icons/io"
 import { RxAvatar } from "react-icons/rx"
@@ -8,15 +7,24 @@ import { IoBookmarkOutline } from "react-icons/io5"
 import { NAV_ITEMS } from "../../configs/navItemsConfig"
 import { PiBooks } from "react-icons/pi"
 import styles from './Header.module.css'
-
 import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
-
 import { authActions } from "../../store/authSlice"
 
 function Header() {
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector(state => state.auth)
+
+    function handleAuthClick() {
+
+    if (isAuthenticated) {
+        localStorage.removeItem("token");
+        dispatch(authActions.logout());
+    } else {
+        dispatch(authModalActions.openLogin());
+    }
+
+}
 
     return(
         <header className={styles.header}>
@@ -55,10 +63,7 @@ function Header() {
                         <ul className={`${styles.downNavUl} ${styles.navUl}`}>
                             <li>
                                 <button
-                                    onClick={() => isAuthenticated
-                                            ? dispatch(authActions.logout())
-                                            : dispatch(authModalActions.openLogin())
-                                    }
+                                    onClick={handleAuthClick}
                                     className={styles.avatar}
                                 >
                                     <RxAvatar size={30}/> {isAuthenticated ? 'Выйти' : 'Войти'}

@@ -18,7 +18,7 @@ function AuthModal() {
 
   const [registerUser] = useRegisterUserMutation();
   const [loginUser] = useLoginUserMutation();
-  
+
   useEffect(() => {
     setError(null);
   }, [mode]);
@@ -38,9 +38,11 @@ function AuthModal() {
 
     if (mode === "login") {
       try {
-        const user = await loginUser({ email: login, password }).unwrap();
-        dispatch(authActions.setUser(user));
+        const response = await loginUser({ email: login, password }).unwrap();
+        localStorage.setItem("token", response.token);
+        dispatch(authActions.setUser(response.user));
         dispatch(authModalActions.closeModal());
+
       } catch(err) {
         console.error(err);
         setError("Аккаунт не найден");
