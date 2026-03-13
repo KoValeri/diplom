@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../../../public/fonts/PlayfairDisplay/PlayfairDisplay.ttf");
+  font-display: swap;
+}
+
+.block{
+    margin-top: 55px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 55px;
+    border-bottom: 2px solid #F6EBE5;
+}
+
+.item{
+    display: flex;
+}
+
+.image{
+    width: 75px;
+    height: 75px;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 13px;
+}
+
+.title{
+    font-family: PlayfairDisplay;
+    font-size: 30px;
+}
