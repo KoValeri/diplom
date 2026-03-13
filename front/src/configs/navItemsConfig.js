@@ -5,5 +5,5 @@ export const NAV_ITEMS = [
   { name: "Новинки", href: "#", },
   { name: "Хиты продаж", href: "#", },
   { name: "О нас", href: "#", },
-  { name: "Контакты", href: "#", },
+  { name: "Контакты", href: "#contacts", },
 ];

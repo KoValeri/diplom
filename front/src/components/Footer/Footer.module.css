@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Nunito-Bold";
+  src: url("../../../public/fonts/Nunito/Nunito-Bold.ttf");
+  font-display: swap;
+}
+
+.footer{
+    background-color: #3B2F2F;
+    height: 270px;
+    padding: 30px 120px 30px 120px;
+    color: #FFFCF8;
+}
+
+.upperInfo{
+    width: 100%;
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 2px #FFFCF8 solid;
+    justify-content: space-between;
+}
+
+.upperInfo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.title{
+    font-family: Nunito-Bold;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.phone, .email{
+    font-family: Nunito-Bold;
+}
+
+.apps{
+    display: flex;
+    gap: 5px;
+}
+
+.downInfo{
+    padding-top: 20px;
+}

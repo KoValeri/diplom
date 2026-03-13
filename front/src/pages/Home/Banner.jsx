@@ -10,7 +10,7 @@ export default function Banner() {
                 <img className={styles.image} src={book} alt="book" />
                 <div className={styles.text}>
                     <span className={styles.title}>Книги с душой</span>
-                    <span className={styles.subTitle}>От классики до новинок</span>
+                    <span>От классики до новинок</span>
                 </div>
             </div>
 
@@ -18,7 +18,7 @@ export default function Banner() {
                 <img className={styles.image} src={cup} alt="cup" />
                 <div className={styles.text}>
                     <span className={styles.title}>Уютное пространство</span>
-                    <span className={styles.subTitle}>В самом сердце города</span>
+                    <span>В самом сердце города</span>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@ export default function Banner() {
                 <img className={styles.image} src={truck} alt="truck" />
                 <div className={styles.text}>
                     <span className={styles.title}>Бесплатная доставка</span>
-                    <span className={styles.subTitle}>При заказе от 50 рублей</span>
+                    <span>При заказе от 50 рублей</span>
                 </div>
             </div>
         </div>

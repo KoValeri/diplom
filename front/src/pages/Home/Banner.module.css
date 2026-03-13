@@ -19,7 +19,7 @@
 
 .image{
     width: 75px;
-    height: 75px;
+    height: 70px;
 }
 
 .text{
@@ -31,5 +31,6 @@
 
 .title{
     font-family: PlayfairDisplay;
-    font-size: 30px;
+    font-size: 24px;
+    text-transform: uppercase;
 }

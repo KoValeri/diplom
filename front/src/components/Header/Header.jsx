@@ -5,7 +5,7 @@ import { RxAvatar } from "react-icons/rx"
 import { BsHandbag } from "react-icons/bs"
 import { IoBookmarkOutline } from "react-icons/io5"
 import { NAV_ITEMS } from "../../configs/navItemsConfig"
-import { PiBooks } from "react-icons/pi"
+import { PiBooksThin } from "react-icons/pi"
 import styles from './Header.module.css'
 import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
@@ -16,15 +16,13 @@ function Header() {
     const { isAuthenticated } = useSelector(state => state.auth)
 
     function handleAuthClick() {
-
-    if (isAuthenticated) {
-        localStorage.removeItem("token");
-        dispatch(authActions.logout());
-    } else {
-        dispatch(authModalActions.openLogin());
+        if (isAuthenticated) {
+            localStorage.removeItem("token");
+            dispatch(authActions.logout());
+        } else {
+            dispatch(authModalActions.openLogin());
+        }
     }
-
-}
 
     return(
         <header className={styles.header}>
@@ -36,7 +34,11 @@ function Header() {
                             {NAV_ITEMS.map(item => {
                                 return (
                                 <li key={item.name}>
+                                    {item.href.startsWith("#") ? (
+                                    <a href={item.href}>{item.name}</a>
+                                    ) : (
                                     <Link to={item.href}>{item.name}</Link>
+                                    )}
                                 </li>
                                 )
                             })}
@@ -47,7 +49,7 @@ function Header() {
                 <div className={styles.downNavContainer}>
                     <div className={styles.logo}>
                         <Link to={ROUTES.HOME} className={styles.title}>Liberty</Link>
-                        <button className={styles.btnCatalog}><PiBooks size={30}/>Каталог</button>
+                        <button className={styles.btnCatalog}><PiBooksThin size={35}/>Каталог</button>
                     </div>
                     <div className={styles.searchContainer}>
                         <input className={styles.search}
