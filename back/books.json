@@ -11,7 +11,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/empire_of_the_vampire.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.7
   },
   {
     "title": "Шестёрка воронов",
@@ -25,7 +26,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/six_of_crows.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.64
   },
   {
     "title": "Одиннадцатый цикл",
@@ -39,7 +41,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/eleven_cycle.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4
   },
   {
     "title": "Вор с чёрным языком",
@@ -53,7 +56,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/black_tongued_thief.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 3.76
   },
   {
     "title": "Атака титанов. Книга 1",
@@ -67,7 +71,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/attack_on_titan1.jpg",
-    "categoryId": 2
+    "categoryId": 2,
+    "rating": 4.94
   },
   {
     "title": "Магическая битва. Книга 13",
@@ -81,7 +86,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/jujutsu_kaisen13.jpg",
-    "categoryId": 2
+    "categoryId": 2,
+    "rating": 4.78
   },
   {
     "title": "Истребитель демонов. Том 8",
@@ -95,7 +101,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/demon_slayer8.jpg",
-    "categoryId": 2
+    "categoryId": 2,
+    "rating": 4.3
   },
     {
     "title": "Человек-бензопила. Том 7 - Птица и война.",
@@ -109,7 +116,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/chainsaw_man7.jpg",
-    "categoryId": 2
+    "categoryId": 2,
+    "rating": 4
   },
   {
     "title": "Мастер и Маргарита: роман",
@@ -123,7 +131,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "12+",
     "imageUrl": "/books/master_and_margarette.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.45
   },
   {
     "title": "Одиссея",
@@ -137,7 +146,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "12+",
     "imageUrl": "/books/odyssey.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.2
   },
   {
     "title": "Портрет Дориана Грея",
@@ -151,7 +161,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "12+",
     "imageUrl": "/books/portrait_of_dorian_gray.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 3.98
   },
   {
     "title": "Алиса в Стране чудес. Алиса в Зазеркалье.",
@@ -165,7 +176,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "12+",
     "imageUrl": "/books/alice_in_wonderland.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4
   },
   {
     "title": "Шах и мат",
@@ -179,7 +191,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/checkmate.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 3.78
   },
   {
     "title": "Дневник памяти",
@@ -193,7 +206,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/memory_diary.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.82
   },
   {
     "title": "Невеста Ноября. Подарочное издание",
@@ -207,7 +221,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/november_pride.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.1
   },
   {
     "title": "Мара и Морок",
@@ -221,7 +236,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/mara_and_morok.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 3.8
   },
   {
     "title": "Собака Баскервилей. Долина Страха",
@@ -235,7 +251,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "12+",
     "imageUrl": "/books/the_hound_of_the_baskervilles.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.2
   },
   {
     "title": "Убийства по алфавиту",
@@ -249,7 +266,8 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/alphabetical_murders.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4
   },
   {
     "title": "Убийство у алтаря",
@@ -263,7 +281,8 @@
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "18+",
     "imageUrl": "/books/murder_at_the_altar.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4.22
   },
   {
     "title": "Убийства и кексики.",
@@ -277,6 +296,97 @@
     "cover": "Мягкий переплёт",
     "ageRestrictions": "16+",
     "imageUrl": "/books/murders_and_cakes.jpg",
-    "categoryId": 1
+    "categoryId": 1,
+    "rating": 4
+  },
+  {
+    "title": "Дракула",
+    "author": "Брэм Стокер",
+    "description": "Впервые опубликованный еще в 1897 году, роман «Дракула» остается актуальным и по сей день. История вампира из Трансильвании, сплетенная из вымысла и реальных исследований Брэма Стокера, открывает нам грани темной и светлой сторон человеческой натуры, а также поднимает тему извечного противостояния добра и зла.",
+    "price": 22,
+    "genre": "Роман, Ужасы",
+    "publishingHouse": "Манн, Иванов и Фербер",
+    "yearOfPublication": 2026,
+    "pages": 512,
+    "cover": "Твёрдый переплёт",
+    "ageRestrictions": "16+",
+    "imageUrl": "/books/dracula.png",
+    "categoryId": 1,
+    "rating": 4.77
+  },
+  {
+    "title": "Империя проклятых",
+    "author": "Джей Кристофф",
+    "description": "Последний угодник-среброносец Габриэль де Леон спас от смерти Святой Грааль, но упустил возможность положить конец бесконечной ночи. Раз и навсегда отвернувшись от своих братьев-угодников, Габриэль и Грааль отправляются в путь, чтобы выяснить, как можно покончить с мертводнем. Но опасности подстерегают Габриэля буквально на каждом шагу: по пятам следуют жаждущие его смерти дети Вечного Короля, он оказывается втянут в междоусобные войны и веками плетущуюся паутину клановой вражды Лунного трона. Да и собственная растущая жажда крови не дает ни на минуту расслабиться. Удастся ли Габриэлю выжить, чтобы раскрыть тайну Грааля? Тайну, которая пошатнет все, во что они верили.",
+    "price": 54.28,
+    "genre": "Фэнтези",
+    "publishingHouse": "АСТ",
+    "yearOfPublication": 2025,
+    "pages": 928,
+    "cover": "Твёрдый переплёт",
+    "ageRestrictions": "18+",
+    "imageUrl": "/books/empire_of_the_damned.jpg",
+    "categoryId": 1,
+    "rating": 5
+  },
+  {
+    "title": "Шипы первой любви. Отличница",
+    "author": "Эмилия Грин",
+    "description": "Когда-то Максим Леднев был трудным подростком на грани отчисления, и, чтобы он не вылетел из школы, мне приходилось помогать ему с учебой. Казалось, наша любовь способна преодолеть все преграды, но, увы, я жестоко заблуждалась, и доверие, которое выстраивалось месяцами, испарилось за считаные секунды… По иронии судьбы, теперь мой бывший парень — один из самых популярных студентов университета, подающий надежды футболист, который работает вместе с моей некогда лучшей подругой Леной Трофимовой. И, в довершение всех моих бед, мы с Ледневым поменялись ролями — теперь от него зависит мой зачет по физической культуре…",
+    "price": 24,
+    "genre": "Любовный роман",
+    "publishingHouse": "Эксмо",
+    "yearOfPublication": 2026,
+    "pages": 512,
+    "cover": "Твёрдый переплёт",
+    "ageRestrictions": "18+",
+    "imageUrl": "/books/excellent_student.jpg",
+    "categoryId": 1,
+    "rating": 4
+  },
+  {
+    "title": "Пустые зеркала",
+    "author": "Елена Обухова",
+    "description": "В гостинице Влада и Юли Федоровых снова происходит трагедия: найден труп пропавшего блогера. Странное убийство больше напоминает пугающий ритуал. Похоже, на Медвежьем озере вновь ожила городская легенда, и разбираться в ней снова придется уже знакомым героям...",
+    "price": 18,
+    "genre": "Ужасы",
+    "publishingHouse": "Эксмо",
+    "yearOfPublication": 2026,
+    "pages": 320,
+    "cover": "Твёрдый переплёт",
+    "ageRestrictions": "16+",
+    "imageUrl": "/books/Empty_mirrors.jpg",
+    "categoryId": 1,
+    "rating": 5
+  },
+  {
+    "title": "Двенадцать стульев",
+    "author": "Илья Ильф",
+    "description": "Аферист Остап Бендер и бывший дворянин Ипполит Воробьянинов отправляются на поиски бриллиантов, спрятанных в одном из двенадцати стульев. Их путь проходит через всю страну, а по дороге они встречают старых знакомых, мечтателей, трусов, романтиков. В этой охоте каждый новый шаг — приключение и испытание. Смогут ли герои достичь своей цели и какой ценой?",
+    "price": 15,
+    "genre": "Классика",
+    "publishingHouse": "Манн, Иванов и Фербер",
+    "yearOfPublication": 2026,
+    "pages": 384,
+    "cover": "Твёрдый переплёт",
+    "ageRestrictions": "16+",
+    "imageUrl": "/books/Twelve_chairs.jpg",
+    "categoryId": 1,
+    "rating": 4.9
+  },
+  {
+    "title": "Усопшие",
+    "author": "Фуюми Оно",
+    "description": "Пришло время расплаты за все, что творилось в Сотобе. Монстры хотят крови, а жители деревни — возмездия. Каждый в руках держит оружие и готов нанести удар… Сэйсин и Тосио оказываются на противоположных сторонах ожесточенной борьбы. Вокруг люди и неупокойные друг за другом теряют чувства, семейные узы, дружбу и уверенность в завтрашнем дне. Борьба, начавшаяся на рассвете, разгорается сильнее, а у святилища громоздятся горы трупов. В ревущей от гнева толпе уже не понять, кто перед тобой — демон или человек. Боль и страх разожгли судьбоносный огонь. Сможет ли кто-то остаться в живых на пепелище войны между жизнью и смертью?",
+    "price": 44,
+    "genre": "Сёнэн, Драма, Ужасы",
+    "publishingHouse": "АСТ",
+    "yearOfPublication": 2026,
+    "pages": 304,
+    "cover": "Твёрдый переплёт",
+    "ageRestrictions": "18+",
+    "imageUrl": "/books/deceased.jpg",
+    "categoryId": 2,
+    "rating": 4.1
   }
 ]

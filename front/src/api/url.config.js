@@ -4,4 +4,8 @@ export const API_URLS = {
   BOOKS: "/books",
   LOGIN: "/users/login",
   REGISTER: "/users/register",
+  NEWBOOKS: "/new-books",
+  ALLNEWBOOKS: "/new-books/all",
+  BESTSELLERS: "/bestsellers",
+  ALLBESTSELLERS: "/bestsellers/all",
 };

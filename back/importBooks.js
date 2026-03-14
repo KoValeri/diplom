@@ -27,8 +27,8 @@ async function importBooks() {
       if (existing.recordset.length === 0) {
         // если книги нет — добавляем
         await sql.query`
-          INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId)
-          VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId})
+          INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId, rating)
+          VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId}, ${book.rating})
         `;
       } else {
         // если книга есть — обновляем данные
@@ -45,7 +45,8 @@ async function importBooks() {
             cover = ${book.cover},
             ageRestrictions = ${book.ageRestrictions},
             imageUrl = ${book.imageUrl},
-            categoryId = ${book.categoryId}
+            categoryId = ${book.categoryId},
+            rating = ${book.rating}
           WHERE title = ${book.title}
         `;
       }
@@ -60,14 +61,3 @@ async function importBooks() {
 }
 
 importBooks();
-
-// node importBooks.js
-// ЧТОБ НЕ ДОБАВИТЬ ПОВТОРЫ
-// for (const book of books) {
-//   const existing = await sql.query`SELECT id FROM books WHERE title = ${book.title}`;
-//   if (existing.recordset.length === 0) {
-//     await sql.query`
-//       INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId)
-//       VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId})`;
-//   }
-// }

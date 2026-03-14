@@ -23,6 +23,9 @@ CREATE TABLE categories (
 );
 GO
 
+DROP TABLE books
+GO
+
 -- Таблица книг
 CREATE TABLE books (
     id INT IDENTITY(1,1) PRIMARY KEY,
@@ -37,6 +40,7 @@ CREATE TABLE books (
     cover NVARCHAR(100),
     ageRestrictions NVARCHAR(50),
     imageUrl NVARCHAR(255),
+	rating DECIMAL(2,1),
 
     categoryId INT,                -- FK на таблицу категорий
     CONSTRAINT FK_books_categories FOREIGN KEY (categoryId)
@@ -45,12 +49,20 @@ CREATE TABLE books (
 );
 GO
 
+-- Удаляем внешний ключ
+ALTER TABLE books
+DROP CONSTRAINT FK_books_categories;
+GO
+
+-- Теперь можно удалить таблицу категорий
+DROP TABLE categories;
+GO
+
 INSERT INTO categories (name) VALUES
 ('Художественная литература'),
-('Манга'),
+('Комиксы и манга'),
 ('Детская литература'),
-('Научная литература'),
-('Нехудожественная литература'),
+('Психология'),
 ('Бизнес-литература');
 
 --На всякий для удаления
