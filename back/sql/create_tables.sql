@@ -1,4 +1,4 @@
--- Переключаемся на базу
+/*-- Переключаемся на базу
 USE book_store;
 GO
 
@@ -41,6 +41,7 @@ CREATE TABLE books (
     ageRestrictions NVARCHAR(50),
     imageUrl NVARCHAR(255),
 	rating DECIMAL(2,1),
+	series NVARCHAR(255) NULL,
 
     categoryId INT,                -- FK на таблицу категорий
     CONSTRAINT FK_books_categories FOREIGN KEY (categoryId)
@@ -68,4 +69,177 @@ INSERT INTO categories (name) VALUES
 --На всякий для удаления
 DELETE FROM users
 WHERE id = 2
+GO*/
+
+-- Переключаемся на базу
+USE book_store;
 GO
+
+-- Удаляем старые таблицы, если есть
+DROP TABLE IF EXISTS book_genres;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS subcategories;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS users;
+GO
+
+-- Таблица пользователей
+CREATE TABLE users (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    firstName NVARCHAR(50),
+    lastName NVARCHAR(50),
+    email NVARCHAR(100) NOT NULL UNIQUE,
+    password NVARCHAR(255) NOT NULL,
+    role NVARCHAR(10) DEFAULT 'user'
+);
+GO
+
+-- Таблица категорий
+CREATE TABLE categories (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+-- Таблица подкатегорий
+CREATE TABLE subcategories (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    categoryId INT NOT NULL,
+    name NVARCHAR(100) NOT NULL,
+    CONSTRAINT FK_subcategories_categories FOREIGN KEY (categoryId) REFERENCES categories(id) ON DELETE CASCADE
+);
+GO
+
+-- Таблица книг
+CREATE TABLE books (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    title NVARCHAR(255) NOT NULL,
+    author NVARCHAR(255) NOT NULL,
+    description NVARCHAR(MAX),
+    price DECIMAL(10,2),
+    publishingHouse NVARCHAR(255),
+    yearOfPublication INT,
+    pages INT,
+    cover NVARCHAR(100),
+    ageRestrictions NVARCHAR(50),
+    imageUrl NVARCHAR(255),
+    rating DECIMAL(2,1),
+    series NVARCHAR(255) NULL,
+    subcategoryId INT,
+    CONSTRAINT FK_books_subcategories FOREIGN KEY (subcategoryId) REFERENCES subcategories(id) ON DELETE SET NULL
+);
+GO
+
+-- Таблица жанров
+CREATE TABLE genres (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+-- Связь книги и жанра (многие-ко-многим)
+CREATE TABLE book_genres (
+    bookId INT NOT NULL,
+    genreId INT NOT NULL,
+    PRIMARY KEY (bookId, genreId),
+    CONSTRAINT FK_book_genres_books FOREIGN KEY (bookId) REFERENCES books(id) ON DELETE CASCADE,
+    CONSTRAINT FK_book_genres_genres FOREIGN KEY (genreId) REFERENCES genres(id) ON DELETE CASCADE
+);
+GO
+
+-- Категории
+INSERT INTO categories (name) VALUES
+('Художественная литература'),
+('Комиксы и манга'),
+('Детская литература'),
+('Психология'),
+('Бизнес-литература'),
+('Научная литература'),
+('История'),
+('Учебники'),
+('Саморазвитие'),
+('Наука и технологии');
+
+-- Подкатегории
+INSERT INTO subcategories (categoryId, name) VALUES
+-- Художественная литература
+(1, 'Романы'),
+(1, 'Классика'),
+(1, 'Поэзия'),
+(1, 'Фэнтези'),
+(1, 'Детектив'),
+(1, 'Приключения'),
+-- Комиксы и манга
+(2, 'Комиксы'),
+(2, 'Манга'),
+(2, 'Манхва'),
+(2, 'Графические новеллы'),
+(2, 'Ранобэ'),
+-- Детская литература
+(3, 'Сказки'),
+(3, 'Развивающие книги'),
+(3, 'Книги для подростков'),
+(3, 'Комиксы для детей'),
+-- Психология
+(4, 'Популярная психология'),
+(4, 'Психотерапия'),
+(4, 'Самопомощь'),
+-- Бизнес-литература
+(5, 'Маркетинг'),
+(5, 'Менеджмент'),
+(5, 'Финансы'),
+(5, 'Предпринимательство'),
+-- Научная литература
+(6, 'Физика'),
+(6, 'Химия'),
+(6, 'Биология'),
+(6, 'Математика'),
+-- История
+(7, 'Древний мир'),
+(7, 'Средние века'),
+(7, 'Новая история'),
+(7, 'История России'),
+-- Учебники
+(8, 'Школьные учебники'),
+(8, 'Университетские учебники'),
+(8, 'Иностранные языки'),
+-- Саморазвитие
+(9, 'Лайфхаки и привычки'),
+(9, 'Тайм-менеджмент'),
+(9, 'Мотивация'),
+-- Наука и технологии
+(10, 'IT и программирование'),
+(10, 'Инженерия'),
+(10, 'Кибербезопасность');
+GO
+
+-- Таблица жанров
+INSERT INTO genres (name) VALUES
+('Боевое фэнтези'),
+('Тёмное фэнтези'),
+('Ужасы'),
+('Роман'),
+('Сатирический роман'),
+('Классика'),
+('Поэма'),
+('Детектив'),
+('Приключения'),
+('Сёнэн'),
+('Драма'),
+('Любовный роман'),
+('Комиксы'),
+('Манга'),
+('Манхва'),
+('Графическая новелла'),
+('Ранобэ'),
+('Научная фантастика'),
+('Психология'),
+('Бизнес'),
+('История'),
+('Саморазвитие'),
+('Мистика'),
+('Философский роман'),
+('Мифология'),
+('Готическая литература'),
+('Триллер');

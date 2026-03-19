@@ -8,7 +8,11 @@ export const booksApi = createApi({
     getBooks: builder.query({
       query: () => API_URLS.BOOKS,
     }),
+
+    getBookById: builder.query({
+      query: (id) => `${API_URLS.BOOKS}/${id}`,
+    }),
   }),
 });
 
-export const { useGetBooksQuery } = booksApi;
+export const { useGetBooksQuery, useGetBookByIdQuery } = booksApi;

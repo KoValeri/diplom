@@ -18,36 +18,64 @@ async function importBooks() {
   try {
     const books = JSON.parse(fs.readFileSync("./books.json", "utf8"));
     await sql.connect(config);
-    
+
     for (const book of books) {
+      const subcategoryId = book.subcategory || null;
+
+      // Проверяем наличие subcategory
+      if (!subcategoryId) {
+        console.warn(`Книга "${book.title}" не имеет subcategory!`);
+      }
+
+      // Проверяем, есть ли книга в базе
       const existing = await sql.query`
         SELECT id FROM books WHERE title = ${book.title}
       `;
 
+      let bookId;
+
       if (existing.recordset.length === 0) {
-        // если книги нет — добавляем
-        await sql.query`
-          INSERT INTO books (title, author, description, price, genre, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, categoryId, rating)
-          VALUES (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.genre}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.categoryId}, ${book.rating})
+        // Вставляем новую книгу
+        const insertBook = await sql.query`
+          INSERT INTO books 
+            (title, author, description, price, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, rating, series, subcategoryId)
+          VALUES 
+            (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.rating}, ${book.series}, ${subcategoryId});
+          SELECT SCOPE_IDENTITY() AS id;
         `;
+        bookId = insertBook.recordset[0].id;
       } else {
-        // если книга есть — обновляем данные
+        // Обновляем существующую книгу
+        bookId = existing.recordset[0].id;
         await sql.query`
           UPDATE books
-          SET 
-            author = ${book.author},
-            description = ${book.description},
-            price = ${book.price},
-            genre = ${book.genre},
-            publishingHouse = ${book.publishingHouse},
-            yearOfPublication = ${book.yearOfPublication},
-            pages = ${book.pages},
-            cover = ${book.cover},
-            ageRestrictions = ${book.ageRestrictions},
-            imageUrl = ${book.imageUrl},
-            categoryId = ${book.categoryId},
-            rating = ${book.rating}
-          WHERE title = ${book.title}
+          SET
+            author=${book.author},
+            description=${book.description},
+            price=${book.price},
+            publishingHouse=${book.publishingHouse},
+            yearOfPublication=${book.yearOfPublication},
+            pages=${book.pages},
+            cover=${book.cover},
+            ageRestrictions=${book.ageRestrictions},
+            imageUrl=${book.imageUrl},
+            rating=${book.rating},
+            series=${book.series},
+            subcategoryId=${subcategoryId}
+          WHERE id=${bookId};
+        `;
+      }
+
+      // Обрабатываем жанры
+      const genres = Array.isArray(book.genre) ? book.genre : [];
+      if (genres.length === 0) {
+        console.warn(`Книга "${book.title}" не имеет жанров!`);
+      }
+
+      for (const genreId of genres) {
+        await sql.query`
+          IF NOT EXISTS (SELECT * FROM book_genres WHERE bookId=${bookId} AND genreId=${genreId})
+            INSERT INTO book_genres (bookId, genreId) VALUES (${bookId}, ${genreId});
         `;
       }
     }

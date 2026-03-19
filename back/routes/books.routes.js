@@ -3,5 +3,6 @@ const router = express.Router();
 const booksController = require("../controllers/books.controller");
 
 router.get("/", booksController.getBooks);
+router.get("/:id", booksController.getBookById);
 
 module.exports = router;
