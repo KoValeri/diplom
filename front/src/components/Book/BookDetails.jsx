@@ -8,6 +8,10 @@ import ButtonBookMark from "../ButtonBookMark/ButtonBookMark"
 export default function BookDetails() {
     const { id } = useParams();
     const { data: book, isLoading } = useGetBookByIdQuery(id);
+    const hasDiscount = book?.discount > 0;
+    const newPrice = hasDiscount
+        ? Math.round(book?.price * (1 - book?.discount))
+        : book?.price;
 
     return (
         <>
@@ -21,7 +25,16 @@ export default function BookDetails() {
                         <p className={styles}>{book.title}</p>
                         <p className={styles}>{book.author}</p>
                         <p className={styles}><FaStar />{book.rating}</p>
-                        <p>{book.price}</p>
+                        <div className={styles.price}>
+                            {hasDiscount ? (
+                                <>
+                                <span>{newPrice} р.</span>
+                                <span className={styles.oldPrice}>{book.price} р.</span>
+                                </>
+                            ) : (
+                                <span className={styles.price}>{book.price} р.</span>
+                            )}
+                        </div>
                         <div className={styles.btns}>
                             <Button text='В корзину'/>
                             <ButtonBookMark />
@@ -32,10 +45,7 @@ export default function BookDetails() {
                 <div>
                     <div>{book.description}</div>
                     <div>
-                        {book.genres?.length 
-                            ? book.genres.map(g => g.name).join(', ') 
-                            : 'Жанры не указаны'
-                        }
+                        {book.genres.map(g => g.name).join(', ')}
                     </div>
                     <div>{book.publishingHouse}</div>
                     <div>{book.yearOfPublication}</div>

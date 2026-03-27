@@ -38,9 +38,9 @@ async function importBooks() {
         // Вставляем новую книгу
         const insertBook = await sql.query`
           INSERT INTO books 
-            (title, author, description, price, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, rating, series, subcategoryId)
+            (title, author, description, price, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, rating, series, subcategoryId, discount)
           VALUES 
-            (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.rating}, ${book.series}, ${subcategoryId});
+            (${book.title}, ${book.author}, ${book.description}, ${book.price}, ${book.publishingHouse}, ${book.yearOfPublication}, ${book.pages}, ${book.cover}, ${book.ageRestrictions}, ${book.imageUrl}, ${book.rating}, ${book.series}, ${subcategoryId}, ${book.discount});
           SELECT SCOPE_IDENTITY() AS id;
         `;
         bookId = insertBook.recordset[0].id;
@@ -61,7 +61,8 @@ async function importBooks() {
             imageUrl=${book.imageUrl},
             rating=${book.rating},
             series=${book.series},
-            subcategoryId=${subcategoryId}
+            subcategoryId=${subcategoryId},
+            discount=${book.discount}
           WHERE id=${bookId};
         `;
       }

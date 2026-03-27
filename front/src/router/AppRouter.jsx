@@ -5,6 +5,7 @@ import HomePage from '../pages/Home/HomePage';
 import BestelleersPage from '../pages/BestsellersPage';
 import NewBooksPage from '../pages/NewBooksPage';
 import BookDetailsPage from '../pages/BookDetailsPage';
+import DiscountsPage from '../pages/DiscountsPage';
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
             { path: ROUTES.HOME, element: <HomePage /> },
             { path: ROUTES.NEWBOOKS, element: <NewBooksPage /> },
             { path: ROUTES.BESTSELLERS, element: <BestelleersPage /> },
+            { path: ROUTES.DISCOUNTS, element: <DiscountsPage /> },
             { path: ROUTES.BOOK, element: <BookDetailsPage /> },
         ]
     }

@@ -8,6 +8,10 @@ import { ROUTES } from "../../configs/routesConfig";
 export default function BookCard({ book }) {
     const navigate = useNavigate()
     const id = book.id
+    const hasDiscount = book.discount > 0;
+    const newPrice = hasDiscount
+        ? (book.price * (1 - book.discount)).toFixed(2)
+        : book.price;
 
     function handleClick(){
         navigate( generatePath(ROUTES.BOOK, {id}) )
@@ -23,7 +27,16 @@ export default function BookCard({ book }) {
                     <span className={styles.author}>{book.author}</span>
 
                     <div className={styles.btns_price}>
-                        <span className={styles.price}>{book.price} р.</span>
+                        <div className={styles.price}>
+                            {hasDiscount ? (
+                                <>
+                                <span>{newPrice} р.</span>
+                                <span className={styles.oldPrice}>{book.price} р.</span>
+                                </>
+                            ) : (
+                                <span className={styles.price}>{book.price} р.</span>
+                            )}
+                        </div>
                         <div className={styles.btns}>
                             <Button text='В корзину'/>
                             <ButtonBookMark />
@@ -32,9 +45,12 @@ export default function BookCard({ book }) {
                 </div>
 
                 {book.yearOfPublication === 2026 && <div className={styles.newFlag}>Новинка</div>}
-            </div>
-            
-            
+                {hasDiscount && (
+                    <div className={styles.discountFlag}>
+                        -{Math.round(book.discount * 100)}%
+                    </div>
+                    )}
+            </div>  
         </>
     )
 }

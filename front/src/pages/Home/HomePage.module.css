@@ -5,7 +5,7 @@
 }
 
 .section{
-    margin-top: 70px;
+    margin-top: 75px;
 }
 
 .info {
@@ -36,4 +36,37 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sectionDiv{
+    display: flex;
+    column-gap: 30px;
+}
+
+.sectionImg{
+    width: 500px;
+    height: 270px;
+    object-fit: cover; 
+    border-radius: 7px;
+}
+
+.sectionText{
+    width: 50%;
+}
+
+.sectionText p{
+    margin-top: 15px;
+}
+
+.sectionBtn{
+    margin-top: 15px;
+    color: #C76146;
+    border: 2px solid #C76146;
+    border-radius: 7px;
+    padding: 0px 20px;
+    height: 50px;
+    background-color: #FFFCF8;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }

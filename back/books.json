@@ -14,7 +14,8 @@
     "categoryId": 1,
     "rating": 4.7,
     "series" : "Империя вампиров",
-    "subcategory": 4
+    "subcategory": 4,
+    "discount": 0
   },
   {
     "title": "Шестёрка воронов",
@@ -31,7 +32,8 @@
     "categoryId": 1,
     "rating": 4.64,
     "series" : "Миры Ли Бардуго. Grishaverse",
-    "subcategory": 4
+    "subcategory": 4,
+    "discount": 0.1
   },
   {
     "title": "Одиннадцатый цикл",
@@ -44,11 +46,12 @@
     "pages": 704,
     "cover": "Твёрдый переплёт",
     "ageRestrictions": "16+",
-    "imageUrl": "/books/eleven_series.jpg",
+    "imageUrl": "/books/eleven_cycle.jpg",
     "categoryId": 1,
     "rating": 4,
     "series" : "Туманная земля",
-    "subcategory": 4
+    "subcategory": 4,
+    "discount": 0.1
   },
   {
     "title": "Вор с чёрным языком",
@@ -65,7 +68,8 @@
     "categoryId": 1,
     "rating": 3.76,
     "series" : "Черноязыкий",
-    "subcategory": 4
+    "subcategory": 4,
+    "discount": 0.25
   },
   {
     "title": "Атака титанов. Книга 1",
@@ -82,7 +86,8 @@
     "categoryId": 2,
     "rating": 4.94,
     "series" : "Атака титанов",
-    "subcategory": 8
+    "subcategory": 8,
+    "discount": 0
   },
   {
     "title": "Магическая битва. Книга 13",
@@ -99,7 +104,8 @@
     "categoryId": 2,
     "rating": 4.78,
     "series" : "Магическая битва",
-    "subcategory": 8
+    "subcategory": 8,
+    "discount": 0
   },
   {
     "title": "Истребитель демонов. Том 8",
@@ -116,7 +122,8 @@
     "categoryId": 2,
     "rating": 4.3,
     "series" : "Истребитель демонов",
-    "subcategory": 8
+    "subcategory": 8,
+    "discount": 0
   },
     {
     "title": "Человек-бензопила. Том 7 - Птица и война.",
@@ -133,7 +140,8 @@
     "categoryId": 2,
     "rating": 4,
     "series" : "Человек-бензопила",
-    "subcategory": 8
+    "subcategory": 8,
+    "discount": 0.1
   },
   {
     "title": "Мастер и Маргарита: роман",
@@ -150,7 +158,8 @@
     "categoryId": 1,
     "rating": 4.45,
     "series" : "",
-    "subcategory": 2
+    "subcategory": 2,
+    "discount": 0
   },
   {
     "title": "Одиссея",
@@ -167,7 +176,8 @@
     "categoryId": 1,
     "rating": 4.2,
     "series" : "",
-    "subcategory": 2
+    "subcategory": 2,
+    "discount": 0
   },
   {
     "title": "Портрет Дориана Грея",
@@ -184,7 +194,8 @@
     "categoryId": 1,
     "rating": 3.98,
     "series" : "",
-    "subcategory": 2
+    "subcategory": 2,
+    "discount": 0.25
   },
   {
     "title": "Алиса в Стране чудес. Алиса в Зазеркалье.",
@@ -201,7 +212,8 @@
     "categoryId": 3,
     "rating": 4,
     "series" : "",
-    "subcategory": 12
+    "subcategory": 12,
+    "discount": 0.25
   },
   {
     "title": "Шах и мат",
@@ -218,7 +230,8 @@
     "categoryId": 1,
     "rating": 3.78,
     "series" : "Red Violet. Притяжение",
-    "subcategory": 1
+    "subcategory": 1,
+    "discount": 0.1
   },
   {
     "title": "Дневник памяти",
@@ -235,7 +248,8 @@
     "categoryId": 1,
     "rating": 4.82,
     "series" : "",
-    "subcategory": 1
+    "subcategory": 1,
+    "discount": 0
   },
   {
     "title": "Невеста Ноября. Подарочное издание",
@@ -252,7 +266,8 @@
     "categoryId": 1,
     "rating": 4.1,
     "series" : "Охотники за мирами",
-    "subcategory": 1
+    "subcategory": 1,
+    "discount": 0
   },
   {
     "title": "Мара и Морок",
@@ -269,7 +284,8 @@
     "categoryId": 1,
     "rating": 3.8,
     "series" : "Охотники за мирами",
-    "subcategory": 4
+    "subcategory": 4,
+    "discount": 0.25
   },
   {
     "title": "Собака Баскервилей. Долина Страха",
@@ -286,7 +302,8 @@
     "categoryId": 1,
     "rating": 4.2,
     "series" : "Шерлок Холмс",
-    "subcategory": 5
+    "subcategory": 5,
+    "discount": 0.1
   },
   {
     "title": "Убийства по алфавиту",
@@ -303,7 +320,8 @@
     "categoryId": 1,
     "rating": 4,
     "series" : "Эркюль Пуаро",
-    "subcategory": 5
+    "subcategory": 5,
+    "discount": 0.1
   },
   {
     "title": "Убийство у алтаря",
@@ -320,7 +338,8 @@
     "categoryId": 1,
     "rating": 4.22,
     "series" : "",
-    "subcategory": 5
+    "subcategory": 5,
+    "discount": 0
   },
   {
     "title": "Убийства и кексики",
@@ -337,7 +356,8 @@
     "categoryId": 1,
     "rating": 4,
     "series" : "Детективное агентство «Благотворительный магазин»",
-    "subcategory": 5
+    "subcategory": 5,
+    "discount": 0
   },
   {
     "title": "Дракула",
@@ -354,7 +374,8 @@
     "categoryId": 1,
     "rating": 4.77,
     "series" : "",
-    "subcategory": 1
+    "subcategory": 1,
+    "discount": 0
   },
   {
     "title": "Империя проклятых",
@@ -371,7 +392,8 @@
     "categoryId": 1,
     "rating": 5,
     "series" : "Империя вампиров",
-    "subcategory": 4
+    "subcategory": 4,
+    "discount": 0
   },
   {
     "title": "Шипы первой любви. Отличница",
@@ -388,7 +410,8 @@
     "categoryId": 1,
     "rating": 4,
     "series" : "Шипы первой любви",
-    "subcategory": 1
+    "subcategory": 1,
+    "discount": 0
   },
   {
     "title": "Пустые зеркала",
@@ -405,7 +428,8 @@
     "categoryId": 1,
     "rating": 5,
     "series" : "",
-    "subcategory": 1
+    "subcategory": 1,
+    "discount": 0
   },
   {
     "title": "Двенадцать стульев",
@@ -422,7 +446,8 @@
     "categoryId": 1,
     "rating": 4.9,
     "series" : "",
-    "subcategory": 2
+    "subcategory": 2,
+    "discount": 0
   },
   {
     "title": "Усопшие",
@@ -439,6 +464,7 @@
     "categoryId": 2,
     "rating": 4.1,
     "series" : "Усопшие",
-    "subcategory": 11
+    "subcategory": 11,
+    "discount": 0
   }
 ]

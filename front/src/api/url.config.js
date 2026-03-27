@@ -8,4 +8,6 @@ export const API_URLS = {
   ALLNEWBOOKS: "/new-books/all",
   BESTSELLERS: "/bestsellers",
   ALLBESTSELLERS: "/bestsellers/all",
+  DISCOUNTS: "/discounts",
+  ALLDISCOUNTS: "/discounts/all",
 };

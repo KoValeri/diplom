@@ -3,6 +3,7 @@ import { booksApi } from "../api/api";
 import { usersApi } from "../api/usersApi";
 import { newBooksApi } from "../api/newBooksApi";
 import { bestsellersApi } from "../api/bestsellersApi";
+import { discountsApi } from "../api/discountsApi"
 import authReducer from './authSlice';
 import  authModalReducer  from "./authModalSlice";
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     [usersApi.reducerPath]: usersApi.reducer,
     [newBooksApi.reducerPath]: newBooksApi.reducer,
     [bestsellersApi.reducerPath]: bestsellersApi.reducer,
+    [discountsApi.reducerPath]: discountsApi.reducer,
     auth: authReducer,
     authModal: authModalReducer,
   },
@@ -20,5 +22,6 @@ export const store = configureStore({
     .concat(booksApi.middleware)
     .concat(usersApi.middleware)
     .concat(newBooksApi.middleware)
-    .concat(bestsellersApi.middleware),
+    .concat(bestsellersApi.middleware)
+    .concat(discountsApi.middleware),
 });
