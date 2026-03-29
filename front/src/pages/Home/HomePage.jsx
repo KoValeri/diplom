@@ -40,7 +40,7 @@ function HomePage() {
             <span className={styles.headline}>Чай и книги - идеальное сочетание</span>
             <p>В нашем магазине можно не только выбрать любимую книгу, но и остаться на чашечку чая. Мы создали пространство, где чтение - это не спешка, а ритуал</p>
             <p>Сядьте у окна с книгой, закажите ароматный чай или кофе и просто возвольте себе выдохнуть. У нас звучит ненавязчивая музыка, мягкий свет и живой шелест страниц вокруг</p>
-            <button className={styles.sectionBtn} onClick={() => {navigate()}}>Узнать подробнее <BsArrowRight size={25}/></button>
+            <button className={styles.sectionBtn} onClick={() => {navigate(ROUTES.ABOUTUS)}}>Узнать подробнее <BsArrowRight size={25}/></button>
           </div>
         </div>
       </section>

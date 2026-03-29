@@ -49,7 +49,7 @@ export default function BookCard({ book }) {
                     <div className={styles.discountFlag}>
                         -{Math.round(book.discount * 100)}%
                     </div>
-                    )}
+                )}
             </div>  
         </>
     )

@@ -5,8 +5,8 @@ export default function BestelleersPage() {
   const { data: allBestsellers = [], isLoading, isError } = useGetAllBestsellersQuery()
 
     return(
-        <>
+        <div className="pageContent">
             <BookList books={allBestsellers} isLoading={isLoading} isErro={isError} />
-        </>
+        </div>
     )
 }

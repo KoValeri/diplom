@@ -18,44 +18,68 @@ export default function BookDetails() {
             {isLoading ? (
                 <p>Книжечка загружается...</p>
             ) : (
-            <div className={styles}>
-                <div className={styles}>
-                    <img className={styles} src={book.imageUrl} alt={book.title} />
-                    <div>
-                        <p className={styles}>{book.title}</p>
-                        <p className={styles}>{book.author}</p>
-                        <p className={styles}><FaStar />{book.rating}</p>
-                        <div className={styles.price}>
-                            {hasDiscount ? (
-                                <>
-                                <span>{newPrice} р.</span>
-                                <span className={styles.oldPrice}>{book.price} р.</span>
-                                </>
-                            ) : (
-                                <span className={styles.price}>{book.price} р.</span>
-                            )}
-                        </div>
-                        <div className={styles.btns}>
-                            <Button text='В корзину'/>
-                            <ButtonBookMark />
+                <>
+                    <div className={styles.upConteiner}>
+                        <img className={styles.bookImg} src={book.imageUrl} alt={book.title} />
+                        
+                        <div className={styles.bookMainInfo}>
+                            <p className={styles.title}>{book.title}</p>
+                            <p className={styles.author}>{book.author}</p>
+                            <p className={styles.rating}><FaStar />{book.rating}</p>
+                            <div className={styles.price}>
+                                {hasDiscount ? (
+                                    <>
+                                    <span>{newPrice} р.</span>
+                                    <span className={styles.oldPrice}>{book.price} р.</span>
+                                    <span className={styles.discountFlag}>
+                                        -{Math.round(book.discount * 100)}%
+                                    </span>
+                                    </>
+                                ) : (
+                                    <span className={styles.price}>{book.price} р.</span>
+                                )}
+                            </div>
+                            <div className={styles.btns}>
+                                <Button text='В корзину'/>
+                                <ButtonBookMark />
+                            </div>
+                            <div className={styles.description}>{book.description}</div>
                         </div>
                     </div>
-                </div>
 
-                <div>
-                    <div>{book.description}</div>
-                    <div>
-                        {book.genres.map(g => g.name).join(', ')}
+                    <div className={styles.bookInfo}>
+                        <div className={styles.characteristics}>Характеристики</div>
+                        <div>
+                            <span className={styles.infoPoint}>Жанры:</span> {book.genres.map(g => g.name).join(', ')}
+                        </div>
+                        <div>
+                            <span className={styles.infoPoint}>Издательство:</span> {book.publishingHouse}
+                        </div>
+                        <div>
+                            <span className={styles.infoPoint}>Год идзания:</span> {book.yearOfPublication}
+                        </div>
+                        <div>
+                            <span className={styles.infoPoint}>Количество страниц:</span> {book.pages}
+                        </div>
+                        <div>
+                            <span className={styles.infoPoint}>Тип обложки:</span> {book.cover}
+                        </div>
+                        <div>
+                            <span className={styles.infoPoint}>Возрастное ограничение:</span> {book.ageRestrictions}
+                        </div>
+                        {book.series && 
+                            <div>
+                                <span className={styles.infoPoint}>Серия книг:</span> {book.series}
+                            </div>
+                        }
+                        <div>
+                            <span className={styles.infoPoint}>Категория:</span> {book.categoryName}
+                        </div>
+                        <div>
+                            <span className={styles.infoPoint}>Подкатегория:</span> {book.subcategoryName}
+                        </div>
                     </div>
-                    <div>{book.publishingHouse}</div>
-                    <div>{book.yearOfPublication}</div>
-                    <div>{book.pages}</div>
-                    <div>{book.cover}</div>
-                    <div>{book.ageRestrictions}</div>
-                    <div>{book.series}</div>
-                </div>
-
-            </div>
+                </>
             )}
         </>
     );

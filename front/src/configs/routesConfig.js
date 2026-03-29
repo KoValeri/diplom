@@ -4,4 +4,5 @@ export const ROUTES = {
     BESTSELLERS: '/bestsellers',
     DISCOUNTS: '/discounts',
     BOOK: '/book/:id',
+    ABOUTUS: '/about-us',
 }

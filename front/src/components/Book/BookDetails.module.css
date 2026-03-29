@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../../../public/fonts/PlayfairDisplay/PlayfairDisplay.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NunitoBold";
+  src: url("../../../public/fonts/Nunito/Nunito-Bold.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../../../public/fonts/Nunito/Nunito-Regular.ttf");
+  font-display: swap;
+}
+
+.upConteiner{
+    display: flex;
+    column-gap: 60px;
+}
+
+.bookImg{
+    width: 300px;
+    height: 450px;
+}
+
+.bookMainInfo p{
+    margin-bottom: 10px;
+}
+
+.title{
+    font-family: PlayfairDisplay;
+    font-size: 38px;
+}
+
+.author{
+    color: #4b4a48;
+}
+
+.price{
+    font-size: 20px;
+    display: flex;
+    column-gap: 10px;
+    align-items: baseline;
+    font-family: NunitoBold;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: #4b4a48;
+  font-size: 14px;
+  font-family: Nunito;
+}
+
+.discountFlag {
+  top: 10px;
+  left: 10px;
+  background: #D12B00;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.rating{
+    color: #ebc83b;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.btns {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 10px;
+}
+
+.description{
+    margin-top: 10px;
+}
+
+.bookInfo{
+    margin-top: 20px;
+}
+
+.bookInfo div{
+    margin-bottom: 10px;
+    display: flex;
+    column-gap: 80px;
+}
+
+.characteristics{
+    font-family: PlayfairDisplay;
+    font-size: 28px;
+}
+
+.infoPoint{
+    color: #4b4a48;
+    min-width: 250px;
+}

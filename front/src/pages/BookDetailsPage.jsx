@@ -2,6 +2,8 @@ import BookDetail from "../components/Book/BookDetails"
 
 export default function BookDetailsPage() {
     return(
-        <BookDetail />
+        <div className="pageContent">
+            <BookDetail />
+        </div>
     )
 }

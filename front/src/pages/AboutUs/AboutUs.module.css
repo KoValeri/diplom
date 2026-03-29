@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../../../public/fonts/PlayfairDisplay/PlayfairDisplay.ttf");
+  font-display: swap;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.upContent{
+    display: flex;
+    column-gap: 30px;
+}
+
+.map{
+    border: transparent;
+    border-radius: 7px;
+}
+
+.imgsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.image{
+    width: 400px;
+    height: 240px;
+    object-fit: cover; 
+    border-radius: 7px;
+}
+
+.topHeadline{
+    font-family: PlayfairDisplay;
+    font-size: 38px;
+    color: #C76146;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.headline{
+    font-family: PlayfairDisplay;
+    font-size: 28px;
+    color: #C76146;
+}
+
+.headlineText{
+    font-family: PlayfairDisplay;
+    font-size: 28px;
+    color: #C76146;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.text{
+    margin: 10px 0 10px 0;
+}
