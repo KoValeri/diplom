@@ -6,7 +6,7 @@ export const sliderContent = [
     { 
         title: `Цикл Империя вампиров \n Джея Кристоффа`,
         subTitle: 'Погрузитесь в мир, где вампиры правят, а люди борются за выживание. \n Каждая книга — взрыв эмоций и интриг.',
-        btnLink: '#',
+        btnLink: '/book/22/series',
         img: vampire_cycle,
         btn: 'Погрузиться в цикл',
         imgClass: 'vampireImg'

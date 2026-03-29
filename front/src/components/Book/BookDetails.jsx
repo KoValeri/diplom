@@ -1,17 +1,29 @@
 import styles from './BookDetails.module.css'
 import { useGetBookByIdQuery  } from "../../api/api"
+import { useGetBooksBySeriesQuery } from '../../api/api'
 import { useParams } from 'react-router-dom'
 import { FaStar } from "react-icons/fa"
 import Button from "../Button/Button"
 import ButtonBookMark from "../ButtonBookMark/ButtonBookMark"
+import BookSlider from './BookSlider'
+import BookList from './BookList'
+import { useNavigate, generatePath } from 'react-router-dom';
+import { ROUTES } from '../../configs/routesConfig'
+import { IoIosArrowForward } from "react-icons/io"
 
 export default function BookDetails() {
     const { id } = useParams();
+    const navigate = useNavigate()
     const { data: book, isLoading } = useGetBookByIdQuery(id);
+    const { data: seriesBooks = [], isLoading: booksSeriesLoading, isError } = useGetBooksBySeriesQuery(id, {skip: !id,});
     const hasDiscount = book?.discount > 0;
     const newPrice = hasDiscount
         ? Math.round(book?.price * (1 - book?.discount))
         : book?.price;
+
+    function handleClick(){
+        navigate( generatePath(ROUTES.SERIES, {id}) )
+    }
 
     return (
         <>
@@ -20,7 +32,7 @@ export default function BookDetails() {
             ) : (
                 <>
                     <div className={styles.upConteiner}>
-                        <img className={styles.bookImg} src={book.imageUrl} alt={book.title} />
+                        <BookSlider mainImage={book.imageUrl} additionalImages={book.additionalImages}/>
                         
                         <div className={styles.bookMainInfo}>
                             <p className={styles.title}>{book.title}</p>
@@ -79,6 +91,12 @@ export default function BookDetails() {
                             <span className={styles.infoPoint}>Подкатегория:</span> {book.subcategoryName}
                         </div>
                     </div>
+
+                    {book.series && <div className={styles.seriesHeader}>
+                        <div className={styles.bookSeries}>Все книги серии «{book.series}»</div>
+                        <button className={styles.btnPage}><IoIosArrowForward size={30} onClick={handleClick}/></button>
+                    </div>}
+                    <BookList books={seriesBooks} isLoading={booksSeriesLoading} isError={isError}/>
                 </>
             )}
         </>

@@ -5,4 +5,5 @@ export const ROUTES = {
     DISCOUNTS: '/discounts',
     BOOK: '/book/:id',
     ABOUTUS: '/about-us',
+    SERIES: '/book/:id/series'
 }

@@ -76,6 +76,15 @@ CREATE TABLE book_genres (
 );
 GO
 
+CREATE TABLE book_additional_images (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    bookId INT NOT NULL,
+    imageUrl NVARCHAR(255) NOT NULL,
+    CONSTRAINT FK_book_additional_images_books FOREIGN KEY (bookId) 
+        REFERENCES books(id) ON DELETE CASCADE
+);
+GO
+
 -- Категории
 INSERT INTO categories (name) VALUES
 ('Художественная литература'),
@@ -171,3 +180,10 @@ INSERT INTO genres (name) VALUES
 ('Мифология'),
 ('Готическая литература'),
 ('Триллер');
+
+--Вставка в доп книги
+INSERT INTO book_additional_images (bookId, imageUrl) VALUES
+(22, '/books_extra_photos/empire_of_the_damned1.jpg'),
+(22, '/books_extra_photos/empire_of_the_damned2.jpg'),
+(22, '/books_extra_photos/empire_of_the_damned3.jpg'),
+(22, '/books_extra_photos/empire_of_the_damned4.jpg');

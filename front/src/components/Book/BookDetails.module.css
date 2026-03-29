@@ -18,12 +18,7 @@
 
 .upConteiner{
     display: flex;
-    column-gap: 60px;
-}
-
-.bookImg{
-    width: 300px;
-    height: 450px;
+    column-gap: 40px;
 }
 
 .bookMainInfo p{
@@ -82,7 +77,7 @@
 }
 
 .bookInfo{
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .bookInfo div{
@@ -99,4 +94,29 @@
 .infoPoint{
     color: #4b4a48;
     min-width: 250px;
+}
+
+.seriesHeader{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    column-gap: 20px;
+}
+
+.bookSeries{
+    font-family: PlayfairDisplay;
+    font-size: 28px;
+}
+
+.btnPage{
+    color: #3B2F2F;
+    border: 2px solid #EADAC0;
+    border-radius: 50%;
+    width: 45px;
+    height: 40px;
+    background-color: #EADAC0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
