@@ -10,4 +10,5 @@ export const API_URLS = {
   ALLBESTSELLERS: "/bestsellers/all",
   DISCOUNTS: "/discounts",
   ALLDISCOUNTS: "/discounts/all",
+  CATEGORIES: "/categories",
 };

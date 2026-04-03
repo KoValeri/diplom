@@ -10,6 +10,7 @@ import styles from './HomePage.module.css'
 import { IoIosArrowForward } from "react-icons/io"
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from "../../configs/routesConfig";
+import Headline from "../../components/Headline/Headline";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function HomePage() {
 
       <section className={styles.section}>
         <div className={styles.info}>
-          <span className={styles.headline}>Новые поступления</span>
+          <Headline text={'Новые поступления'}/>
           <div>
             <span>Показать все</span>
             <button className={styles.btnPage} onClick={() => {navigate(ROUTES.NEWBOOKS)}}><IoIosArrowForward size={25}/></button>
@@ -37,7 +38,7 @@ function HomePage() {
         <div className={styles.sectionDiv}>
           <img className={styles.sectionImg} src={bookStore} alt="book store" />
           <div className={styles.sectionText}>
-            <span className={styles.headline}>Чай и книги - идеальное сочетание</span>
+            <Headline text={'Чай и книги - идеальное сочетание'}/>
             <p>В нашем магазине можно не только выбрать любимую книгу, но и остаться на чашечку чая. Мы создали пространство, где чтение - это не спешка, а ритуал</p>
             <p>Сядьте у окна с книгой, закажите ароматный чай или кофе и просто возвольте себе выдохнуть. У нас звучит ненавязчивая музыка, мягкий свет и живой шелест страниц вокруг</p>
             <button className={styles.sectionBtn} onClick={() => {navigate(ROUTES.ABOUTUS)}}>Узнать подробнее <BsArrowRight size={25}/></button>
@@ -47,7 +48,7 @@ function HomePage() {
 
       <section className={styles.section}>
         <div className={styles.info}>
-          <span className={styles.headline}>Хиты продаж</span>
+          <Headline text={'Хиты продаж'}/>
           <div>
             <span>Показать все</span>
             <button className={styles.btnPage} onClick={() => {navigate(ROUTES.BESTSELLERS)}}><IoIosArrowForward size={25}/></button></div>
@@ -57,7 +58,7 @@ function HomePage() {
 
       <section className={styles.section}>
         <div className={styles.info}>
-          <span className={styles.headline}>Акции</span>
+          <Headline text={'Акции'}/>
           <div>
             <span>Показать все</span>
             <button className={styles.btnPage} onClick={() => {navigate(ROUTES.DISCOUNTS)}}><IoIosArrowForward size={25}/></button>

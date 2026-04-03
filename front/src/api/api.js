@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_API_URL, API_URLS } from "./url.config";
+import { BASE_API_URL, API_URLS } from "./url.config";;
 
 export const booksApi = createApi({
   reducerPath: 'booksApi',
@@ -16,7 +16,11 @@ export const booksApi = createApi({
     getBooksBySeries: builder.query({
       query: (id) => `${API_URLS.BOOKS}/${id}/series`,
     }),
+
+    getBooksBySubcategory: builder.query({
+      query: (id) => `${API_URLS.BOOKS}/subcategory/${id}`,
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useGetBookByIdQuery, useGetBooksBySeriesQuery } = booksApi;
+export const { useGetBooksQuery, useGetBookByIdQuery, useGetBooksBySeriesQuery, useGetBooksBySubcategoryQuery } = booksApi;

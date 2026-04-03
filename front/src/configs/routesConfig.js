@@ -5,5 +5,6 @@ export const ROUTES = {
     DISCOUNTS: '/discounts',
     BOOK: '/book/:id',
     ABOUTUS: '/about-us',
-    SERIES: '/book/:id/series'
+    SERIES: '/book/:id/series',
+    BOOKSBYCATEGORIES: '/books/subcategory/:id',
 }

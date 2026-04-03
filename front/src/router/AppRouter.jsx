@@ -7,7 +7,8 @@ import NewBooksPage from '../pages/NewBooksPage';
 import BookDetailsPage from '../pages/BookDetailsPage';
 import DiscountsPage from '../pages/DiscountsPage';
 import AboutUsPage from '../pages/AboutUs/AboutUsPage';
-import BookSeriesPage from '../pages/BookSeriesPage'
+import BookSeriesPage from '../pages/BookSeriesPage';
+import BooksByCategoryPage from '../pages/BooksByCategoryPage';
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
             { path: ROUTES.BOOK, element: <BookDetailsPage /> },
             { path: ROUTES.ABOUTUS, element: <AboutUsPage /> },
             { path: ROUTES.SERIES, element: <BookSeriesPage /> },
+            { path: ROUTES.BOOKSBYCATEGORIES, element: <BooksByCategoryPage /> },
         ]
     }
 ]);

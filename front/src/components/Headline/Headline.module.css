@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../../../public/fonts/PlayfairDisplay/PlayfairDisplay.ttf");
+  font-display: swap;
+}
+
+.headline {
+    font-family: PlayfairDisplay;
+    font-size: 38px;
+}

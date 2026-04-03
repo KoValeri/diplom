@@ -2,6 +2,8 @@
 USE book_store;
 GO
 
+-- Если снесла все таблицы:
+-- это 1 шаг
 -- Удаляем старые таблицы, если есть
 DROP TABLE IF EXISTS book_genres;
 DROP TABLE IF EXISTS genres;
@@ -9,8 +11,10 @@ DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS subcategories;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS book_additional_images;
 GO
 
+-- с этой по книги (без доп фото) создаёшь таблицы
 -- Таблица пользователей
 CREATE TABLE users (
     id INT IDENTITY(1,1) PRIMARY KEY,
@@ -85,6 +89,7 @@ CREATE TABLE book_additional_images (
 );
 GO
 
+--Заполняешь категории и подкат, затем в vs вносишь книги в табблицу, затем уже доп фотки
 -- Категории
 INSERT INTO categories (name) VALUES
 ('Художественная литература'),
@@ -96,7 +101,7 @@ INSERT INTO categories (name) VALUES
 ('История'),
 ('Учебники'),
 ('Саморазвитие'),
-('Наука и технологии');
+('Технологии');
 
 -- Подкатегории
 INSERT INTO subcategories (categoryId, name) VALUES
@@ -116,11 +121,8 @@ INSERT INTO subcategories (categoryId, name) VALUES
 -- Детская литература
 (3, 'Сказки'),
 (3, 'Развивающие книги'),
-(3, 'Книги для подростков'),
-(3, 'Комиксы для детей'),
 -- Психология
 (4, 'Популярная психология'),
-(4, 'Психотерапия'),
 (4, 'Самопомощь'),
 -- Бизнес-литература
 (5, 'Маркетинг'),
@@ -136,14 +138,11 @@ INSERT INTO subcategories (categoryId, name) VALUES
 (7, 'Древний мир'),
 (7, 'Средние века'),
 (7, 'Новая история'),
-(7, 'История России'),
 -- Учебники
 (8, 'Школьные учебники'),
-(8, 'Университетские учебники'),
 (8, 'Иностранные языки'),
 -- Саморазвитие
 (9, 'Лайфхаки и привычки'),
-(9, 'Тайм-менеджмент'),
 (9, 'Мотивация'),
 -- Наука и технологии
 (10, 'IT и программирование'),

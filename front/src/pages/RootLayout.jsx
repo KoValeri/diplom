@@ -9,7 +9,7 @@ function RootLayout() {
   const isOpen = useSelector(state => state.authModal.isOpen)
 
   return (
-    <>
+    <div className="app">
       <ScrollToTop />
       <Header />
       <main>
@@ -17,7 +17,7 @@ function RootLayout() {
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

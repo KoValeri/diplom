@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { ROUTES } from '../../configs/routesConfig'
 import { IoIosSearch } from "react-icons/io"
 import { RxAvatar } from "react-icons/rx"
@@ -10,10 +10,15 @@ import styles from './Header.module.css'
 import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
 import { authActions } from "../../store/authSlice"
+import { useState, useRef, useEffect } from "react";
+import Catalog from "./Catalog"
 
 function Header() {
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector(state => state.auth)
+    const [isOpen, setCatalog] = useState(false);
+    const catalogRef = useRef(null);
+    const location = useLocation();
 
     function handleAuthClick() {
         if (isAuthenticated) {
@@ -23,6 +28,28 @@ function Header() {
             dispatch(authModalActions.openLogin());
         }
     }
+
+    function handleCatalogClick() {
+        setCatalog(prev => !prev)
+    }
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (catalogRef.current && !catalogRef.current.contains(event.target)) {
+                setCatalog(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    useEffect(() => {
+        setCatalog(false);
+    }, [location])
 
     return(
         <header className={styles.header}>
@@ -47,10 +74,12 @@ function Header() {
                 </div>
 
                 <div className={styles.downNavContainer}>
-                    <div className={styles.logo}>
+                    <div className={styles.logo} ref={catalogRef}>
                         <Link to={ROUTES.HOME} className={styles.title}>Liberty</Link>
-                        <button className={styles.btnCatalog}><PiBooksThin size={35}/>Каталог</button>
+                        <button className={styles.btnCatalog} onClick={handleCatalogClick}><PiBooksThin size={35}/>Каталог</button>
+                        {isOpen && <Catalog />}
                     </div>
+
                     <div className={styles.searchContainer}>
                         <input className={styles.search}
                                 name="search"
