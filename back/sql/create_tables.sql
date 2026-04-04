@@ -26,10 +26,11 @@ CREATE TABLE users (
 );
 GO
 
--- Таблица категорий
+-- Таблица категорий с постером
 CREATE TABLE categories (
     id INT IDENTITY(1,1) PRIMARY KEY,
-    name NVARCHAR(100) NOT NULL UNIQUE
+    name NVARCHAR(100) NOT NULL UNIQUE,
+    poster NVARCHAR(255) NULL -- ссылка на обложку категории
 );
 GO
 
@@ -91,17 +92,15 @@ GO
 
 --Заполняешь категории и подкат, затем в vs вносишь книги в табблицу, затем уже доп фотки
 -- Категории
-INSERT INTO categories (name) VALUES
-('Художественная литература'),
-('Комиксы и манга'),
-('Детская литература'),
-('Психология'),
-('Бизнес-литература'),
-('Научная литература'),
-('История'),
-('Учебники'),
-('Саморазвитие'),
-('Технологии');
+INSERT INTO categories (name, poster) VALUES
+('Художественная литература', '/books/master_and_margarette.jpg'),
+('Комиксы и манга', '/books/jujutsu_kaisen13.jpg'),
+('Детская литература', '/books/alice_in_wonderland.jpg'),
+('Психология и саморазвитие', '/books/gentle_towards_yourself.jpg'),
+('Бизнес-литература', '/books/rich_vavilon.jpg'),
+('Научная литература', '/books/poisons_around_inside.jpg'),
+('Учебники', '/books/Little_Prince.jpg'),
+('Технологии', '/books/React_book.jpg');
 
 -- Подкатегории
 INSERT INTO subcategories (categoryId, name) VALUES
@@ -123,7 +122,7 @@ INSERT INTO subcategories (categoryId, name) VALUES
 (3, 'Развивающие книги'),
 -- Психология
 (4, 'Популярная психология'),
-(4, 'Самопомощь'),
+(4, 'Саморазвитие'),
 -- Бизнес-литература
 (5, 'Маркетинг'),
 (5, 'Менеджмент'),
@@ -134,20 +133,16 @@ INSERT INTO subcategories (categoryId, name) VALUES
 (6, 'Химия'),
 (6, 'Биология'),
 (6, 'Математика'),
--- История
-(7, 'Древний мир'),
-(7, 'Средние века'),
-(7, 'Новая история'),
+(6, 'История древнего мир'),
+(6, 'История средневековья'),
+(6, 'Новая история'),
 -- Учебники
-(8, 'Школьные учебники'),
-(8, 'Иностранные языки'),
--- Саморазвитие
-(9, 'Лайфхаки и привычки'),
-(9, 'Мотивация'),
+(7, 'Школьные учебники'),
+(7, 'Иностранные языки'),
 -- Наука и технологии
-(10, 'IT и программирование'),
-(10, 'Инженерия'),
-(10, 'Кибербезопасность');
+(8, 'IT и программирование'),
+(8, 'Инженерия'),
+(8, 'Кибербезопасность');
 GO
 
 -- Таблица жанров
@@ -173,12 +168,13 @@ INSERT INTO genres (name) VALUES
 ('Психология'),
 ('Бизнес'),
 ('История'),
-('Саморазвитие'),
+('Наука'),
 ('Мистика'),
 ('Философский роман'),
 ('Мифология'),
 ('Готическая литература'),
-('Триллер');
+('Триллер'),
+('Языки и среды программирования');
 
 --Вставка в доп книги
 INSERT INTO book_additional_images (bookId, imageUrl) VALUES
@@ -186,3 +182,6 @@ INSERT INTO book_additional_images (bookId, imageUrl) VALUES
 (22, '/books_extra_photos/empire_of_the_damned2.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned3.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned4.jpg');
+
+
+SELECT * FROM categories;

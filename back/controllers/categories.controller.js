@@ -8,6 +8,7 @@ exports.getCategories = async (req, res) => {
       SELECT 
         c.id AS categoryId,
         c.name AS categoryName,
+        c.poster AS categoryPoster,
         sc.id AS subcategoryId,
         sc.name AS subcategoryName
       FROM categories c
@@ -24,6 +25,7 @@ exports.getCategories = async (req, res) => {
         categoriesMap.set(row.categoryId, {
           id: row.categoryId,
           name: row.categoryName,
+          poster: row.categoryPoster,
           subcategories: []
         });
       }

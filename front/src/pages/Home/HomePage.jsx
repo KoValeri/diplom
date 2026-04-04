@@ -1,6 +1,7 @@
 import { useGetNewBooksQuery } from "../../api/newBooksApi";
 import { useGetBestsellersQuery } from "../../api/bestsellersApi";
 import { useGetDiscountsQuery } from "../../api/discountsApi";
+import { useGetCategoriesQuery } from "../../api/categoriesApi" 
 import { BsArrowRight } from "react-icons/bs"
 import bookStore from "../../assets/bookStore.jpg"
 import Slider from "./Slider";
@@ -11,17 +12,30 @@ import { IoIosArrowForward } from "react-icons/io"
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from "../../configs/routesConfig";
 import Headline from "../../components/Headline/Headline";
+import CategoryList from "./CategoryList";
 
 function HomePage() {
   const navigate = useNavigate();
   const { data: newBooks = [] } = useGetNewBooksQuery()
   const { data: bestsellers = [] } = useGetBestsellersQuery()
   const { data: discounts = [] } = useGetDiscountsQuery()
+  const { data: categories = [] } = useGetCategoriesQuery();
 
   return (
     <>
       <Slider />
       <Banner />
+
+      <section className={styles.sectionCategory}>
+        <div className={styles.info}>
+          <Headline text={'Категории книг'}/>
+          <div>
+            <span>Показать все</span>
+            <button className={styles.btnPage} onClick={() => {navigate(ROUTES.CATEGORIES)}}><IoIosArrowForward size={25}/></button>
+          </div>
+        </div>
+        <CategoryList categories={categories.slice(0, 5)}/>
+      </section>
 
       <section className={styles.section}>
         <div className={styles.info}>
