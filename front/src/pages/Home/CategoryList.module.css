@@ -22,22 +22,37 @@
     position: relative;
     width: 100%;
     margin-bottom: 15px;
+    perspective: 1000px;
 }
 
-.floorMenu {
-    width: 200px;
-    height: 80px;
-    border-radius: 7px;
-    background-color: #EADAC0;
-    border: 2px solid #EADAC0;
-    margin-top: 200px;
-    z-index: 1;
+.posterCard {
+    width: 150px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    z-index: 3;
 }
 
-.poster {
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.posterFront {
     width: 150px;
     height: 250px;
     border-radius: 7px;
+    position: absolute;
+    backface-visibility: hidden;
+    z-index: 2;
+}
+
+.posterBack {
+    width: 150px;
+    height: 250px;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
     z-index: 2;
 }
 
@@ -68,11 +83,6 @@
     border: 2px solid #EADAC0;
     border-radius: 7px;
     background-color: #FFFCF8;
-    z-index: 3;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    position: absolute;
-    top: 0;
-    left: 25px;
     overflow: auto;
 }
 
