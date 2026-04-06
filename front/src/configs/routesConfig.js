@@ -7,5 +7,6 @@ export const ROUTES = {
     ABOUTUS: '/about-us',
     SERIES: '/book/:id/series',
     BOOKSBYCATEGORIES: '/books/subcategory/:id',
-    CATEGORIES: '/categories'
+    CATEGORIES: '/categories',
+    SEARCH: '/search',
 }

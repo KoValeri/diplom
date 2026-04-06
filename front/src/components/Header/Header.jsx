@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { ROUTES } from '../../configs/routesConfig'
 import { IoIosSearch } from "react-icons/io"
 import { RxAvatar } from "react-icons/rx"
@@ -16,16 +16,20 @@ import Catalog from "./Catalog"
 function Header() {
     const dispatch = useDispatch()
     const { isAuthenticated } = useSelector(state => state.auth)
-    const [isOpen, setCatalog] = useState(false);
-    const catalogRef = useRef(null);
-    const location = useLocation();
+    const [isOpen, setCatalog] = useState(false)
+    const catalogRef = useRef(null)
+    const searchRef = useRef(null)
+    const location = useLocation()
+    const [search, setSearch] = useState("")
+    const [results, setResults] = useState([])
+    const navigate = useNavigate()
 
     function handleAuthClick() {
         if (isAuthenticated) {
-            localStorage.removeItem("token");
-            dispatch(authActions.logout());
+            localStorage.removeItem("token")
+            dispatch(authActions.logout())
         } else {
-            dispatch(authModalActions.openLogin());
+            dispatch(authModalActions.openLogin())
         }
     }
 
@@ -36,20 +40,48 @@ function Header() {
     useEffect(() => {
         function handleClickOutside(event) {
             if (catalogRef.current && !catalogRef.current.contains(event.target)) {
-                setCatalog(false);
+                setCatalog(false)
+            }
+
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                setSearch('')
             }
         }
 
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside)
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [])
 
     useEffect(() => {
-        setCatalog(false);
+        setCatalog(false)
+        setSearch('')
     }, [location])
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (search.trim()) {
+                fetch(`http://localhost:5000/books?search=${search}`)
+                    .then(res => res.json())
+                    .then(data => setResults(data))
+                    .catch(err => console.error(err))
+            } else {
+                setResults([])
+            }
+        }, 300);
+
+        return () => clearTimeout(timeout)
+    }, [search])
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (search.trim()) {
+            navigate(`/search?q=${search}`);
+            setResults([]);
+        }
+    }
 
     return(
         <header className={styles.header}>
@@ -80,16 +112,30 @@ function Header() {
                         {isOpen && <Catalog />}
                     </div>
 
-                    <div className={styles.searchContainer}>
-                        <input className={styles.search}
-                                name="search"
-                                type="text"
-                                placeholder="Найти книгу"
-                        />
-                        <button>
-                            <IoIosSearch size={20}/>
-                        </button>                        
+                    <div ref={searchRef} className={styles.searchWrapper}>
+                        <form onSubmit={handleSubmit} className={styles.searchContainer}>
+                            <input className={styles.search}
+                                    name="search"
+                                    type="text"
+                                    placeholder="Найти книгу"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                            />
+                            <button type="submit">
+                                <IoIosSearch size={20}/>
+                            </button>
+                        </form>
+                        {results.length > 0 && (
+                            <div className={styles.searchDropdown}>
+                                {results.slice(0, 5).map(book => (
+                                    <Link key={book.id} to={`/book/${book.id}`}>
+                                        {book.title}
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </div>
+
                     <nav className={styles.nav}>
                         <ul className={`${styles.downNavUl} ${styles.navUl}`}>
                             <li>

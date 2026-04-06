@@ -1,10 +1,33 @@
 const { sql, pool, poolConnect } = require("../db");
 
+// exports.getBooks = async (req, res) => {
+//   try {
+//     await poolConnect;
+
+//     const result = await pool.request().query(`
+//       SELECT 
+//         b.*,
+//         sc.name AS subcategoryName,
+//         c.name AS categoryName
+//       FROM books b
+//       LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
+//       LEFT JOIN categories c ON sc.categoryId = c.id
+//     `);
+
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("Ошибка сервера");
+//   }
+// };
+
 exports.getBooks = async (req, res) => {
   try {
     await poolConnect;
 
-    const result = await pool.request().query(`
+    const { search } = req.query;
+
+    let query = `
       SELECT 
         b.*,
         sc.name AS subcategoryName,
@@ -12,7 +35,22 @@ exports.getBooks = async (req, res) => {
       FROM books b
       LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
       LEFT JOIN categories c ON sc.categoryId = c.id
-    `);
+    `;
+
+    if (search) {
+      query += `
+        WHERE b.title LIKE '%' + @search + '%'
+        OR b.author LIKE '%' + @search + '%'
+      `;
+    }
+
+    const request = pool.request();
+
+    if (search) {
+      request.input("search", sql.NVarChar, search);
+    }
+
+    const result = await request.query(query);
 
     res.json(result.recordset);
   } catch (err) {

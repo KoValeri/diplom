@@ -10,6 +10,7 @@ import AboutUsPage from '../pages/AboutUs/AboutUsPage';
 import BookSeriesPage from '../pages/BookSeriesPage';
 import BooksByCategoryPage from '../pages/BooksByCategoryPage';
 import СategoriesPage from '../pages/CategoriesPage'
+import SearchPage from '../pages/SearchPage'
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
             { path: ROUTES.SERIES, element: <BookSeriesPage /> },
             { path: ROUTES.BOOKSBYCATEGORIES, element: <BooksByCategoryPage /> },
             { path: ROUTES.CATEGORIES, element: <СategoriesPage /> },
+            { path: ROUTES.SEARCH, element: <SearchPage /> },
         ]
     }
 ]);
