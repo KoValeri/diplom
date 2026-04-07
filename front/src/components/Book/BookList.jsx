@@ -1,7 +1,7 @@
 import styles from "./BookList.module.css"
 import BookCard from "./BookCard"
 
-export default function BookList({ books, isLoading, isError }) {
+export default function BookList({ books, isLoading, isError, hasFilters=false }) {
   return (
     <>
     {isLoading ? (
@@ -9,7 +9,7 @@ export default function BookList({ books, isLoading, isError }) {
     ) : isError ? (
         <p>Ошибка, книжечки не получены...</p>
     ) : (
-        <div className={styles.bookList}>
+        <div className={`${styles.bookList} ${hasFilters ? styles.bookListWithFilters : ''}`}>
             {books?.map(book => (
                 <BookCard 
                 key={book.id}

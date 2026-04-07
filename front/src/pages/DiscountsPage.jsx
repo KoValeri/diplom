@@ -8,11 +8,13 @@ export default function DiscountsPage() {
 
     return(
         <div className="pageContent">
-            <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-                <ButtonBack />
-                <Headline text={'Акции'}/>
+            <div className="pageBookColumn">
+                <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                    <ButtonBack />
+                    <Headline text={'Акции'}/>
+                </div>
+                <BookList books={allDisounts} isLoading={isLoading} isError={isError} />
             </div>
-            <BookList books={allDisounts} isLoading={isLoading} isError={isError} />
         </div>
     )
 }

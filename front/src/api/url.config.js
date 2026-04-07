@@ -11,4 +11,8 @@ export const API_URLS = {
   DISCOUNTS: "/discounts",
   ALLDISCOUNTS: "/discounts/all",
   CATEGORIES: "/categories",
+  GENRES: "/genres",
+  AGES: "/books/ages",
+  COVERS: "/books/covers",
+  PUBLHOUSE: "/books/publishingHouse"
 };

@@ -8,11 +8,13 @@ export default function BestelleersPage() {
 
     return(
         <div className="pageContent">
-            <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-                <ButtonBack />
-                <Headline text={'Хиты продаж'}/>
+            <div className="pageBookColumn">
+                <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                    <ButtonBack />
+                    <Headline text={'Хиты продаж'}/>
+                </div>
+                <BookList books={allBestsellers} isLoading={isLoading} isError={isError} />
             </div>
-            <BookList books={allBestsellers} isLoading={isLoading} isError={isError} />
         </div>
     )
 }

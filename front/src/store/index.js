@@ -6,7 +6,12 @@ import { bestsellersApi } from "../api/bestsellersApi";
 import { discountsApi } from "../api/discountsApi"
 import { categoriesApi } from "../api/categoriesApi";
 import authReducer from './authSlice';
-import  authModalReducer  from "./authModalSlice";
+import authModalReducer  from "./authModalSlice";
+import bookFilterReducer from './bookFilterSlice';
+import { agesApi } from "../api/agesApi";
+import { genresApi } from "../api/genresApi";
+import { coversApi } from "../api/coversApi";
+import { publishingHouseApi } from "../api/publishingHouseApi";
 
 export const store = configureStore({
   reducer: {
@@ -16,8 +21,13 @@ export const store = configureStore({
     [bestsellersApi.reducerPath]: bestsellersApi.reducer,
     [discountsApi.reducerPath]: discountsApi.reducer,
     [categoriesApi.reducerPath]: categoriesApi.reducer,
+    [agesApi.reducerPath]: agesApi.reducer,
+    [coversApi.reducerPath]: coversApi.reducer,
+    [publishingHouseApi.reducerPath]: publishingHouseApi.reducer,
+    [genresApi.reducerPath]: genresApi.reducer,
     auth: authReducer,
     authModal: authModalReducer,
+    bookFilters: bookFilterReducer,
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware()
@@ -26,5 +36,9 @@ export const store = configureStore({
     .concat(newBooksApi.middleware)
     .concat(bestsellersApi.middleware)
     .concat(discountsApi.middleware)
-    .concat(categoriesApi.middleware),
+    .concat(categoriesApi.middleware)
+    .concat(agesApi.middleware)
+    .concat(coversApi.middleware)
+    .concat(publishingHouseApi.middleware)
+    .concat(genresApi.middleware),
 });

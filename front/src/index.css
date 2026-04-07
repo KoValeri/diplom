@@ -57,6 +57,12 @@ table {
 
 .pageContent{
   margin-top: 50px;
+  display: flex;
+  column-gap: 20px;
+}
+
+.pageBookColumn{
+  flex: 1;
 }
 
 html, body, #root {

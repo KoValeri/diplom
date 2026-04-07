@@ -4,8 +4,10 @@ import ButtonBack from "../components/ButtonBack/ButtonBack";
 export default function BookDetailsPage() {
     return(
         <div className="pageContent">
-            <ButtonBack />
-            <BookDetail />
+            <div className="pageBookColumn">
+                <ButtonBack />
+                <BookDetail />
+            </div>
         </div>
     )
 }
