@@ -17,10 +17,6 @@ export const booksApi = createApi({
       query: (id) => `${API_URLS.BOOKS}/${id}/series`,
     }),
 
-    getBooksBySubcategory: builder.query({
-      query: (id) => `${API_URLS.BOOKS}/subcategory/${id}`,
-    }),
-
     getBooksFiltered: builder.query({
       query: (filters) => {
         const params = new URLSearchParams();

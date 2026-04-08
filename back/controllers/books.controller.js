@@ -133,36 +133,7 @@ exports.getBooksBySeries = async (req, res) => {
   }
 };
 
-exports.getBooksBySubcategory = async (req, res) => {
-  try {
-    await poolConnect;
-    const { subcategoryId } = req.params;
 
-    const subcategoryIdInt = parseInt(subcategoryId, 10);
-    if (isNaN(subcategoryIdInt)) {
-      return res.status(400).send("subcategoryId должен быть числом");
-    }
-
-    const result = await pool
-      .request()
-      .input("subcategoryId", sql.Int, subcategoryIdInt)
-      .query(`
-        SELECT 
-          b.*,
-          sc.name AS subcategoryName,
-          c.name AS categoryName
-        FROM books b
-        LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
-        LEFT JOIN categories c ON sc.categoryId = c.id
-        WHERE b.subcategoryId = @subcategoryId
-      `);
-
-    res.json(result.recordset);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Ошибка сервера");
-  }
-};
 
 exports.getAges = async (req, res) => {
     try {
