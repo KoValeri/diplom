@@ -57,8 +57,8 @@ export default function BookFilter() {
 
     return (
         <div className={styles.bookFilter}>
-            <div>
-                <label>Возраст:</label>
+            <div className={styles.filterBox}>
+                <label className={styles.headLineLabel}>Возраст:</label>
                 <div className={styles.checkboxGroup}>
                     {ages.map(age => (
                         <label key={age}>
@@ -73,8 +73,8 @@ export default function BookFilter() {
                 </div>
             </div>
 
-            <div>
-                <label>Жанр:</label>
+            <div className={styles.filterBox}>
+                <label className={styles.headLineLabel}>Жанр:</label>
                 <div className={styles.checkboxGroup}>
                     {genres.map(g => (
                         <label key={g.id}>
@@ -89,8 +89,8 @@ export default function BookFilter() {
                 </div>
             </div>
 
-            <div>
-                <label>Переплёт:</label>
+            <div className={styles.filterBox}>
+                <label className={styles.headLineLabel}>Переплёт:</label>
                 <div className={styles.checkboxGroup}>
                     {covers.map(cover => (
                         <label key={cover}>
@@ -105,8 +105,8 @@ export default function BookFilter() {
                 </div>
             </div>
 
-            <div>
-                <label>Издательство:</label>
+            <div className={styles.filterBox}>
+                <label className={styles.headLineLabel}>Издательство:</label>
                 <div className={styles.checkboxGroup}>
                     {publishingHouses.map(p => (
                         <label key={p}>
@@ -121,8 +121,8 @@ export default function BookFilter() {
                 </div>
             </div>
 
-            <div className={styles.filterSection}>
-                <label>
+            <div className={`${styles.filterSection} ${styles.filterBox}`}>
+                <label className={styles.headLineLabel}>
                     Цена: {filters.price[0]} – {filters.price[1]} р.
                 </label>
 

@@ -23,14 +23,12 @@ export default function NewBooksPage() {
 
     return(
         <div className="pageContent">
-            <div className="pageBookColumn">
                 <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
                     <ButtonBack />
                     <Headline text={'Результат поиска'}/>
                 </div>
                 {error ? <p>Ошибка поиска...</p> :
                 <BookList books={books}/>}
-            </div>
         </div>
     )
 }

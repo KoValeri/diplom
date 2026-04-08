@@ -10,13 +10,11 @@ export default function NewBooksPage() {
 
     return(
         <div className="pageContent">
-            <div className="pageBookColumn">
                 <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
                     <ButtonBack />
                     <Headline text={`Серия книг «${seriesBooks[0]?.series || ''}»`}/>
                 </div>
                 <BookList books={seriesBooks} isLoading={isLoading} isError={isError} />
-            </div>
         </div>
     )
 }

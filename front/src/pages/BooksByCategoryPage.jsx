@@ -1,9 +1,8 @@
-// import { useGetBooksBySubcategoryQuery } from "../api/api";
+import { useGetCategoriesQuery } from "../api/categoriesApi";
 import BookList from "../components/Book/BookList";
 import Headline from "../components/Headline/Headline";
 import ButtonBack from "../components/ButtonBack/ButtonBack";
 import { useParams } from "react-router-dom";
-
 import { useSelector } from "react-redux";
 import { useGetBooksFilteredQuery } from "../api/api";
 import BookFilter from "../components/Book/BookFilter";
@@ -16,20 +15,31 @@ export default function BooksByCategoryPage() {
         ...filters,
     });
 
+    const { data: categories = [] } = useGetCategoriesQuery();
+    const subcategory = categories
+        .flatMap(c => c.subcategories)
+        .find(sc => sc.id === parseInt(id, 10));
+
     return(
         <div className="pageContent">
 
-        <BookFilter />
-
-            <div className="pageBookColumn">
+            <div>
                 <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
                     <ButtonBack />
-                    <Headline text={books[0]?.subcategoryName}/>
+                    <Headline text={subcategory?.name || ""} />
                 </div>
-                {books.length === 0 ?
-                <p style={{ marginBottom: '40px'}}>В данный момент таких книг нет в нашем магазине</p>
-                :
-                <BookList books={books} isLoading={isLoading} isError={isError} hasFilters={true}/>}
+
+                <div className="pageColumnsFlex">
+                    <div >
+                        <BookFilter />
+                    </div>
+                    <div className="pageBookColumn">
+                        {books.length === 0 ?
+                        <p style={{ marginBottom: '40px'}}>В данный момент таких книг нет в нашем магазине</p>
+                        :
+                        <BookList books={books} isLoading={isLoading} isError={isError} hasFilters={true}/>}
+                    </div>
+                </div>
             </div>
 
         </div>

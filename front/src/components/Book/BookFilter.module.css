@@ -1,46 +1,51 @@
-.bookFilter {
-  width: 270px;
-  padding: 20px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+@font-face {
+  font-family: "NunitoBold";
+  src: url("../../../public/fonts/Nunito/Nunito-Bold.ttf");
+  font-display: swap;
 }
 
-/* Заголовки */
+.bookFilter {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.filterBox{
+  padding: 15px;
+  border-radius: 7px;
+  border: 2px solid #EADAC0;
+}
+
+.headLineLabel{
+  font-family: NunitoBold;
+    margin-bottom: 6px;
+}
+
 .bookFilter label {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 6px;
   display: block;
 }
 
-/* ЧЕКБОКСЫ */
 .checkboxGroup {
-  max-height: 140px;
+  max-height: 200px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 11px;
 }
 
 .checkboxGroup label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
   cursor: pointer;
 }
 
 .checkboxGroup input {
-  accent-color: #f59e0b; /* Amazon-like */
+  accent-color: #C76146;
   cursor: pointer;
 }
 
-/* RANGE (Amazon стиль) */
 .rangeWrapper {
   position: relative;
   height: 40px;
@@ -55,13 +60,12 @@
   background: none;
 }
 
-/* линия */
 .rangeTrack {
   position: absolute;
   top: 18px;
   height: 4px;
   width: 100%;
-  background: #ddd;
+  background: #8a8988;
   border-radius: 5px;
 }
 
@@ -69,20 +73,19 @@
   position: absolute;
   top: 18px;
   height: 4px;
-  background: #f59e0b;
+  background: #C76146;
   border-radius: 5px;
 }
 
-/* ползунок */
 input[type="range"]::-webkit-slider-thumb {
   pointer-events: auto;
   appearance: none;
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: #C76146;
   cursor: pointer;
-  border: 2px solid white;
+  border: 2px solid #FFFCF8;
   box-shadow: 0 0 0 1px #ccc;
 }
 
@@ -90,18 +93,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
 }
 
-/* кнопка */
-.bookFilter button {
-  padding: 10px;
-  border-radius: 12px;
-  border: none;
-  background: #f59e0b;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
 
-.bookFilter button:hover {
-  background: #d97706;
+.bookFilter button {
+    color: #C76146;
+    border: 2px solid #C76146;
+    border-radius: 7px;
+    padding: 0px 20px;
+    height: 50px;
+    background-color: #FFFCF8;
 }

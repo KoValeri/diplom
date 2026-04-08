@@ -31,7 +31,7 @@
 }
 
 .author{
-    color: #4b4a48;
+    color: #8a8988;
 }
 
 .price{
@@ -44,7 +44,7 @@
 
 .oldPrice {
   text-decoration: line-through;
-  color: #4b4a48;
+  color: #8a8988;
   font-size: 14px;
   font-family: Nunito;
 }
@@ -92,7 +92,7 @@
 }
 
 .infoPoint{
-    color: #4b4a48;
+    color: #8a8988;
     min-width: 250px;
 }
 

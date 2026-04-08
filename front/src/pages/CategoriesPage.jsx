@@ -8,13 +8,11 @@ export default function СategoriesPage() {
 
     return(
         <div className="pageContent">
-            <div className="pageBookColumn">
                 <div style={{ marginBottom: '40px', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
                     <ButtonBack />
                     <Headline text={'Категории книг'}/>
                 </div>
                 <CategoryList categories={categories} isLoading={isLoading} isError={isError} />
-            </div>
         </div>
     )
 }

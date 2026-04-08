@@ -57,8 +57,11 @@ table {
 
 .pageContent{
   margin-top: 50px;
+}
+
+.pageColumnsFlex{
   display: flex;
-  column-gap: 20px;
+  column-gap: 60px;
 }
 
 .pageBookColumn{
@@ -76,6 +79,6 @@ html, body, #root {
 }
 
 main {
-  flex: 1; /* ВАЖНО */
+  flex: 1;
   padding: 0px 120px;
 }
