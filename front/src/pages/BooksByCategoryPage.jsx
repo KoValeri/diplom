@@ -31,6 +31,7 @@ export default function BooksByCategoryPage() {
 
                 <div className="pageColumnsFlex">
                     <div >
+                        <div style={{ marginBottom: '20px', color: '#8a8988' }}>{books.length} товаров</div>
                         <BookFilter />
                     </div>
                     <div className="pageBookColumn">
