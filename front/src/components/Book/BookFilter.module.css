@@ -46,23 +46,24 @@
   cursor: pointer;
 }
 
-.rangeWrapper {
-  position: relative;
-  height: 40px;
+.bookFilter button {
+    color: #C76146;
+    border: 2px solid #C76146;
+    border-radius: 7px;
+    padding: 0px 20px;
+    height: 50px;
+    background-color: #FFFCF8;
 }
 
-.rangeWrapper input[type="range"] {
-  position: absolute;
-  width: 100%;
-  top: 15px;
-  pointer-events: none;
-  appearance: none;
-  background: none;
+.rangeWrapper {
+  position: relative;
+  height: 50px;
 }
 
 .rangeTrack {
   position: absolute;
-  top: 18px;
+  top: 50%;
+  transform: translateY(-50%);
   height: 4px;
   width: 100%;
   background: #8a8988;
@@ -71,10 +72,23 @@
 
 .rangeFill {
   position: absolute;
-  top: 18px;
+  top: 50%;
+  transform: translateY(-50%);
   height: 4px;
   background: #C76146;
   border-radius: 5px;
+}
+
+.rangeWrapper input[type="range"] {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  appearance: none;
+  background: none;
+  margin: 0;
+  padding: 0;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -87,18 +101,9 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   border: 2px solid #FFFCF8;
   box-shadow: 0 0 0 1px #ccc;
+  margin-top: 0;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
-}
-
-
-.bookFilter button {
-    color: #C76146;
-    border: 2px solid #C76146;
-    border-radius: 7px;
-    padding: 0px 20px;
-    height: 50px;
-    background-color: #FFFCF8;
 }

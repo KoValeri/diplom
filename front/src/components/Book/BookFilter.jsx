@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setAge, setGenre, setPrice, setCover, setPublHouse, resetFilters } from '../../store/bookFilterSlice';
+import { setAge, setGenre, setPrice, setCover, setPublHouse, resetFilters, setSort } from '../../store/bookFilterSlice';
 import { useGetGenresQuery } from '../../api/genresApi';
 import { useGetAgesQuery } from '../../api/agesApi';
 import { useGetCoversQuery } from '../../api/coversApi';
 import { useGetPublishingHousQuery } from '../../api/publishingHouseApi';
+import CustomSelect from '../CustomSelect/CustomSelect';
 import styles from './BookFilter.module.css';
 
 export default function BookFilter() {
@@ -57,6 +58,17 @@ export default function BookFilter() {
 
     return (
         <div className={styles.bookFilter}>
+            <CustomSelect
+                options={[
+                    { value: "new", label: "По новизне" },
+                    { value: "priceAsc", label: "Сначала дешёвые" },
+                    { value: "priceDesc", label: "Сначала дорогие" },
+                    { value: "rating", label: "По популярности" }
+                ]}
+                value={filters.sort}
+                onChange={(val) => dispatch(setSort(val))}
+            />
+
             <div className={styles.filterBox}>
                 <label className={styles.headLineLabel}>Возраст:</label>
                 <div className={styles.checkboxGroup}>

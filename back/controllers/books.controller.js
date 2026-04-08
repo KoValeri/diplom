@@ -133,8 +133,6 @@ exports.getBooksBySeries = async (req, res) => {
   }
 };
 
-
-
 exports.getAges = async (req, res) => {
     try {
         await poolConnect;
@@ -179,7 +177,8 @@ exports.getBooksFiltered = async (req, res) => {
       cover,
       publishingHouse,
       minPrice,
-      maxPrice
+      maxPrice,
+      sort
     } = req.query;
 
     let query = `
@@ -261,12 +260,22 @@ exports.getBooksFiltered = async (req, res) => {
     }
 
     if (minPrice) {
-      query += " AND b.price >= @minPrice";
+      query += " AND b.price * (1 - ISNULL(b.discount, 0)) >= @minPrice";
       request.input("minPrice", sql.Decimal(10, 2), minPrice);
     }
     if (maxPrice) {
-      query += " AND b.price <= @maxPrice";
+      query += " AND b.price * (1 - ISNULL(b.discount, 0)) <= @maxPrice";
       request.input("maxPrice", sql.Decimal(10, 2), maxPrice);
+    }
+
+    if (sort === "new") {
+      query += " ORDER BY b.yearOfPublication DESC";
+    } else if (sort === "rating") {
+      query += " ORDER BY b.rating DESC";
+    } else if (sort === "priceAsc") {
+      query += " ORDER BY b.price ASC";
+    } else if (sort === "priceDesc") {
+      query += " ORDER BY b.price DESC";
     }
 
     const result = await request.query(query);

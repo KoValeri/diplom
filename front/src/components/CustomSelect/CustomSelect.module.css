@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "NunitoBold";
+  src: url("../../../public/fonts/Nunito/Nunito-Bold.ttf");
+  font-display: swap;
+}
+
+.selectWrapper {
+    position: relative;
+    width: 270px;
+}
+
+.selectHeader {
+    padding: 10px 15px;
+    border: 2px solid #EADAC0;
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFCF8;
+}
+
+.arrow {
+    transition: transform 0.2s;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+    transition: transform 0.2s;
+}
+
+.optionsList {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    background-color: #FFFCF8;
+    border: 2px solid #EADAC0;
+    border-radius: 7px;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.option {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #EADAC0;
+}
+
+.selected {
+    background-color: #EADAC0;
+    font-family: NunitoBold;
+}

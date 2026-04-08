@@ -48,6 +48,10 @@ export const booksApi = createApi({
           params.append("maxPrice", filters.price[1]);
         }
 
+        if (filters.sort) {
+          params.append("sort", filters.sort);
+        }
+
         return `${API_URLS.BOOKS}/filters?${params.toString()}`;
       },
     }),

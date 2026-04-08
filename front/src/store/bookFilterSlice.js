@@ -6,6 +6,7 @@ const initialState = {
     price: [0, 200],
     cover: [],
     publishingHouse: [],
+    sort: "new",
 };
 
 const bookFilterSlice = createSlice({
@@ -17,9 +18,10 @@ const bookFilterSlice = createSlice({
         setPrice: (state, action) => { state.price = action.payload },
         setCover: (state, action) => { state.cover = action.payload },
         setPublHouse: (state, action) => { state.publishingHouse = action.payload },
+        setSort: (state, action) => { state.sort = action.payload },
         resetFilters: () => initialState,
     }
 });
 
-export const { setAge, setGenre, setPrice, setCover, setPublHouse, resetFilters } = bookFilterSlice.actions;
+export const { setAge, setGenre, setPrice, setCover, setPublHouse, setSort, resetFilters } = bookFilterSlice.actions;
 export default bookFilterSlice.reducer;
