@@ -8,11 +8,7 @@ export const newBooksApi = createApi({
     getNewBooks: builder.query({
       query: () => API_URLS.NEWBOOKS,
     }),
-
-    getAllNewBooks: builder.query({
-      query: () => API_URLS.ALLNEWBOOKS,
-    }),
   }),
 });
 
-export const { useGetNewBooksQuery, useGetAllNewBooksQuery } = newBooksApi;
+export const { useGetNewBooksQuery } = newBooksApi;

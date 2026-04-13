@@ -15,19 +15,3 @@ exports.getDiscounts = async (req, res) => {
     res.status(500).send("Ошибка сервера");
   }
 };
-
-// Получить все книги для акций (для страницы акции)
-exports.getAllDiscounts= async (req, res) => {
-  try {
-    await poolConnect;
-
-    const result = await pool
-      .request()
-      .query("SELECT * FROM books WHERE discount > 0 ORDER BY id DESC");
-
-    res.json(result.recordset);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Ошибка сервера");
-  }
-};

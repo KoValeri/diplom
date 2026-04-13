@@ -8,11 +8,7 @@ export const discountsApi = createApi({
     getDiscounts: builder.query({
       query: () => API_URLS.DISCOUNTS,
     }),
-
-    getAllDiscounts: builder.query({
-      query: () => API_URLS.ALLDISCOUNTS,
-    }),
   }),
 });
 
-export const { useGetDiscountsQuery, useGetAllDiscountsQuery } = discountsApi;
+export const { useGetDiscountsQuery } = discountsApi;

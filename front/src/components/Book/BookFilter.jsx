@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom"
 import { setAge, setGenre, setPrice, setCover, setPublHouse, resetFilters, setSort } from '../../store/bookFilterSlice';
 import { useGetGenresQuery } from '../../api/genresApi';
 import { useGetAgesQuery } from '../../api/agesApi';
@@ -8,13 +10,18 @@ import CustomSelect from '../CustomSelect/CustomSelect';
 import styles from './BookFilter.module.css';
 
 export default function BookFilter() {
-    const dispatch = useDispatch();
-    const filters = useSelector(state => state.bookFilters);
+    const dispatch = useDispatch()
+    const filters = useSelector(state => state.bookFilters)
+    const location = useLocation()
     
-    const { data: genres = [] } = useGetGenresQuery();
-    const { data: ages = [] } = useGetAgesQuery();
-    const { data: covers = [] } = useGetCoversQuery();
-    const { data: publishingHouses = [] } = useGetPublishingHousQuery();
+    const { data: genres = [] } = useGetGenresQuery()
+    const { data: ages = [] } = useGetAgesQuery()
+    const { data: covers = [] } = useGetCoversQuery()
+    const { data: publishingHouses = [] } = useGetPublishingHousQuery()
+
+    useEffect(() => {
+        dispatch(resetFilters())
+    }, [location])
 
     const handleGenreChange = (value) => {
         const current = filters.genre;

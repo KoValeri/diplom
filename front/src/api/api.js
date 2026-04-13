@@ -52,10 +52,26 @@ export const booksApi = createApi({
           params.append("sort", filters.sort);
         }
 
+        if (filters.minRating) {
+          params.append("minRating", filters.minRating);
+        }
+
+        if (filters.search) {
+          params.append("search", filters.search);
+        }
+
+        if (filters.hasDiscount) {
+          params.append("hasDiscount", true);
+        }
+
+        if (filters.yearOfPublication) {
+          params.append("yearOfPublication", filters.yearOfPublication);
+        }
+
         return `${API_URLS.BOOKS}/filters?${params.toString()}`;
       },
     }),
   }),
 });
 
-export const { useGetBooksQuery, useGetBookByIdQuery, useGetBooksBySeriesQuery, useGetBooksBySubcategoryQuery, useGetBooksFilteredQuery  } = booksApi;
+export const { useGetBooksQuery, useGetBookByIdQuery, useGetBooksBySeriesQuery, useGetBooksFilteredQuery  } = booksApi;

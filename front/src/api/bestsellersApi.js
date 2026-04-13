@@ -8,11 +8,7 @@ export const bestsellersApi = createApi({
     getBestsellers: builder.query({
       query: () => API_URLS.BESTSELLERS,
     }),
-
-    getAllBestsellers: builder.query({
-      query: () => API_URLS.ALLBESTSELLERS,
-    }),
   }),
 });
 
-export const { useGetBestsellersQuery, useGetAllBestsellersQuery } = bestsellersApi;
+export const { useGetBestsellersQuery } = bestsellersApi;
