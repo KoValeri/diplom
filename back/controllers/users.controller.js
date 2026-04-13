@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET, JWT_EXPIRES } = require("../config");
 
+const { sendWelcomeEmail } = require("../services/mailService");
+
 exports.registerUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -35,7 +37,11 @@ exports.registerUser = async (req, res) => {
         VALUES (@firstName, @lastName, @email, @password)
       `);
 
-    res.status(201).json({ message: "Пользователь зарегистрирован" });
+      sendWelcomeEmail(email, firstName).catch(err => {
+        console.error("Email error:", err);
+      });
+
+      res.status(201).json({ message: "Пользователь зарегистрирован" });
 
   } catch (err) {
     console.error(err);
