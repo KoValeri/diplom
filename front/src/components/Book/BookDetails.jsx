@@ -53,7 +53,7 @@ export default function BookDetails() {
                             </div>
                             <div className={styles.btns}>
                                 <Button text='В корзину'/>
-                                <ButtonBookMark />
+                                <ButtonBookMark bookId={book.id} />
                             </div>
                             <div className={styles.description}>{book.description}</div>
                         </div>

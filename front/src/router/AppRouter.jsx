@@ -11,6 +11,8 @@ import BookSeriesPage from '../pages/BookSeriesPage';
 import BooksByCategoryPage from '../pages/BooksByCategoryPage';
 import СategoriesPage from '../pages/CategoriesPage'
 import SearchPage from '../pages/SearchPage'
+import FavoritesPage from '../pages/FavoritesPage';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
             { path: ROUTES.BOOKSBYCATEGORIES, element: <BooksByCategoryPage /> },
             { path: ROUTES.CATEGORIES, element: <СategoriesPage /> },
             { path: ROUTES.SEARCH, element: <SearchPage /> },
+            {
+                path: ROUTES.FAVORITES,
+                element: (
+                <PrivateRoute>
+                    <FavoritesPage />
+                </PrivateRoute>
+                )
+            },
         ]
     }
 ]);

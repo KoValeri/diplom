@@ -9,9 +9,9 @@ import { PiBooksThin } from "react-icons/pi"
 import styles from './Header.module.css'
 import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
-import { authActions } from "../../store/authSlice"
 import { useState, useRef, useEffect } from "react";
 import Catalog from "./Catalog"
+import { logoutAndClear } from "../../store/authThunks"
 
 function Header() {
     const dispatch = useDispatch()
@@ -24,10 +24,10 @@ function Header() {
     const [results, setResults] = useState([])
     const navigate = useNavigate()
 
+
     function handleAuthClick() {
         if (isAuthenticated) {
-            localStorage.removeItem("token")
-            dispatch(authActions.logout())
+            dispatch(logoutAndClear())
         } else {
             dispatch(authModalActions.openLogin())
         }
@@ -150,7 +150,7 @@ function Header() {
                                 <Link to={'#'}><BsHandbag size={30}/></Link>
                             </li>
                             <li>
-                                <Link to={'#'}><IoBookmarkOutline size={30}/></Link>
+                                <Link to={ROUTES.FAVORITES}><IoBookmarkOutline size={30}/></Link>
                             </li>
                         </ul>
                     </nav>

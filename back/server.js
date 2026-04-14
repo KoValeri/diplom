@@ -10,6 +10,7 @@ const bestsellersRoutes = require("./routes/bestsellers.routes");
 const discountsRoutes = require("./routes/discounts.routes");
 const categoriesRoutes = require("./routes/categories.routes");
 const genresRoutes = require('./routes/genres.routes');
+const favoritesRoutes = require("./routes/favorites.routes");
 
 const app = express();
 const port = 5000;
@@ -28,6 +29,7 @@ app.use("/bestsellers", bestsellersRoutes);
 app.use("/discounts", discountsRoutes);
 app.use("/categories", categoriesRoutes);
 app.use('/genres', genresRoutes);
+app.use("/favorites", favoritesRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

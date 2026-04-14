@@ -11,5 +11,5 @@ export const API_URLS = {
   GENRES: "/genres",
   AGES: "/books/ages",
   COVERS: "/books/covers",
-  PUBLHOUSE: "/books/publishingHouse"
+  PUBLHOUSE: "/books/publishingHouse",
 };

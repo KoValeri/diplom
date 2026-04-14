@@ -2,6 +2,18 @@
 USE book_store;
 GO
 
+ALTER TABLE book_genres DROP CONSTRAINT FK_book_genres_books;
+ALTER TABLE book_genres DROP CONSTRAINT FK_book_genres_genres;
+
+ALTER TABLE books DROP CONSTRAINT FK_books_subcategories;
+
+ALTER TABLE subcategories DROP CONSTRAINT FK_subcategories_categories;
+
+ALTER TABLE favorites DROP CONSTRAINT FK_favorites_users;
+ALTER TABLE favorites DROP CONSTRAINT FK_favorites_books;
+
+ALTER TABLE book_additional_images DROP CONSTRAINT FK_book_additional_images_books;
+
 -- Если снесла все таблицы:
 -- это 1 шаг
 -- Удаляем старые таблицы, если есть
@@ -11,6 +23,7 @@ DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS subcategories;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS book_additional_images;
 GO
 
@@ -86,6 +99,21 @@ CREATE TABLE book_additional_images (
     bookId INT NOT NULL,
     imageUrl NVARCHAR(255) NOT NULL,
     CONSTRAINT FK_book_additional_images_books FOREIGN KEY (bookId) 
+        REFERENCES books(id) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE favorites (
+    userId INT NOT NULL,
+    bookId INT NOT NULL,
+    createdAt DATETIME DEFAULT GETDATE(),
+
+    PRIMARY KEY (userId, bookId),
+
+    CONSTRAINT FK_favorites_users FOREIGN KEY (userId)
+        REFERENCES users(id) ON DELETE CASCADE,
+
+    CONSTRAINT FK_favorites_books FOREIGN KEY (bookId)
         REFERENCES books(id) ON DELETE CASCADE
 );
 GO
@@ -176,5 +204,3 @@ INSERT INTO book_additional_images (bookId, imageUrl) VALUES
 (22, '/books_extra_photos/empire_of_the_damned3.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned4.jpg');
 
-
-SELECT * FROM categories;

@@ -39,7 +39,7 @@ export default function BookCard({ book }) {
                         </div>
                         <div className={styles.btns}>
                             <Button text='В корзину'/>
-                            <ButtonBookMark />
+                            <ButtonBookMark bookId={book.id} />
                         </div>
                     </div>
                 </div>

@@ -9,4 +9,5 @@ export const ROUTES = {
     BOOKSBYCATEGORIES: '/books/subcategory/:id',
     CATEGORIES: '/categories',
     SEARCH: '/search',
+    FAVORITES: '/favorites',
 }
