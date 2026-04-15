@@ -11,8 +11,8 @@ export default function Footer() {
                 <div id="contacts">
                     <p className={styles.title}>Контакты</p>
                     <p>Здесь должен быть адрес нашего физического магазина</p>
-                    <p className={styles.phone}>+ 375 77 777 77 77</p>
-                    <a href='#' className={styles.email}>Liberty@mail.ru</a>
+                    <p className={styles.phone}>+ 375 29 ... .. ..</p>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=BookShopLiberty@gmail.com" target="_blank" rel="noreferrer" className={styles.email}>BookShopLiberty@gmail.com</a>
                     <div className={styles.apps}>
                         <a href='#' className={styles.telegramm}><PiTelegramLogoLight size={30}/></a>
                         <a href='#' className={styles.viber}><FaViber size={30}/></a>

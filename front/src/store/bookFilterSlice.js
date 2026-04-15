@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     age: [],
     genre: [],
-    price: [0, 200],
+    price: [5, 200],
     cover: [],
     publishingHouse: [],
     sort: "new",

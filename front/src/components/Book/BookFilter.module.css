@@ -84,15 +84,16 @@
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: auto;
   appearance: none;
   background: none;
   margin: 0;
   padding: 0;
+
+  pointer-events: none; /* ВАЖНО */
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  pointer-events: auto;
+  pointer-events: all;
   appearance: none;
   height: 16px;
   width: 16px;
@@ -101,9 +102,41 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   border: 2px solid #FFFCF8;
   box-shadow: 0 0 0 1px #ccc;
-  margin-top: 0;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
+}
+
+input[type="range"]:first-child {
+  z-index: 2;
+}
+
+input[type="range"]:last-child {
+  z-index: 3;
+}
+
+.priceInputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.priceInputs input {
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.priceInputs input::-webkit-outer-spin-button,
+.priceInputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.priceInputs input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;
 }
