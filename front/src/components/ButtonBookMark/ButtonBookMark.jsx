@@ -1,17 +1,20 @@
 import styles from './ButtonBookMark.module.css'
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5"
 import { useSelector, useDispatch } from "react-redux"
-import { useToggleFavoriteMutation, useGetFavoritesQuery } from "../../api/favoritesApi"
+import { useToggleFavoriteMutation } from "../../api/favoritesApi"
 import { authModalActions } from '../../store/authModalSlice'
+import { favoritesApi } from "../../api/favoritesApi"
 
 export default function ButtonBookMark({ bookId }) {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const selectFavoritesResult = favoritesApi.endpoints.getFavorites.select()
     const dispatch = useDispatch()
+    const favorites = useSelector(state => selectFavoritesResult(state)?.data ?? [])
 
-    const { data: favorites = [] } = useGetFavoritesQuery(undefined, {
-        skip: !isAuthenticated,
-        refetchOnMountOrArgChange: true
-    })
+    // const { data: favorites = [] } = useGetFavoritesQuery(undefined, {
+    //     skip: !isAuthenticated,
+    //     refetchOnMountOrArgChange: true
+    // })
 
     const [toggleFavorite] = useToggleFavoriteMutation()
 
