@@ -10,4 +10,5 @@ export const ROUTES = {
     CATEGORIES: '/categories',
     SEARCH: '/search',
     FAVORITES: '/favorites',
+    ADMIN: '/admin',
 }

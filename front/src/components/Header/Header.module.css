@@ -20,10 +20,6 @@
 }
 
 .avatar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 17px;
     color: #3B2F2F;
 }
 

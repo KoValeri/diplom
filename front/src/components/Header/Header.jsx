@@ -12,10 +12,13 @@ import { authModalActions } from "../../store/authModalSlice"
 import { useState, useRef, useEffect } from "react";
 import Catalog from "./Catalog"
 import { logoutAndClear } from "../../store/authThunks"
+import { RiAdminFill } from "react-icons/ri";
+import { BsDoorOpen } from "react-icons/bs";
 
 function Header() {
     const dispatch = useDispatch()
-    const { isAuthenticated } = useSelector(state => state.auth)
+    const user = useSelector(state => state.auth.user)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const [isOpen, setCatalog] = useState(false)
     const catalogRef = useRef(null)
     const searchRef = useRef(null)
@@ -143,7 +146,7 @@ function Header() {
                                     onClick={handleAuthClick}
                                     className={styles.avatar}
                                 >
-                                    <RxAvatar size={30}/> {isAuthenticated ? 'Выйти' : 'Войти'}
+                                    {isAuthenticated ? <BsDoorOpen size={30}/> : <RxAvatar size={30}/>}
                                 </button>
                             </li>
                             <li>
@@ -152,6 +155,11 @@ function Header() {
                             <li>
                                 <Link to={ROUTES.FAVORITES}><IoBookmarkOutline size={30}/></Link>
                             </li>
+                            {user?.role === "admin" && (
+                                <li>
+                                    <Link to={ROUTES.ADMIN}><RiAdminFill size={30}/></Link>
+                                </li>
+                            )}
                         </ul>
                     </nav>
                 </div>

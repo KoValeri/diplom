@@ -1,0 +1,123 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(59, 47, 47, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.modal {
+    background-color: #FFFCF8;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    width: 70%;
+}
+
+.close {
+    position: absolute;
+    top: 0px;
+    right: -45px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #FFFCF8;
+    border-radius: 50%;
+    background: #FFFCF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.divFields {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+}
+
+.smallGroup {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.smallGroup .input {
+    height: 36px;
+    font-size: 13px;
+}
+
+.input {
+    background-color: #EADAC0;
+    border: 1px solid #e4c594;
+    height: 40px;
+    border-radius: 7px;
+    padding: 0 10px;
+    color: #3b2f2f;
+}
+
+.textarea {
+    height: 160px;
+    padding-top: 10px;
+    resize: vertical;
+}
+
+.full {
+    grid-column: span 3;
+}
+
+.actions {
+    grid-column: span 3;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.primary {
+    flex: 1;
+    background-color: #c76146;
+    color: #FFFCF8;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.secondary {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #c76146;
+    color: #c76146;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.primary:hover {
+    background-color: #b4523a;
+}
+
+.secondary:hover {
+    background-color: #F6EBE5;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #c76146;
+}
+
+textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #c76146;
+  border-radius: 10px;
+}

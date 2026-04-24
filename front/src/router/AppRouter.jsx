@@ -12,6 +12,7 @@ import BooksByCategoryPage from '../pages/BooksByCategoryPage';
 import СategoriesPage from '../pages/CategoriesPage'
 import SearchPage from '../pages/SearchPage'
 import FavoritesPage from '../pages/FavoritesPage';
+import AdminPage from '../pages/Admin/AdminPage';
 import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
@@ -28,6 +29,15 @@ const router = createBrowserRouter([
             { path: ROUTES.BOOKSBYCATEGORIES, element: <BooksByCategoryPage /> },
             { path: ROUTES.CATEGORIES, element: <СategoriesPage /> },
             { path: ROUTES.SEARCH, element: <SearchPage /> },
+            { path: ROUTES.ADMIN, element: <AdminPage /> },
+            // {
+            //     path: ROUTES.ADMIN,
+            //     element: (
+            //     <PrivateRoute>
+            //         <AdminPage />
+            //     </PrivateRoute>
+            //     )
+            // },
             {
                 path: ROUTES.FAVORITES,
                 element: (

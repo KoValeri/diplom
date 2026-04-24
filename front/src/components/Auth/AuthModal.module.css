@@ -56,6 +56,11 @@
     color: #3b2f2f;
 }
 
+.inputFields:focus {
+    outline: none;
+    border-color: #c76146;
+}
+
 .btnAuth{
     background-color: #c76146;
     height: 43px;

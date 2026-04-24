@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "NunitoBold";
+  src: url("../../../public/fonts/Nunito/Nunito-Bold.ttf");
+  font-display: swap;
+}
+
+.tableWrapper{
+    height: 500px;
+    overflow-y: auto;
+    border-radius: 7px;
+    padding-right: 5px;
+}
+
+.table{
+    width: 100%;
+}
+
+.headLine{
+    text-align: left;
+    border-bottom: 1.5px solid #f3d3c1;
+    padding: 20px;
+    text-transform: uppercase;
+    font-family: NunitoBold;
+    background: #F6EBE5;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.content{
+    padding: 20px;
+    border-bottom: 1.5px solid #F6EBE5;
+}
+
+.menu{
+    color: #3B2F2F;
+    display: flex;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu:hover {
+    background: #F6EBE5
+}
+
+.search{
+    width: 350px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    color: #3B2F2F;
+    border: 2px solid #F6EBE5;
+    border-radius: 7px;
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: #F6EBE5;
+  border-radius: 10px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: #f3d3c1;
+}

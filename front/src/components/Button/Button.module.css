@@ -9,3 +9,8 @@
     gap: 10px;
     align-items: center;
 }
+
+.btn:hover {
+    background-color: #b4523a;
+    border: 2px solid #b4523a;
+}

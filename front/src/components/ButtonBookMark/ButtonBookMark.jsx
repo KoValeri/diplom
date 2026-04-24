@@ -11,11 +11,6 @@ export default function ButtonBookMark({ bookId }) {
     const dispatch = useDispatch()
     const favorites = useSelector(state => selectFavoritesResult(state)?.data ?? [])
 
-    // const { data: favorites = [] } = useGetFavoritesQuery(undefined, {
-    //     skip: !isAuthenticated,
-    //     refetchOnMountOrArgChange: true
-    // })
-
     const [toggleFavorite] = useToggleFavoriteMutation()
 
     const isFavorite = isAuthenticated && favorites?.some(b => b.id === bookId)

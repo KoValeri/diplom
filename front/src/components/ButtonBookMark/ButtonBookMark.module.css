@@ -1,3 +1,7 @@
 .btn{
     color: #C76146;
 }
+
+.btn:hover {
+    color: #b4523a;
+}
