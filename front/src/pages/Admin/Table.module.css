@@ -30,6 +30,7 @@
 .content{
     padding: 20px;
     border-bottom: 1.5px solid #F6EBE5;
+    position: relative;
 }
 
 .menu{

@@ -2,15 +2,13 @@ import { useGetBooksQuery } from '../../api/api'
 import { useState, useEffect } from 'react';
 import { CiMenuKebab } from "react-icons/ci"
 import styles from "./Table.module.css"
-import { useDispatch } from 'react-redux';
-import { adminModalActions } from '../../store/adminModalSlice';
-import Modal from './Modal';
+import AdminMenu from './AdminMenu';
 
 export default function Table() {
     const [value, setValue] = useState('')
     const { data = [], isLoading, isError } = useGetBooksQuery()
     const [books, setBooks] = useState(data)
-    const dispatch = useDispatch()
+    const [openMenuId, setOpenMenuId] = useState(null)
 
     useEffect(() => {
         setBooks(data)
@@ -25,8 +23,8 @@ export default function Table() {
         return () => clearTimeout(timer)
     }, [value, data])
 
-    function hadnldeBook(id) {
-        dispatch(adminModalActions.openModal(id))
+    function handleMenuClick(bookId) {
+        setOpenMenuId(prev => prev === bookId ? null : bookId)
     }
 
     return(
@@ -58,16 +56,20 @@ export default function Table() {
                             <td className={styles.content}>{book.author}</td>
                             <td className={styles.content}>
                                 <button className={styles.menu}>
-                                    <CiMenuKebab size={20} onClick={() => hadnldeBook(book.id)}/>
+                                    <CiMenuKebab size={20} onClick={() => handleMenuClick(book.id)}/>
                                 </button>
+                                    {openMenuId === book.id && (
+                                        <AdminMenu
+                                            bookId={book.id}
+                                            onClose={() => setOpenMenuId(null)}
+                                        />
+                                    )}
                             </td>
                         </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-
-            <Modal />
         </>
     )
 }
