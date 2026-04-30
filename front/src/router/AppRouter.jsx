@@ -29,15 +29,14 @@ const router = createBrowserRouter([
             { path: ROUTES.BOOKSBYCATEGORIES, element: <BooksByCategoryPage /> },
             { path: ROUTES.CATEGORIES, element: <СategoriesPage /> },
             { path: ROUTES.SEARCH, element: <SearchPage /> },
-            { path: ROUTES.ADMIN, element: <AdminPage /> },
-            // {
-            //     path: ROUTES.ADMIN,
-            //     element: (
-            //     <PrivateRoute>
-            //         <AdminPage />
-            //     </PrivateRoute>
-            //     )
-            // },
+            {
+                path: ROUTES.ADMIN,
+                element: (
+                <PrivateRoute>
+                    <AdminPage />
+                </PrivateRoute>
+                )
+            },
             {
                 path: ROUTES.FAVORITES,
                 element: (

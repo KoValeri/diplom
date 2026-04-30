@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { CiMenuKebab } from "react-icons/ci"
 import styles from "./Table.module.css"
 import AdminMenu from './AdminMenu';
+import Modal from './Modal';
 
 export default function Table() {
     const [value, setValue] = useState('')
@@ -70,6 +71,8 @@ export default function Table() {
                     </tbody>
                 </table>
             </div>
+
+            <Modal onClose={() => setOpenMenuId(null)}/>
         </>
     )
 }

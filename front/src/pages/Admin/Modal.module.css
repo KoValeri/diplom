@@ -10,17 +10,36 @@
 }
 
 .modal {
+    max-height: 90vh;
+    overflow-y: auto;
     background-color: #FFFCF8;
     padding: 30px;
     border-radius: 7px;
     position: relative;
-    width: 70%;
+}
+
+/* scrollbar for modal */
+.modal::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: #c76146;
+    border-radius: 7px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: #b4523a;
 }
 
 .close {
     position: absolute;
-    top: 0px;
-    right: -45px;
+    top: 12px;
+    right: 115px;
     width: 30px;
     height: 30px;
     border: 2px solid #FFFCF8;
@@ -32,80 +51,37 @@
     cursor: pointer;
 }
 
+.form {
+    width: 100%;
+}
+
 .fields {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
 }
 
+/* wrapper for label + input */
 .divFields {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 14px;
+    gap: 6px;
 }
 
-.smallGroup {
-    grid-column: span 3;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-}
-
-.smallGroup .input {
-    height: 36px;
+.divFields label {
     font-size: 13px;
 }
 
+/* inputs */
 .input {
+    width: 100%;
+    height: 40px;
+    border-radius: 7px;
     background-color: #EADAC0;
     border: 1px solid #e4c594;
-    height: 40px;
-    border-radius: 7px;
     padding: 0 10px;
     color: #3b2f2f;
-}
-
-.textarea {
-    height: 160px;
-    padding-top: 10px;
-    resize: vertical;
-}
-
-.full {
-    grid-column: span 3;
-}
-
-.actions {
-    grid-column: span 3;
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.primary {
-    flex: 1;
-    background-color: #c76146;
-    color: #FFFCF8;
-    height: 40px;
-    border-radius: 7px;
-}
-
-.secondary {
-    flex: 1;
-    background-color: transparent;
-    border: 1px solid #c76146;
-    color: #c76146;
-    height: 40px;
-    border-radius: 7px;
-}
-
-.primary:hover {
-    background-color: #b4523a;
-}
-
-.secondary:hover {
-    background-color: #F6EBE5;
+    box-sizing: border-box;
 }
 
 .input:focus {
@@ -113,11 +89,109 @@
     border-color: #c76146;
 }
 
+/* textarea */
+.textarea {
+    height: 140px;
+    padding: 10px;
+    resize: vertical;
+    color: #3b2f2f;
+}
+
+/* small grid */
+.smallGroup {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+/* full width blocks */
+.full {
+    grid-column: span 3;
+}
+
+/* actions */
+.actions {
+    grid-column: span 3;
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.primary {
+    flex: 1;
+    background-color: #c76146;
+    color: white;
+    height: 42px;
+    border-radius: 7px;
+}
+
+.primary:hover {
+    background-color: #b4523a;
+}
+
+.secondary {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #c76146;
+    color: #c76146;
+    border-radius: 8px;
+}
+
+.secondary:hover {
+    background-color: #f6ebe5;
+}
+
+/* multi select */
+.multiSelect {
+    height: 120px;
+    padding: 6px;
+    border-radius: 7px;
+    overflow-y: auto;
+}
+
+.multiSelect::-webkit-scrollbar {
+    width: 8px;
+}
+
+.multiSelect::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.multiSelect::-webkit-scrollbar-thumb {
+    background: #c76146;
+    border-radius: 7px;
+}
+
+.multiSelect::-webkit-scrollbar-thumb:hover {
+    background: #b4523a;
+}
+
+/* option base */
+.multiSelect option {
+    padding: 8px;
+    border-radius: 7px;
+    margin: 2px 0;
+}
+
+/* hover */
+.multiSelect option:hover {
+    background-color: #f6ebe5;
+}
+
+/* selected option */
+.multiSelect option:checked {
+    background-color: #c76146;
+    color: white;
+    font-weight: 500;
+}
+
+/* scrollbar */
 textarea::-webkit-scrollbar {
-  width: 10px;
+    width: 8px;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background: #c76146;
-  border-radius: 10px;
+    background: #c76146;
+    border-radius: 7px;
 }

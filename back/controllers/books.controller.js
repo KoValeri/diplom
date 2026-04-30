@@ -10,7 +10,9 @@ exports.getBooks = async (req, res) => {
     let query = `
       SELECT 
         b.*,
+        sc.id AS subcategoryId,
         sc.name AS subcategoryName,
+        c.id AS categoryId,
         c.name AS categoryName
       FROM books b
       LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
@@ -39,54 +41,141 @@ exports.getBooks = async (req, res) => {
   }
 };
 
+// exports.getBookById = async (req, res) => {
+//   try {
+//     await poolConnect;
+//     const { id } = req.params;
+
+//     const result = await pool
+//       .request()
+//       .input("id", sql.Int, id)
+//       .query(`
+//         SELECT 
+//           b.*,
+//           g.id AS genreId,
+//           g.name AS genreName,
+//           sc.id AS subcategoryId,
+//           sc.name AS subcategoryName,
+//           c.id AS categoryId,
+//           c.name AS categoryName,
+//           bai.id AS imageId,
+//           bai.imageUrl AS additionalImageUrl
+//         FROM books b
+//         LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
+//         LEFT JOIN categories c ON sc.categoryId = c.id
+//         LEFT JOIN book_genres bg ON b.id = bg.bookId
+//         LEFT JOIN genres g ON bg.genreId = g.id
+//         LEFT JOIN book_additional_images bai ON b.id = bai.bookId
+//         WHERE b.id = @id
+//       `);
+
+//     const bookRows = result.recordset;
+
+//     if (bookRows.length === 0) {
+//       return res.status(404).send("Книга не найдена");
+//     }
+
+//     // Формируем объект книги с массивом жанров и доп фото
+//     const book = {
+//       ...bookRows[0],
+//       genres: [...new Map(
+//         bookRows
+//           .filter(row => row.genreId !== null && row.genreName)
+//           .map(row => [row.genreId, { id: row.genreId, name: row.genreName }])
+//       ).values()],
+//       additionalImages: [...new Map(
+//         bookRows
+//           .filter(row => row.imageId && row.additionalImageUrl)
+//           .map(row => [row.imageId, { id: row.imageId, url: row.additionalImageUrl }])
+//       ).values()]
+//     };
+
+//     res.json(book);
+
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("Ошибка сервера");
+//   }
+// };
+
 exports.getBookById = async (req, res) => {
   try {
     await poolConnect;
     const { id } = req.params;
 
-    const result = await pool
+    // 1. Основная книга (без JOIN мусора)
+    const bookResult = await pool
       .request()
       .input("id", sql.Int, id)
       .query(`
-        SELECT 
-          b.*,
-          g.id AS genreId,
-          g.name AS genreName,
-          sc.name AS subcategoryName,
-          c.name AS categoryName,
-          bai.id AS imageId,
-          bai.imageUrl AS additionalImageUrl
-        FROM books b
-        LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
-        LEFT JOIN categories c ON sc.categoryId = c.id
-        LEFT JOIN book_genres bg ON b.id = bg.bookId
-        LEFT JOIN genres g ON bg.genreId = g.id
-        LEFT JOIN book_additional_images bai ON b.id = bai.bookId
-        WHERE b.id = @id
+        SELECT *
+        FROM books
+        WHERE id = @id
       `);
 
-    const bookRows = result.recordset;
-
-    if (bookRows.length === 0) {
+    if (bookResult.recordset.length === 0) {
       return res.status(404).send("Книга не найдена");
     }
 
-    // Формируем объект книги с массивом жанров и доп фото
-    const book = {
-      ...bookRows[0],
-      genres: [...new Map(
-        bookRows
-          .filter(row => row.genreId !== null && row.genreName)
-          .map(row => [row.genreId, { id: row.genreId, name: row.genreName }])
-      ).values()],
-      additionalImages: [...new Map(
-        bookRows
-          .filter(row => row.imageId && row.additionalImageUrl)
-          .map(row => [row.imageId, { id: row.imageId, url: row.additionalImageUrl }])
-      ).values()]
+    const book = bookResult.recordset[0];
+
+    // 2. Категория + подкатегория
+    const categoryResult = await pool.request()
+      .input("id", sql.Int, id)
+      .query(`
+        SELECT 
+          c.id AS categoryId,
+          c.name AS categoryName,
+          sc.id AS subcategoryId,
+          sc.name AS subcategoryName
+        FROM books b
+        LEFT JOIN subcategories sc ON b.subcategoryId = sc.id
+        LEFT JOIN categories c ON sc.categoryId = c.id
+        WHERE b.id = @id
+      `);
+
+    const categoryData = categoryResult.recordset[0] || {};
+
+    // 3. Жанры
+    const genresResult = await pool.request()
+      .input("id", sql.Int, id)
+      .query(`
+        SELECT g.id, g.name
+        FROM book_genres bg
+        JOIN genres g ON bg.genreId = g.id
+        WHERE bg.bookId = @id
+      `);
+
+    // 4. Доп изображения
+    const imagesResult = await pool.request()
+      .input("id", sql.Int, id)
+      .query(`
+        SELECT id, imageUrl
+        FROM book_additional_images
+        WHERE bookId = @id
+      `);
+
+    // 5. Собираем чистый объект
+    const fullBook = {
+      ...book,
+
+      categoryId: categoryData.categoryId || null,
+      subcategoryId: categoryData.subcategoryId || null,
+      categoryName: categoryData.categoryName || null,
+      subcategoryName: categoryData.subcategoryName || null,
+
+      genres: genresResult.recordset.map(g => ({
+        id: g.id,
+        name: g.name
+      })),
+
+      additionalImages: imagesResult.recordset.map(img => ({
+        id: img.id,
+        url: img.imageUrl
+      }))
     };
 
-    res.json(book);
+    res.json(fullBook);
 
   } catch (err) {
     console.error(err);
