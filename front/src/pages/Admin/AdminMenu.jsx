@@ -11,7 +11,7 @@ export default function AdminMenu({ bookId, onClose }) {
             <div className={styles.actionMenu}>
                 <div
                     className={styles.edit}
-                    onClick={() => {dispatch(adminModalActions.openModal(bookId))}}
+                    onClick={() => {dispatch(adminModalActions.openEditModal(bookId))}}
                 >
                     <CiEdit size={20} /> Редактировать
                 </div>

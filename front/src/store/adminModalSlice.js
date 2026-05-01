@@ -2,15 +2,23 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     isOpen: false,
-    selectedBookId: null
+    selectedBookId: null,
+    mode: "create"
 }
 
 const adminModalSlice = createSlice({
     name: 'adminModal',
     initialState,
     reducers: {
-        openModal: (state, action) => {
+        openCreateModal(state) {
             state.isOpen = true
+            state.mode = "create"
+            state.selectedBookId = null
+        },
+
+        openEditModal(state, action) {
+            state.isOpen = true
+            state.mode = "edit"
             state.selectedBookId = action.payload
         },
         closeModal: (state) => {

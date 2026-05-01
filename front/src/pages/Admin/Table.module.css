@@ -47,6 +47,12 @@
     background: #F6EBE5
 }
 
+.featuresContainer{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
 .search{
     width: 350px;
     padding: 10px 20px;

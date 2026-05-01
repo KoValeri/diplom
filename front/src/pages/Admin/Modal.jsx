@@ -2,35 +2,39 @@ import { useDispatch, useSelector } from "react-redux"
 import styles from "./Modal.module.css"
 import { IoMdClose } from "react-icons/io"
 import { adminModalActions } from "../../store/adminModalSlice"
-
 import CustomSelect from "./CustomSelect"
-
 import { useBookForm } from "./useBookForm"
 import { useGetBookByIdQuery } from "../../api/api"
 import { useGetCategoriesQuery } from "../../api/categoriesApi"
 import { useGetGenresQuery } from "../../api/genresApi"
 import { useGetAgesQuery } from "../../api/agesApi"
 import { useGetCoversQuery } from "../../api/coversApi"
+import { useGetPublishingHousQuery } from '../../api/publishingHouseApi';
+// import { useCreateBookMutation, useUpdateBookMutation } from "../../api/adminActionsApi"
+import { useCreateBookMutation, useUpdateBookMutation } from "../../api/api"
+import { prepareForm } from "./prepareBookForm"
 
 export default function Modal({ onClose }) {
     const dispatch = useDispatch()
-    const { isOpen, selectedBookId } = useSelector(s => s.adminModal)
-
+    const { isOpen, selectedBookId, mode } = useSelector(state => state.adminModal)
     const { data: book } = useGetBookByIdQuery(selectedBookId, {
-        skip: !selectedBookId
+        skip: mode !== "edit" || !selectedBookId
     })
-
     const {
         form,
         handleChange,
         handleGenresChange,
         resetForm
-    } = useBookForm(book)
+    } = useBookForm(book, mode)
+
+    const [createBook] = useCreateBookMutation()
+    const [updateBook] = useUpdateBookMutation()
 
     const { data: categories = [] } = useGetCategoriesQuery()
     const { data: genres = [] } = useGetGenresQuery()
     const { data: ages = [] } = useGetAgesQuery()
     const { data: covers = [] } = useGetCoversQuery()
+    const { data: publishingHouse = [] } = useGetPublishingHousQuery()
 
     if (!isOpen) return null
 
@@ -39,6 +43,28 @@ export default function Modal({ onClose }) {
     )
 
     const subcategories = currentCategory?.subcategories ?? []
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const preparedForm = prepareForm(form)
+
+        try {
+            if (mode === "create") {
+                await createBook(preparedForm).unwrap()
+            } else {
+                await updateBook({
+                    id: Number(selectedBookId),
+                    body: preparedForm
+                }).unwrap()
+            }
+
+            dispatch(adminModalActions.closeModal())
+            onClose()
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <div className={styles.overlay}>
@@ -54,7 +80,7 @@ export default function Modal({ onClose }) {
             </button>
 
             <div className={styles.modal}>
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <div className={styles.fields}>
 
                         <div className={styles.divFields}>
@@ -164,7 +190,28 @@ export default function Modal({ onClose }) {
                                             }
                                         })
                                     }
-                                    placeholder="Возраст"
+                                    placeholder=""
+                                />
+                            </div>
+
+                            <div className={styles.divFields}>
+                                <label>Издательство</label>
+
+                                <CustomSelect
+                                    options={publishingHouse.map(pubHouse => ({
+                                        value: pubHouse?.trim(),
+                                        label: pubHouse?.trim()
+                                    }))}
+                                    value={form.publishingHouse}
+                                    onChange={(val) =>
+                                        handleChange({
+                                            target: {
+                                                name: "publishingHouse",
+                                                value: val
+                                            }
+                                        })
+                                    }
+                                    placeholder=""
                                 />
                             </div>
 
