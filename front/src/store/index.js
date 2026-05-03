@@ -10,6 +10,7 @@ import authReducer from './authSlice';
 import authModalReducer  from "./authModalSlice";
 import bookFilterReducer from './bookFilterSlice';
 import adminModalReducer from './adminModalSlice'
+import adminDeleteModalReducer from "./adminDeleteModalSlice";
 import { agesApi } from "../api/agesApi";
 import { genresApi } from "../api/genresApi";
 import { coversApi } from "../api/coversApi";
@@ -32,6 +33,7 @@ export const store = configureStore({
     authModal: authModalReducer,
     bookFilters: bookFilterReducer,
     adminModal: adminModalReducer,
+    adminDeleteModal: adminDeleteModalReducer,
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware()

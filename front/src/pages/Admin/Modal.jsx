@@ -10,7 +10,6 @@ import { useGetGenresQuery } from "../../api/genresApi"
 import { useGetAgesQuery } from "../../api/agesApi"
 import { useGetCoversQuery } from "../../api/coversApi"
 import { useGetPublishingHousQuery } from '../../api/publishingHouseApi';
-// import { useCreateBookMutation, useUpdateBookMutation } from "../../api/adminActionsApi"
 import { useCreateBookMutation, useUpdateBookMutation } from "../../api/api"
 import { prepareForm } from "./prepareBookForm"
 
@@ -169,6 +168,12 @@ export default function Modal({ onClose }) {
                             </div>
 
                             <div className={styles.divFields}>
+                                <label>Скидка</label>
+                                <input name="discount" value={form.discount} onChange={handleChange} className={styles.input} 
+                                />
+                            </div>
+
+                            <div className={styles.divFields}>
                                 <label>Год</label>
                                 <input name="yearOfPublication" value={form.yearOfPublication} onChange={handleChange} className={styles.input} />
                             </div>
@@ -260,12 +265,12 @@ export default function Modal({ onClose }) {
                         </div>
 
                         <div className={styles.actions}>
-                            <button type="submit" className={styles.primary}>
-                                Сохранить
-                            </button>
-
                             <button type="button" className={styles.secondary} onClick={resetForm}>
                                 Сбросить
+                            </button>
+
+                            <button type="submit" className={styles.primary}>
+                                Сохранить
                             </button>
                         </div>
 

@@ -18,7 +18,7 @@ export default function BookDetails() {
     const { data: seriesBooks = [], isLoading: booksSeriesLoading, isError } = useGetBooksBySeriesQuery(id, {skip: !id,});
     const hasDiscount = book?.discount > 0;
     const newPrice = hasDiscount
-        ? Math.round(book?.price * (1 - book?.discount))
+        ? (book?.price * (1 - book?.discount)).toFixed(2)
         : book?.price;
 
     function handleClick(){

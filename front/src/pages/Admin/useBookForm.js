@@ -13,6 +13,7 @@ const initialState = {
   yearOfPublication: '',
   pages: '',
   rating: '',
+  discount: '',
   genres: [],
   description: '',
   imageUrl: ''
@@ -36,6 +37,7 @@ function mapBookToForm(book) {
     yearOfPublication: book.yearOfPublication || '',
     pages: book.pages || '',
     rating: book.rating || '',
+    discount: book.discount || '',
     genres: book.genres?.map(g => String(g.id)) || [],
     description: book.description || '',
     imageUrl: book.imageUrl || ''

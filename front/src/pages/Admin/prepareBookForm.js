@@ -6,6 +6,7 @@ export const prepareForm = (form) => ({
   yearOfPublication: form.yearOfPublication ? Number(form.yearOfPublication) : null,
   pages: form.pages ? Number(form.pages) : null,
   rating: form.rating ? Number(form.rating) : null,
+  discount: Number(form.discount) || 0,
   genres: form.genres.map(Number),
   publishingHouses: form.publishingHouses || null
 })

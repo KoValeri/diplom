@@ -26,6 +26,8 @@ exports.getBooks = async (req, res) => {
       `;
     }
 
+    query += ` ORDER BY b.id DESC`;
+    
     const request = pool.request();
 
     if (search) {

@@ -4,6 +4,7 @@ import { CiMenuKebab } from "react-icons/ci"
 import styles from "./Table.module.css"
 import AdminMenu from './AdminMenu';
 import Modal from './Modal';
+import DeleteModal from './DeleteModal';
 import Button from '../../components/Button/Button'
 import { useDispatch } from "react-redux"
 import { adminModalActions } from "../../store/adminModalSlice"
@@ -87,6 +88,7 @@ export default function Table() {
             </div>
 
             <Modal onClose={() => setOpenMenuId(null)}/>
+            <DeleteModal onClose={() => setOpenMenuId(null)}/>
         </>
     )
 }
