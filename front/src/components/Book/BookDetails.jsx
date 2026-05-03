@@ -3,7 +3,7 @@ import { useGetBookByIdQuery  } from "../../api/api"
 import { useGetBooksBySeriesQuery } from '../../api/api'
 import { useParams } from 'react-router-dom'
 import { FaStar } from "react-icons/fa"
-import Button from "../Button/Button"
+import CartButton from '../CartButton/CartButton'
 import ButtonBookMark from "../ButtonBookMark/ButtonBookMark"
 import BookSlider from './BookSlider'
 import BookList from './BookList'
@@ -52,7 +52,7 @@ export default function BookDetails() {
                                 )}
                             </div>
                             <div className={styles.btns}>
-                                <Button text='В корзину'/>
+                                <CartButton bookId={book.id}/>
                                 <ButtonBookMark bookId={book.id} />
                             </div>
                             <div className={styles.description}>{book.description}</div>

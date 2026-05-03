@@ -1,5 +1,5 @@
 import styles from "./BookCard.module.css"
-import Button from "../Button/Button"
+import CartButton from "../CartButton/CartButton"
 import ButtonBookMark from "../ButtonBookMark/ButtonBookMark"
 import { FaStar } from "react-icons/fa"
 import { useNavigate, generatePath } from 'react-router-dom';
@@ -38,7 +38,7 @@ export default function BookCard({ book }) {
                             )}
                         </div>
                         <div className={styles.btns}>
-                            <Button text='В корзину'/>
+                            <CartButton bookId={book.id}/>
                             <ButtonBookMark bookId={book.id} />
                         </div>
                     </div>

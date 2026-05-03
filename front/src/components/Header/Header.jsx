@@ -150,7 +150,7 @@ function Header() {
                                 </button>
                             </li>
                             <li>
-                                <Link to={'#'}><BsHandbag size={30}/></Link>
+                                <Link to={ROUTES.CART}><BsHandbag size={30}/></Link>
                             </li>
                             <li>
                                 <Link to={ROUTES.FAVORITES}><IoBookmarkOutline size={30}/></Link>

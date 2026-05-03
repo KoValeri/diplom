@@ -1,20 +1,18 @@
-import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { authModalActions } from "../store/authModalSlice"
+import { useSelector } from "react-redux"
+import { Navigate } from "react-router-dom"
 import { ROUTES } from "../configs/routesConfig"
 
-export default function PrivateRoute({ children }) {
+export default function PrivateRoute({ children, role }) {
+    const user = useSelector(state => state.auth.user)
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-            dispatch(authModalActions.openLogin())
-            navigate(ROUTES.HOME)
-        }
-    }, [isAuthenticated])
+    if (!isAuthenticated) {
+        return <Navigate to={ROUTES.HOME} replace />
+    }
 
-    return isAuthenticated ? children : null
+    if (role && user?.role !== role) {
+        return <Navigate to={ROUTES.HOME} replace />
+    }
+
+    return children
 }

@@ -32,8 +32,12 @@ export const usersApi = createApi({
         method: "POST",
         body: data
       })
-    })
+    }),
+
+    getMe: builder.query({
+      query: () => "/users/me",
+    }),
   })
 });
 
-export const { useRegisterUserMutation, useLoginUserMutation } = usersApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useGetMeQuery } = usersApi;

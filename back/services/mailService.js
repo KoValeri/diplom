@@ -22,4 +22,18 @@ async function sendWelcomeEmail(to, name) {
   });
 }
 
-module.exports = { sendWelcomeEmail };
+async function sendOrderEmail(to, name, orderId) {
+  await transporter.sendMail({
+    from: `"Liberty" <${process.env.MAIL_USER}>`,
+    to,
+    subject: "Заказ оформлен",
+    text: `Ваш заказ №${orderId} успешно оформлен.`,
+    html: `
+      <h2>Спасибо за заказ, ${name || "друг"}!</h2>
+      <p>Ваш заказ <b>#${orderId}</b> успешно оформлен.</p>
+      <p>Мы скоро свяжемся с вами.</p>
+    `
+  });
+}
+
+module.exports = { sendWelcomeEmail, sendOrderEmail };

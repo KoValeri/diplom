@@ -14,6 +14,7 @@ import SearchPage from '../pages/SearchPage'
 import FavoritesPage from '../pages/FavoritesPage';
 import AdminPage from '../pages/Admin/AdminPage';
 import PrivateRoute from './PrivateRoute';
+import CartPage from '../pages/Cart/CartPage';
 
 const router = createBrowserRouter([
     {
@@ -29,20 +30,27 @@ const router = createBrowserRouter([
             { path: ROUTES.BOOKSBYCATEGORIES, element: <BooksByCategoryPage /> },
             { path: ROUTES.CATEGORIES, element: <СategoriesPage /> },
             { path: ROUTES.SEARCH, element: <SearchPage /> },
-            { path: ROUTES.ADMIN, element: <AdminPage /> },
-            // {
-            //     path: ROUTES.ADMIN,
-            //     element: (
-            //     <PrivateRoute>
-            //         <AdminPage />
-            //     </PrivateRoute>
-            //     )
-            // },
+            {
+                path: ROUTES.ADMIN,
+                element: (
+                    <PrivateRoute role="admin">
+                        <AdminPage />
+                    </PrivateRoute>
+                )
+            },
             {
                 path: ROUTES.FAVORITES,
                 element: (
                 <PrivateRoute>
                     <FavoritesPage />
+                </PrivateRoute>
+                )
+            },
+            {
+                path: ROUTES.CART,
+                element: (
+                <PrivateRoute>
+                    <CartPage />
                 </PrivateRoute>
                 )
             },

@@ -118,6 +118,63 @@ CREATE TABLE favorites (
 );
 GO
 
+CREATE TABLE cart_items (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    userId INT NOT NULL,
+    bookId INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+
+    CONSTRAINT FK_cart_items_users FOREIGN KEY (userId)
+        REFERENCES users(id) ON DELETE CASCADE,
+
+    CONSTRAINT FK_cart_items_books FOREIGN KEY (bookId)
+        REFERENCES books(id) ON DELETE CASCADE,
+
+    CONSTRAINT UQ_cart_user_book UNIQUE (userId, bookId)
+);
+GO
+
+CREATE TABLE orders (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    userId INT NOT NULL,
+    createdAt DATETIME DEFAULT GETDATE(),
+
+    status NVARCHAR(50) DEFAULT 'new',
+
+    totalPrice DECIMAL(10,2) NOT NULL DEFAULT 0,
+
+    firstName NVARCHAR(50),
+    lastName NVARCHAR(50),
+    email NVARCHAR(100),
+    phone NVARCHAR(50),
+    address NVARCHAR(255),
+
+    paymentMethod NVARCHAR(50),
+    deliveryMethod NVARCHAR(50),
+
+    deliveryPrice DECIMAL(10,2) DEFAULT 0,
+
+    CONSTRAINT FK_orders_users FOREIGN KEY (userId)
+        REFERENCES users(id) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE order_items (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    orderId INT NOT NULL,
+    bookId INT NOT NULL,
+
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT FK_order_items_orders FOREIGN KEY (orderId)
+        REFERENCES orders(id) ON DELETE CASCADE,
+
+    CONSTRAINT FK_order_items_books FOREIGN KEY (bookId)
+        REFERENCES books(id)
+);
+GO
+
 --Заполняешь категории и подкат, затем в vs вносишь книги в табблицу, затем уже доп фотки
 -- Категории
 INSERT INTO categories (name, poster) VALUES

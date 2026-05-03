@@ -8,7 +8,7 @@ exports.getBestsellers = async (req, res) => {
 
     const result = await pool
       .request()
-      .query("SELECT TOP 5 * FROM books WHERE rating >= 4.8 ORDER BY id DESC");
+      .query("SELECT TOP 5 * FROM books WHERE rating >= 4.8 ORDER BY rating DESC, id DESC");
 
     res.json(result.recordset);
   } catch (err) {

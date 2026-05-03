@@ -15,6 +15,7 @@ import { agesApi } from "../api/agesApi";
 import { genresApi } from "../api/genresApi";
 import { coversApi } from "../api/coversApi";
 import { publishingHouseApi } from "../api/publishingHouseApi";
+import { cartApi } from "../api/cartApi";
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ export const store = configureStore({
     [publishingHouseApi.reducerPath]: publishingHouseApi.reducer,
     [genresApi.reducerPath]: genresApi.reducer,
     [favoritesApi.reducerPath]: favoritesApi.reducer,
+    [cartApi.reducerPath]: cartApi.reducer,
     auth: authReducer,
     authModal: authModalReducer,
     bookFilters: bookFilterReducer,
@@ -47,5 +49,6 @@ export const store = configureStore({
     .concat(coversApi.middleware)
     .concat(publishingHouseApi.middleware)
     .concat(genresApi.middleware)
-    .concat(favoritesApi.middleware),
+    .concat(favoritesApi.middleware)
+    .concat(cartApi.middleware),
 });
