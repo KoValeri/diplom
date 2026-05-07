@@ -1,7 +1,6 @@
 const { sql, pool, poolConnect } = require("../db");
 const buildQuery = require("../utils/buildBooksQuery");
 
-// Получить первые 5 лучших книг (для главной страницы)
 exports.getBestsellers = async (req, res) => {
   try {
     await poolConnect;

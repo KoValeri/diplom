@@ -12,7 +12,6 @@
     border-top: 1.5px solid #8a8988;
 }
 
-/* Правый блок (сайдбар) */
 .checkoutBlock {
     width: 350px;
 }
@@ -38,7 +37,7 @@
 }
 
 .discountText {
-    color: #8a8988; /* Серый цвет для суммы скидки как на макете */
+    color: #8a8988;
 }
 
 .divider {
@@ -48,14 +47,13 @@
 }
 
 .totalRow {
-    /* font-weight: bold; */
     font-size: 18px;
     margin-bottom: 24px;
 }
 
 .orderButton {
     width: 100%;
-    background-color: #C76146; /* Оранжево-коричневый цвет с кнопки */
+    background-color: #C76146;
     color: white;
     border: none;
     padding: 14px;
@@ -75,19 +73,17 @@
     cursor: not-allowed;
 }
 
-/* Контейнер для кнопки очистки */
 .clearHeader {
     display: flex;
-    justify-content: flex-end; /* Прижимает кнопку к правому краю */
+    justify-content: flex-end;
     margin-bottom: 15px;
     width: 100%;
 }
 
-/* Стили самой кнопки */
 .clearButton {
     background: none;
     border: none;
-    color: #8a8988; /* Серый цвет из вашей палитры */
+    color: #8a8988;
     font-size: 14px;
     cursor: pointer;
     padding: 0;
@@ -95,11 +91,11 @@
 }
 
 .clearButton:hover {
-    color: #C76146; /* Оранжевый при наведении */
+    color: #C76146;
 }
 
 .mainContent {
-    flex: 1; /* Это заставит колонку растянуться и восстановит ширину списка */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }

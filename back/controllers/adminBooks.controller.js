@@ -145,7 +145,7 @@ exports.updateBook = async (req, res) => {
         subcategoryId = @subcategoryId,
         cover = @cover,
         ageRestrictions = @ageRestrictions,
-        publishingHouse = @publishingHouse, -- ✅ FIX
+        publishingHouse = @publishingHouse,
         price = @price,
         yearOfPublication = @yearOfPublication,
         pages = @pages,
@@ -156,7 +156,6 @@ exports.updateBook = async (req, res) => {
       WHERE id = @id
     `);
 
-    // жанры пересобираем
     await pool.request()
       .input("id", sql.Int, id)
       .query("DELETE FROM book_genres WHERE bookId = @id");

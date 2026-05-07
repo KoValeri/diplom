@@ -24,7 +24,6 @@ exports.registerUser = async (req, res) => {
       return res.status(409).json({ message: "Пользователь уже существует" });
     }
 
-    // хэшируем пароль
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await pool.request()

@@ -48,7 +48,6 @@ exports.getBookById = async (req, res) => {
     await poolConnect;
     const { id } = req.params;
 
-    // 1. Основная книга (без JOIN мусора)
     const bookResult = await pool
       .request()
       .input("id", sql.Int, id)
@@ -64,7 +63,6 @@ exports.getBookById = async (req, res) => {
 
     const book = bookResult.recordset[0];
 
-    // 2. Категория + подкатегория
     const categoryResult = await pool.request()
       .input("id", sql.Int, id)
       .query(`
@@ -81,7 +79,6 @@ exports.getBookById = async (req, res) => {
 
     const categoryData = categoryResult.recordset[0] || {};
 
-    // 3. Жанры
     const genresResult = await pool.request()
       .input("id", sql.Int, id)
       .query(`
@@ -91,7 +88,6 @@ exports.getBookById = async (req, res) => {
         WHERE bg.bookId = @id
       `);
 
-    // 4. Доп изображения
     const imagesResult = await pool.request()
       .input("id", sql.Int, id)
       .query(`
@@ -100,7 +96,6 @@ exports.getBookById = async (req, res) => {
         WHERE bookId = @id
       `);
 
-    // 5. Собираем чистый объект
     const fullBook = {
       ...book,
 
@@ -133,7 +128,6 @@ exports.getBooksBySeries = async (req, res) => {
     await poolConnect;
     const { id } = req.params;
 
-    // 1. Получаем серию книги
     const bookResult = await pool
       .request()
       .input("id", sql.Int, id)
@@ -149,7 +143,6 @@ exports.getBooksBySeries = async (req, res) => {
       return res.json([]);
     }
 
-    // 2. Получаем книги той же серии
     const result = await pool
       .request()
       .input("series", sql.NVarChar, series)

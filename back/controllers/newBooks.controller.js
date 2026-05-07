@@ -1,6 +1,5 @@
 const { sql, pool, poolConnect } = require("../db");
 
-// Получить первые 5 новинок 2026 года (для главной страницы)
 exports.getNewBooks = async (req, res) => {
   try {
     await poolConnect;

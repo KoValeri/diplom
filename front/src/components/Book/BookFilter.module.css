@@ -137,6 +137,6 @@ input[type="range"]:last-child {
 }
 
 .priceInputs input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
+  -moz-appearance: textfield;
   appearance: textfield;
 }

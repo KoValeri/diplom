@@ -1,6 +1,5 @@
 const { pool, poolConnect } = require("../db");
 
-// ➕ добавить/увеличить в корзине (toggle как у favorites)
 exports.toggleCartItem = async (req, res) => {
   const userId = req.user.id;
   const { bookId } = req.body;
@@ -8,7 +7,6 @@ exports.toggleCartItem = async (req, res) => {
   try {
     await poolConnect;
 
-    // проверяем есть ли уже
     const check = await pool
       .request()
       .input("userId", userId)
@@ -19,7 +17,6 @@ exports.toggleCartItem = async (req, res) => {
       `);
 
     if (check.recordset.length > 0) {
-      // если есть → удаляем (как toggle)
       await pool
         .request()
         .input("userId", userId)
@@ -31,7 +28,6 @@ exports.toggleCartItem = async (req, res) => {
 
       return res.json({ inCart: false });
     } else {
-      // если нет → добавляем
       await pool
         .request()
         .input("userId", userId)
@@ -49,7 +45,6 @@ exports.toggleCartItem = async (req, res) => {
   }
 };
 
-// 📦 получить корзину
 exports.getCart = async (req, res) => {
   const userId = req.user.id;
 
@@ -81,7 +76,6 @@ exports.getCart = async (req, res) => {
   }
 };
 
-// ➕ увеличить количество
 exports.increaseQuantity = async (req, res) => {
   const userId = req.user.id;
   const { bookId } = req.body;
@@ -106,7 +100,6 @@ exports.increaseQuantity = async (req, res) => {
   }
 };
 
-// ➖ уменьшить количество
 exports.decreaseQuantity = async (req, res) => {
   const userId = req.user.id;
   const { bookId } = req.body;
@@ -128,7 +121,6 @@ exports.decreaseQuantity = async (req, res) => {
     }
 
     if (item.recordset[0].quantity <= 1) {
-      // если 1 → удаляем
       await pool
         .request()
         .input("userId", userId)
@@ -156,7 +148,6 @@ exports.decreaseQuantity = async (req, res) => {
   }
 };
 
-// 🗑 очистить всю корзину
 exports.clearCart = async (req, res) => {
   const userId = req.user.id;
 
@@ -255,7 +246,6 @@ exports.createOrder = async (req, res) => {
 
     const orderId = orderResult.recordset[0].id;
 
-    // 5. записываем товары в order_items
     for (const item of cart.recordset) {
       await pool.request()
         .input("orderId", orderId)
@@ -268,7 +258,6 @@ exports.createOrder = async (req, res) => {
         `);
     }
 
-    // 6. удаляем ТОЛЬКО выбранные товары из корзины
     const deleteRequest = pool.request().input("userId", userId);
 
     items.forEach((id, i) => {
@@ -283,7 +272,6 @@ exports.createOrder = async (req, res) => {
       AND bookId IN (${deleteIn})
     `);
 
-    // 7. email (не ломает заказ если упал)
     try {
       const userData = await pool.request()
         .input("userId", userId)
@@ -303,7 +291,6 @@ exports.createOrder = async (req, res) => {
       console.error("Ошибка отправки email:", err);
     }
 
-    // 8. ответ
     res.json({
       success: true,
       orderId

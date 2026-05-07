@@ -27,13 +27,12 @@
     accent-color: #C76146;
 }
 
-/* Блок с названием и автором */
 .infoBlock {
-    flex: 1; /* Занимает все доступное пространство в центре */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Отступ между строками */
-        margin-left: 20px;
+    gap: 4px;
+    margin-left: 20px;
 }
 
 .title {
@@ -43,14 +42,13 @@
 
 .author {
     font-size: 14px;
-    color: #8a8988; /* Серый цвет для автора */
+    color: #8a8988;
 }
 
-/* Стилизация блока изменения количества */
 .controls {
     display: flex;
     align-items: center;
-    background-color: #EADAC0; /* Бежевый фон */
+    background-color: #EADAC0;
     border-radius: 7px;
     height: 45px;
     width: 120px;
@@ -79,24 +77,23 @@
 .controls span {
     font-size: 16px;
     font-weight: bold;
-    min-width: 35px; /* Чтобы ширина не прыгала при смене цифр */
+    min-width: 35px;
     text-align: center;
     color: #3B2F2F;
 }
 
-/* Правый блок с ценой и удалением */
 .priceBlock {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Выравнивание по правому краю */
-    min-width: 120px; /* Фиксированная ширина для выравнивания */
+    align-items: flex-end;
+    min-width: 120px;
 }
 
 .price {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 15px; /* Отступ до иконки удаления */
+    margin-bottom: 15px;
 }
 
 .currentPrice {
@@ -106,20 +103,19 @@
 .oldPrice {
     font-size: 14px;
     color: #8a8988;
-    text-decoration: line-through; /* Зачеркивание цены */
+    text-decoration: line-through;
     margin-top: 2px;
 }
 
-/* Стили для кнопки удаления */
 .deleteBtn {
     background: none;
     border: none;
-    color: #8a8988; /* Светло-серый цвет иконки */
+    color: #8a8988;
     cursor: pointer;
     padding: 0;
     transition: color 0.2s;
 }
 
 .deleteBtn:hover {
-    color: #D12B00; /* Красный цвет при наведении */
+    color: #D12B00;
 }

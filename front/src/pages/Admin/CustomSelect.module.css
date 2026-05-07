@@ -39,7 +39,6 @@
     z-index: 20;
 }
 
-/* scrollbar */
 .dropdown::-webkit-scrollbar {
     width: 8px;
 }

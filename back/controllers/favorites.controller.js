@@ -1,6 +1,5 @@
 const { pool, poolConnect } = require("../db");
 
-// Добавить книгу в избранное
 exports.toggleFavorite = async (req, res) => {
   const userId = req.user.id;
   const { bookId } = req.body;
@@ -8,7 +7,6 @@ exports.toggleFavorite = async (req, res) => {
   try {
     await poolConnect;
 
-    // Проверяем есть ли уже
     const check = await pool
       .request()
       .input("userId", userId)
@@ -19,7 +17,6 @@ exports.toggleFavorite = async (req, res) => {
       `);
 
     if (check.recordset.length > 0) {
-      // УДАЛЯЕМ
       await pool
         .request()
         .input("userId", userId)
@@ -31,7 +28,6 @@ exports.toggleFavorite = async (req, res) => {
 
       return res.json({ isFavorite: false });
     } else {
-      // ДОБАВЛЯЕМ
       await pool
         .request()
         .input("userId", userId)

@@ -53,7 +53,6 @@
   position: relative;
 }
 
-/* Линия между шагами */
 .stepSection:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -86,7 +85,6 @@
   color: #3b2f2f;
 }
 
-/* Инпуты */
 .inputGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -122,7 +120,6 @@
   border-color: #c76146;
 }
 
-/* Карточки выбора (радиокнопки) */
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -130,71 +127,70 @@
 }
 
 .methodCard {
-  border: 1px solid #e6e0d5;
-  border-radius: 7px;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  background: white;
-  transition: all 0.2s;
-  position: relative;
+    border: 1px solid #e6e0d5;
+    border-radius: 7px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: white;
+    transition: all 0.2s;
+    position: relative;
 }
 
 .methodCard input {
-  display: none;
+    display: none;
 }
 
 .activeCard {
-  border-color: #3b2f2f;
-  background: #fff;
+    border-color: #3b2f2f;
+    background: #fff;
 }
 
 .cardInfo {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .cardTitle {
-  color: #3b2f2f;
+    color: #3b2f2f;
 }
 
 .cardSub {
-  font-size: 12px;
-  color: #8a7e72;
+    font-size: 12px;
+    color: #8a7e72;
 }
 
 .radioCircle {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #e6e0d5;
-  border-radius: 50%;
-  position: relative;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e6e0d5;
+    border-radius: 50%;
+    position: relative;
 }
 
 .activeCard .radioCircle {
-  border-color: #3b2f2f;
+    border-color: #3b2f2f;
 }
 
 .activeCard .radioCircle::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  background: #3b2f2f;
-  border-radius: 50%;
+    content: "";
+    position: absolute;
+    inset: 3px;
+    background: #3b2f2f;
+    border-radius: 50%;
 }
 
-/* Кнопка */
 .submitBtn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 16px;
-  background: #c76146;
-  color: white;
-  border: 2px solid #C76146;
-  border-radius: 7px;
-  cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    background: #c76146;
+    color: white;
+    border: 2px solid #C76146;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
 .submitBtn:hover {

@@ -9,7 +9,7 @@ export default function CheckoutModal({ isOpen, onClose, selectedItems, setSelec
   const { data: user } = useGetMeQuery();
 
   const [form, setForm] = useState({
-    fullName: "", // Объединил Имя/Фамилию как в макете (ФИО)
+    fullName: "",
     email: "",
     phone: "",
     address: "",
@@ -53,11 +53,9 @@ export default function CheckoutModal({ isOpen, onClose, selectedItems, setSelec
     <div className={styles.overlay} onClick={onClose}>
         <button className={styles.closeBtn} onClick={onClose}><IoMdClose size={18} /></button>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        {/* <button className={styles.closeBtn} onClick={onClose}><IoMdClose size={18} /></button> */}
         <span className={styles.title}>Оформление заказа</span>
 
         <div className={styles.formContainer}>
-          {/* --- ШАГ 1: Контактная информация --- */}
           <section className={styles.stepSection}>
             <div className={styles.stepBadge}>1</div>
             <div className={styles.stepContent}>
@@ -79,7 +77,6 @@ export default function CheckoutModal({ isOpen, onClose, selectedItems, setSelec
             </div>
           </section>
 
-          {/* --- ШАГ 2: Способ получения --- */}
           <section className={styles.stepSection}>
             <div className={styles.stepBadge}>2</div>
             <div className={styles.stepContent}>
@@ -115,7 +112,6 @@ export default function CheckoutModal({ isOpen, onClose, selectedItems, setSelec
             </div>
           </section>
 
-          {/* --- ШАГ 3: Способ оплаты --- */}
           <section className={styles.stepSection}>
             <div className={styles.stepBadge}>3</div>
             <div className={styles.stepContent}>

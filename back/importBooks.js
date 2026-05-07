@@ -22,12 +22,10 @@ async function importBooks() {
     for (const book of books) {
       const subcategoryId = book.subcategory || null;
 
-      // Проверяем наличие subcategory
       if (!subcategoryId) {
         console.warn(`Книга "${book.title}" не имеет subcategory!`);
       }
 
-      // Проверяем, есть ли книга в базе
       const existing = await sql.query`
         SELECT id FROM books WHERE title = ${book.title}
       `;
@@ -35,7 +33,6 @@ async function importBooks() {
       let bookId;
 
       if (existing.recordset.length === 0) {
-        // Вставляем новую книгу
         const insertBook = await sql.query`
           INSERT INTO books 
             (title, author, description, price, publishingHouse, yearOfPublication, pages, cover, ageRestrictions, imageUrl, rating, series, subcategoryId, discount)
@@ -45,7 +42,6 @@ async function importBooks() {
         `;
         bookId = insertBook.recordset[0].id;
       } else {
-        // Обновляем существующую книгу
         bookId = existing.recordset[0].id;
         await sql.query`
           UPDATE books
@@ -67,7 +63,6 @@ async function importBooks() {
         `;
       }
 
-      // Обрабатываем жанры
       const genres = Array.isArray(book.genre) ? book.genre : [];
       if (genres.length === 0) {
         console.warn(`Книга "${book.title}" не имеет жанров!`);

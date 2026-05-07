@@ -10,7 +10,6 @@
     z-index: 4;
 }
 
-/* левая колонка */
 .categories {
     width: 40%;
     border-right: 2px solid #F6EBE5;
@@ -32,7 +31,6 @@
     background: #F6EBE5;
 }
 
-/* правая колонка */
 .subcategories {
     width: 60%;
     padding: 7px;

@@ -1,6 +1,5 @@
 const { sql, pool, poolConnect } = require("../db");
 
-// Получить первые 5 для акций (для главной страницы)
 exports.getDiscounts = async (req, res) => {
   try {
     await poolConnect;

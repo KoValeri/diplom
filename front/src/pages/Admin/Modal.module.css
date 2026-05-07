@@ -18,7 +18,6 @@
     position: relative;
 }
 
-/* scrollbar for modal */
 .modal::-webkit-scrollbar {
     width: 10px;
 }
@@ -61,7 +60,6 @@
     gap: 16px;
 }
 
-/* wrapper for label + input */
 .divFields {
     display: flex;
     flex-direction: column;
@@ -72,7 +70,6 @@
     font-size: 13px;
 }
 
-/* inputs */
 .input {
     width: 100%;
     height: 40px;
@@ -89,7 +86,6 @@
     border-color: #c76146;
 }
 
-/* textarea */
 .textarea {
     height: 140px;
     padding: 10px;
@@ -97,7 +93,6 @@
     color: #3b2f2f;
 }
 
-/* small grid */
 .smallGroup {
     grid-column: span 3;
     display: grid;
@@ -105,12 +100,10 @@
     gap: 12px;
 }
 
-/* full width blocks */
 .full {
     grid-column: span 3;
 }
 
-/* actions */
 .actions {
     grid-column: span 3;
     display: flex;
@@ -142,7 +135,6 @@
     background-color: #f6ebe5;
 }
 
-/* multi select */
 .multiSelect {
     height: 120px;
     padding: 6px;
@@ -167,26 +159,22 @@
     background: #b4523a;
 }
 
-/* option base */
 .multiSelect option {
     padding: 8px;
     border-radius: 7px;
     margin: 2px 0;
 }
 
-/* hover */
 .multiSelect option:hover {
     background-color: #f6ebe5;
 }
 
-/* selected option */
 .multiSelect option:checked {
     background-color: #c76146;
     color: white;
     font-weight: 500;
 }
 
-/* scrollbar */
 textarea::-webkit-scrollbar {
     width: 8px;
 }
