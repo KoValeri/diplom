@@ -181,43 +181,6 @@ exports.updateBook = async (req, res) => {
   }
 };
 
-// exports.deleteBook = async (req, res) => {
-//   try {
-//     await poolConnect;
-
-//     const { id } = req.params;
-
-//     // проверка
-//     const check = await pool.request()
-//       .input("id", sql.Int, id)
-//       .query("SELECT id FROM books WHERE id = @id");
-
-//     if (!check.recordset.length) {
-//       return res.status(404).json({
-//         message: "Книга не найдена"
-//       });
-//     }
-
-//     // сначала удаляем связи
-//     await pool.request()
-//       .input("id", sql.Int, id)
-//       .query("DELETE FROM book_genres WHERE bookId = @id");
-
-//     // потом саму книгу
-//     await pool.request()
-//       .input("id", sql.Int, id)
-//       .query("DELETE FROM books WHERE id = @id");
-
-//     res.status(200).json({ success: true });
-
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({
-//       message: "Ошибка удаления книги"
-//     });
-//   }
-// };
-
 exports.deleteBook = async (req, res) => {
   try {
     await poolConnect;

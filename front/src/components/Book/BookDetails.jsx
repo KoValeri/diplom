@@ -10,6 +10,9 @@ import BookList from './BookList'
 import { useNavigate, generatePath } from 'react-router-dom';
 import { ROUTES } from '../../configs/routesConfig'
 import { IoIosArrowForward } from "react-icons/io"
+import { useGetBookReviewsQuery, useCreateReviewMutation, useDeleteReviewMutation } from '../../api/api'
+import { useSelector } from "react-redux"
+import { useState } from "react";
 
 export default function BookDetails() {
     const { id } = useParams();
@@ -20,10 +23,34 @@ export default function BookDetails() {
     const newPrice = hasDiscount
         ? (book?.price * (1 - book?.discount)).toFixed(2)
         : book?.price;
+    const { data: reviews = [], isLoading: reviewsLoading } = useGetBookReviewsQuery(id);
+    const [createReview] = useCreateReviewMutation();
+    const [deleteReview] = useDeleteReviewMutation();
+    const user = useSelector(state => state.auth.user)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const userId = user?.id;
+    const [text, setText] = useState("");
 
     function handleClick(){
         navigate( generatePath(ROUTES.SERIES, {id}) )
     }
+
+    const handleAddReview = async () => {
+        if (!userId) return;
+        if (!text.trim()) return;
+
+        await createReview({
+            bookId: id,
+            userId: userId,
+            comment: text
+        });
+
+        setText("");
+    };
+
+    const handleDelete = async (reviewId) => {
+        await deleteReview(reviewId);
+    };
 
     return (
         <>
@@ -97,6 +124,54 @@ export default function BookDetails() {
                         <button className={styles.btnPage}><IoIosArrowForward size={30} onClick={handleClick}/></button>
                     </div>}
                     <BookList books={seriesBooks} isLoading={booksSeriesLoading} isError={isError}/>
+
+                    <div className={styles.reviewsSection}>
+                        <div className={styles.characteristics}>Отзывы</div>
+                        
+                        <div className={styles.reviewsBox}>
+                            <textarea
+                                className={styles.textarea}
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                                placeholder="Напишите отзыв..."
+                            />
+                            {isAuthenticated && 
+                                <button className={styles.addReviewBtn} onClick={handleAddReview}>
+                                    Добавить отзыв
+                                </button>
+                            }
+                        </div>
+
+                        <div className={styles.reviewsList}>
+                            {reviewsLoading ? (
+                                <p>Загрузка...</p>
+                            ) : reviews.length === 0 ? (
+                                <p className={styles.infoPoint}>Пока отзывов нет. Будьте первым!</p>
+                            ) : (
+                                reviews.map(review => (
+                                    <div key={review.id} className={styles.reviewCard}>
+                                        <div className={styles.reviewHeader}>
+                                            <div className={styles.userInfo}>
+                                                <span className={styles.userName}>
+                                                    {review.firstName} {review.lastName}
+                                                </span>
+                                            </div>
+                                            {user?.role === "admin" && (
+                                                <button 
+                                                    className={styles.deleteBtn} 
+                                                    onClick={() => handleDelete(review.id)}
+                                                >
+                                                    Удалить
+                                                </button>
+                                            )}
+                                        </div>
+                                        <p className={styles.reviewText}>{review.comment}</p>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    </div>
+
                 </>
             )}
         </>

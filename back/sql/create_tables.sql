@@ -175,6 +175,22 @@ CREATE TABLE order_items (
 );
 GO
 
+CREATE TABLE book_reviews (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    bookId INT NOT NULL,
+    userId INT NOT NULL,
+    comment NVARCHAR(MAX) NOT NULL,
+    createdAt DATETIME DEFAULT GETDATE(),
+
+    CONSTRAINT FK_book_reviews_books FOREIGN KEY (bookId)
+        REFERENCES books(id) ON DELETE CASCADE,
+
+    CONSTRAINT FK_book_reviews_users FOREIGN KEY (userId)
+        REFERENCES users(id) ON DELETE CASCADE
+);
+GO
+
+
 --Заполняешь категории и подкат, затем в vs вносишь книги в табблицу, затем уже доп фотки
 -- Категории
 INSERT INTO categories (name, poster) VALUES
@@ -260,4 +276,3 @@ INSERT INTO book_additional_images (bookId, imageUrl) VALUES
 (22, '/books_extra_photos/empire_of_the_damned2.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned3.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned4.jpg');
-

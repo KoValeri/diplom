@@ -56,7 +56,7 @@
   color: white;
   padding: 4px 8px;
   font-size: 12px;
-  border-radius: 6px;
+  border-radius: 7px;
 }
 
 .rating{
@@ -119,4 +119,100 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Контейнер всей секции */
+.reviewsSection {
+    margin-top: 60px;
+    border-top: 1px solid #EADAC0;
+    padding-top: 40px;
+}
+
+/* Поле ввода */
+.reviewsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+    max-width: 800px;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid #EADAC0;
+    border-radius: 7px;
+    font-family: "Nunito";
+    font-size: 16px;
+    background-color: #fdfaf5; /* Легкий кремовый оттенок */
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.textarea:focus {
+    border-color: #3B2F2F;
+}
+
+/* Кнопка "Добавить" в стиле твоей кнопки "В корзину" */
+.addReviewBtn {
+    align-self: flex-start;
+    background-color: #C76146; /* Терракотовый цвет как на фото у кнопки */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.addReviewBtn:hover {
+    background-color: #b4523a;
+}
+
+/* Список отзывов */
+.reviewsList {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.reviewCard {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    max-width: 800px;
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.userName {
+    font-size: 18px;
+    color: #3B2F2F;
+}
+
+.reviewText {
+    line-height: 1.6;
+    color: #3B2F2F;
+    margin: 0;
+}
+
+/* Кнопка удаления */
+.deleteBtn {
+    background: none;
+    border: none;
+    color: #8a8988;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.deleteBtn:hover {
+    color: #D12B00; /* Цвет скидки для акцента на удалении */
 }

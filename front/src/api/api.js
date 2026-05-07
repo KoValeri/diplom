@@ -111,7 +111,33 @@ export const booksApi = createApi({
       invalidatesTags: [
         { type: 'Books', id: 'LIST' }
       ]
-    })
+    }),
+
+    getBookReviews: builder.query({
+      query: (bookId) => `/reviews/${bookId}`,
+      providesTags: (result, error, bookId) => [
+        { type: 'Reviews', id: bookId }
+      ],
+    }),
+
+    createReview: builder.mutation({
+      query: (body) => ({
+        url: `/reviews`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: (result, error, body) => [
+        { type: 'Reviews', id: body.bookId }
+      ],
+    }),
+
+    deleteReview: builder.mutation({
+      query: (id) => ({
+        url: `/reviews/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ['Reviews'],
+    }),
 
   }),
 });
@@ -123,5 +149,8 @@ export const {
   useGetBooksFilteredQuery,
   useUpdateBookMutation,
   useCreateBookMutation,
-  useDeleteBookMutation
+  useDeleteBookMutation,
+  useGetBookReviewsQuery,
+  useCreateReviewMutation,
+  useDeleteReviewMutation
 } = booksApi;
