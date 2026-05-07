@@ -1,20 +1,23 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootLayout from '../pages/RootLayout';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+
+import RootLayout from '../pages/RootLayout'
 import { ROUTES } from '../configs/routesConfig'
+import PrivateRoute from './PrivateRoute'
+
 import HomePage from '../pages/Home/HomePage';
-import BestelleersPage from '../pages/BestsellersPage';
-import NewBooksPage from '../pages/NewBooksPage';
-import BookDetailsPage from '../pages/BookDetailsPage';
-import DiscountsPage from '../pages/DiscountsPage';
-import AboutUsPage from '../pages/AboutUs/AboutUsPage';
-import BookSeriesPage from '../pages/BookSeriesPage';
-import BooksByCategoryPage from '../pages/BooksByCategoryPage';
-import СategoriesPage from '../pages/CategoriesPage'
-import SearchPage from '../pages/SearchPage'
-import FavoritesPage from '../pages/FavoritesPage';
-import AdminPage from '../pages/Admin/AdminPage';
-import PrivateRoute from './PrivateRoute';
-import CartPage from '../pages/Cart/CartPage';
+const BestelleersPage = lazy(() => import('../pages/BestsellersPage'))
+const NewBooksPage = lazy(() => import('../pages/NewBooksPage'));
+const BookDetailsPage = lazy(() => import('../pages/BookDetailsPage'));
+const DiscountsPage = lazy(() => import('../pages/DiscountsPage'));
+const AboutUsPage = lazy(() => import('../pages/AboutUs/AboutUsPage'));
+const BookSeriesPage = lazy(() => import('../pages/BookSeriesPage'));
+const BooksByCategoryPage = lazy(() => import('../pages/BooksByCategoryPage'));
+const СategoriesPage = lazy(() => import('../pages/CategoriesPage'));
+const SearchPage = lazy(() => import('../pages/SearchPage'));
+const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
+const AdminPage = lazy(() => import('../pages/Admin/AdminPage'));
+const CartPage = lazy(() => import('../pages/Cart/CartPage'));
 
 const router = createBrowserRouter([
     {
@@ -59,5 +62,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function AppRouter(){
-    return <RouterProvider router={router} />;
+    return (
+        <Suspense fallback={<p>Загрузка страницы...</p>}>
+            <RouterProvider router={router} />
+        </Suspense>
+    )
 }

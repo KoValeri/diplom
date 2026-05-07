@@ -5,11 +5,13 @@ import { useToggleFavoriteMutation } from "../../api/favoritesApi"
 import { authModalActions } from '../../store/authModalSlice'
 import { favoritesApi } from "../../api/favoritesApi"
 
+const EMPTY_ARRAY = []
+
 export default function ButtonBookMark({ bookId }) {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const selectFavoritesResult = favoritesApi.endpoints.getFavorites.select()
     const dispatch = useDispatch()
-    const favorites = useSelector(state => selectFavoritesResult(state)?.data ?? [])
+    const favorites = useSelector(state => selectFavoritesResult(state)?.data ?? EMPTY_ARRAY )
 
     const [toggleFavorite] = useToggleFavoriteMutation()
 

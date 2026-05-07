@@ -33,7 +33,6 @@ export default function CartPage() {
         )
     }
 
-    // Расчеты для правого блока
     const totals = useMemo(() => {
         const selected = cart.filter(item => selectedItems.includes(item.bookId));
         
@@ -75,7 +74,6 @@ export default function CartPage() {
                                     Очистить корзину
                                 </button>
                         </div>
-                        {/* Левая часть: список товаров */}
                         <div className={styles.list}>
                             {cart.map(item => (
                                 <CartCard
@@ -88,7 +86,6 @@ export default function CartPage() {
                         </div>
                     </div>
 
-                    {/* Правая часть: блок оформления (Sidebar) */}
                     <aside className={styles.checkoutBlock}>
                         <div className={styles.checkoutDetails}>
                             <p className={styles.summaryInfo}>

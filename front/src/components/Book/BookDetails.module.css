@@ -121,14 +121,12 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Контейнер всей секции */
 .reviewsSection {
     margin-top: 60px;
     border-top: 1px solid #EADAC0;
     padding-top: 40px;
 }
 
-/* Поле ввода */
 .reviewsBox {
     display: flex;
     flex-direction: column;
@@ -145,7 +143,7 @@
     border-radius: 7px;
     font-family: "Nunito";
     font-size: 16px;
-    background-color: #fdfaf5; /* Легкий кремовый оттенок */
+    background-color: #fdfaf5;
     outline: none;
     transition: border-color 0.3s;
 }
@@ -154,10 +152,9 @@
     border-color: #3B2F2F;
 }
 
-/* Кнопка "Добавить" в стиле твоей кнопки "В корзину" */
 .addReviewBtn {
     align-self: flex-start;
-    background-color: #C76146; /* Терракотовый цвет как на фото у кнопки */
+    background-color: #C76146;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -170,7 +167,6 @@
     background-color: #b4523a;
 }
 
-/* Список отзывов */
 .reviewsList {
     margin-top: 40px;
     display: flex;
@@ -192,17 +188,14 @@
 }
 
 .userName {
-    font-size: 18px;
-    color: #3B2F2F;
+    font-family: NunitoBold;
 }
 
 .reviewText {
     line-height: 1.6;
-    color: #3B2F2F;
     margin: 0;
 }
 
-/* Кнопка удаления */
 .deleteBtn {
     background: none;
     border: none;
@@ -214,5 +207,5 @@
 }
 
 .deleteBtn:hover {
-    color: #D12B00; /* Цвет скидки для акцента на удалении */
+    color: #D12B00;
 }

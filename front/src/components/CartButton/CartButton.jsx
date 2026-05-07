@@ -7,7 +7,9 @@ export default function CartButton({ bookId }) {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const dispatch = useDispatch()
 
-    const { data: cart = [] } = useGetCartQuery()
+    const { data: cart = [] } = useGetCartQuery(undefined, {
+        skip: !isAuthenticated
+    })
     const [toggleCart] = useToggleCartMutation()
 
     const isInCart = isAuthenticated && cart?.some(item => item.bookId === bookId)
