@@ -183,3 +183,28 @@ textarea::-webkit-scrollbar-thumb {
     background: #c76146;
     border-radius: 7px;
 }
+
+@media (max-width: 1400px) {
+    .modal {
+        width: 90%;
+        max-width: 600px;
+        padding: 40px 20px 20px 20px;
+    }
+
+    .fields {
+        grid-template-columns: 1fr; 
+    }
+
+    .smallGroup, .full, .actions {
+        grid-column: span 1;
+    }
+
+    .smallGroup {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .close {
+        right: 15px;
+        top: 15px;
+    }
+}

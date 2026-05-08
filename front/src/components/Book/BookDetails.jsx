@@ -86,6 +86,8 @@ export default function BookDetails() {
                         </div>
                     </div>
 
+                    <div className={styles.descriptionMedia}>{book.description}</div>
+
                     <div className={styles.bookInfo}>
                         <div className={styles.characteristics}>Характеристики</div>
                         <div>

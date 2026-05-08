@@ -7,3 +7,10 @@
 .bookListWithFilters {
   gap: 50px;
 }
+
+@media (max-width: 1100px){
+  .bookListWithFilters {
+    column-gap: calc(100% - 400px);
+    row-gap: 50px;
+  }
+}

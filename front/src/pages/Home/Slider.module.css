@@ -116,3 +116,16 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
+
+@media (max-width: 1100px){
+.title{
+    font-family: PlayfairDisplay;
+    font-size: 26px;
+    white-space: pre-line;
+}
+
+.subTitle {
+    padding-top: 20px;
+    white-space: pre-line;
+}
+}

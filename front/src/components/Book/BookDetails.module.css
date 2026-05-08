@@ -209,3 +209,19 @@
 .deleteBtn:hover {
     color: #D12B00;
 }
+
+.descriptionMedia{
+    display: none;
+}
+
+@media (max-width: 1100px){
+  .description {
+        display: none;
+  }
+
+  .descriptionMedia{
+        display: flex;
+        margin-top: 40px;
+    }
+
+}

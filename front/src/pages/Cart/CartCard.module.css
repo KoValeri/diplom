@@ -119,3 +119,26 @@
 .deleteBtn:hover {
     color: #D12B00;
 }
+
+.priceBlockMedia{
+    display: none;
+}
+
+@media (max-width: 1100px){
+    .controls {
+        height: 35px;
+        width: 100px;
+        padding: 2px;
+        margin-left: 40px;
+    }
+
+    .controls button {
+        font-size: 12px;
+        padding: 4px 5px;
+    }
+
+    .controls span {
+        font-size: 16px;
+        min-width: 30px;
+    }
+}

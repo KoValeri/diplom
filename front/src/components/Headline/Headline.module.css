@@ -8,3 +8,9 @@
     font-family: PlayfairDisplay;
     font-size: 38px;
 }
+
+@media (max-width: 1100px){
+  .headline {
+      font-size: 34px;
+  }
+}
