@@ -173,8 +173,7 @@ exports.createOrder = async (req, res) => {
   const userId = req.user.id;
 
   const {
-    firstName,
-    lastName,
+    fullName,
     email,
     phone,
     address,
@@ -222,8 +221,7 @@ exports.createOrder = async (req, res) => {
     const orderResult = await pool.request()
       .input("userId", userId)
       .input("totalPrice", totalPrice)
-      .input("firstName", firstName)
-      .input("lastName", lastName)
+      .input("fullName", fullName)
       .input("email", email)
       .input("phone", phone)
       .input("address", address)
@@ -233,13 +231,13 @@ exports.createOrder = async (req, res) => {
       .query(`
         INSERT INTO orders (
           userId, totalPrice,
-          firstName, lastName, email, phone, address,
+          fullName, email, phone, address,
           paymentMethod, deliveryMethod, deliveryPrice
         )
         OUTPUT INSERTED.id
         VALUES (
           @userId, @totalPrice,
-          @firstName, @lastName, @email, @phone, @address,
+          @fullName, @email, @phone, @address,
           @paymentMethod, @deliveryMethod, @deliveryPrice
         )
       `);
@@ -299,5 +297,40 @@ exports.createOrder = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send("Ошибка сервера");
+  }
+};
+
+exports.getUserOrders = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    await poolConnect;
+    const result = await pool.request()
+      .input("userId", userId)
+      .query(`
+        SELECT 
+          o.*,
+          (SELECT 
+             oi.quantity, 
+             oi.price, 
+             b.title, 
+             b.imageUrl
+           FROM order_items oi
+           JOIN books b ON b.id = oi.bookId
+           WHERE oi.orderId = o.id
+           FOR JSON PATH) AS itemsJson
+        FROM orders o
+        WHERE o.userId = @userId
+        ORDER BY o.createdAt DESC
+      `);
+
+    const orders = result.recordset.map(order => ({
+      ...order,
+      items: order.itemsJson ? JSON.parse(order.itemsJson) : []
+    }));
+
+    res.json(orders);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Ошибка сервера при получении заказов");
   }
 };

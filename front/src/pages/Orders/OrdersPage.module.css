@@ -1,0 +1,175 @@
+@font-face {
+  font-family: "NunitoBold";
+  src: url("../../../public/fonts/Nunito/Nunito-Bold.ttf");
+  font-display: swap;
+}
+
+.headerRow {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.ordersList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.orderCard {
+    background: #FFFCF8;
+    border: 1px solid #F6EBE5;
+    border-radius: 7px;
+    padding: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    height: fit-content;
+}
+
+.cardOpen {
+    border-color: #C76146;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-bottom: 0;
+    transition: padding 0.3s ease, border-bottom 0.3s ease, margin 0.3s ease;
+}
+
+.cardOpen .orderHeader {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F6EBE5;
+}
+
+.orderNumber {
+    font-family: NunitoBold;
+    color: #3B2F2F;
+    display: block;
+}
+
+.orderDate {
+    font-size: 13px;
+    color: #8a8988;
+}
+
+.headerRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.statusBadge {
+    font-size: 13px;
+    color: #C76146;
+    font-family: NunitoBold;
+    text-transform: lowercase;
+}
+
+.arrow {
+    font-size: 18px;
+    color: #C76146;
+    transition: transform 0.3s ease;
+}
+
+.arrowRotate {
+    transform: rotate(180deg);
+}
+
+.details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.2s ease;
+}
+
+.detailsVisible {
+    max-height: 800px;
+    opacity: 1;
+}
+
+.inner {
+    padding-top: 10px;
+}
+
+.infoGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.infoBlock p {
+    margin: 1px 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.infoLabel {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #8a8988;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.itemsList {
+    margin-bottom: 15px;
+}
+
+.bookItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.bookMini {
+    width: 32px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.bookTitle {
+    font-size: 13px;
+    margin: 0;
+    overflow: hidden;
+    max-width: 150px;
+}
+
+.bookCount {
+    font-size: 13px;
+    color: #8a8988;
+    margin: 0;
+}
+
+.orderFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 10px;
+    border-top: 1px solid #F6EBE5;
+}
+
+.totalLabel {
+    font-size: 13px;
+    color: #8a8988;
+}
+
+.orderPrice {
+    font-size: 18px;
+    font-family: NunitoBold;
+    color: #C76146;
+}
+
+.emptyState {
+    padding: 20px 0;
+    color: #8a8988;
+    font-size: 14px;
+}

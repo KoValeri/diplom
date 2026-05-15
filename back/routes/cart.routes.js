@@ -10,5 +10,6 @@ router.post("/increase", authMiddleware, cartController.increaseQuantity);
 router.post("/decrease", authMiddleware, cartController.decreaseQuantity);
 router.delete("/clear", authMiddleware, cartController.clearCart);
 router.post("/checkout", authMiddleware, cartController.createOrder);
+router.get("/my-orders", authMiddleware, cartController.getUserOrders);
 
 module.exports = router;

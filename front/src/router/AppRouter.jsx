@@ -18,6 +18,7 @@ const SearchPage = lazy(() => import('../pages/SearchPage'));
 const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 const AdminPage = lazy(() => import('../pages/Admin/AdminPage'));
 const CartPage = lazy(() => import('../pages/Cart/CartPage'));
+const OrdersPage = lazy(() => import('../pages/Orders/OrdersPage'));
 
 const router = createBrowserRouter([
     {
@@ -44,17 +45,25 @@ const router = createBrowserRouter([
             {
                 path: ROUTES.FAVORITES,
                 element: (
-                <PrivateRoute>
-                    <FavoritesPage />
-                </PrivateRoute>
+                    <PrivateRoute>
+                        <FavoritesPage />
+                    </PrivateRoute>
                 )
             },
             {
                 path: ROUTES.CART,
                 element: (
-                <PrivateRoute>
-                    <CartPage />
-                </PrivateRoute>
+                    <PrivateRoute>
+                        <CartPage />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: ROUTES.ORDERS,
+                element: (
+                    <PrivateRoute>
+                        <OrdersPage />
+                    </PrivateRoute>
                 )
             },
         ]

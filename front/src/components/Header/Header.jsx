@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { authModalActions } from "../../store/authModalSlice"
 import { useState, useRef, useEffect } from "react";
 import Catalog from "./Catalog"
-import { logoutAndClear } from "../../store/authThunks"
+import ProfileMenu from "./ProfileMenu"
 import { RiAdminFill } from "react-icons/ri";
 import { BsDoorOpen } from "react-icons/bs";
 
@@ -20,17 +20,18 @@ function Header() {
     const user = useSelector(state => state.auth.user)
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const [isOpen, setCatalog] = useState(false)
+    const [isProfileOpen, setIsProfileOpen] = useState(false)
     const catalogRef = useRef(null)
     const searchRef = useRef(null)
+    const profileRef = useRef(null)
     const location = useLocation()
     const [search, setSearch] = useState("")
     const [results, setResults] = useState([])
     const navigate = useNavigate()
 
-
-    function handleAuthClick() {
+    function handleProfileIconClick() {
         if (isAuthenticated) {
-            dispatch(logoutAndClear())
+            setIsProfileOpen(prev => !prev)
         } else {
             dispatch(authModalActions.openLogin())
         }
@@ -45,21 +46,21 @@ function Header() {
             if (catalogRef.current && !catalogRef.current.contains(event.target)) {
                 setCatalog(false)
             }
-
             if (searchRef.current && !searchRef.current.contains(event.target)) {
                 setSearch('')
+            }
+            if (profileRef.current && !profileRef.current.contains(event.target)) {
+                setIsProfileOpen(false)
             }
         }
 
         document.addEventListener("mousedown", handleClickOutside)
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside)
-        }
+        return () => document.removeEventListener("mousedown", handleClickOutside)
     }, [])
 
     useEffect(() => {
         setCatalog(false)
+        setIsProfileOpen(false)
         setSearch('')
     }, [location])
 
@@ -74,7 +75,6 @@ function Header() {
                 setResults([])
             }
         }, 300);
-
         return () => clearTimeout(timeout)
     }, [search])
 
@@ -89,21 +89,18 @@ function Header() {
     return(
         <header className={styles.header}>
             <div className={styles.container}>
-
                 <div className={styles.upNavContainer}>
                     <nav className={styles.nav}>
                         <ul className={`${styles.upNavUl} ${styles.navUl}`}>
-                            {NAV_ITEMS.map(item => {
-                                return (
+                            {NAV_ITEMS.map(item => (
                                 <li key={item.name}>
                                     {item.href.startsWith("#") ? (
-                                    <a href={item.href}>{item.name}</a>
+                                        <a href={item.href}>{item.name}</a>
                                     ) : (
-                                    <Link to={item.href}>{item.name}</Link>
+                                        <Link to={item.href}>{item.name}</Link>
                                     )}
                                 </li>
-                                )
-                            })}
+                            ))}
                         </ul>
                     </nav>
                 </div>
@@ -111,7 +108,9 @@ function Header() {
                 <div className={styles.downNavContainer}>
                     <div className={styles.logo} ref={catalogRef}>
                         <Link to={ROUTES.HOME} className={styles.title}>Liberty</Link>
-                        <button className={styles.btnCatalog} onClick={handleCatalogClick}><PiBooksThin size={35}/>Каталог</button>
+                        <button className={styles.btnCatalog} onClick={handleCatalogClick}>
+                            <PiBooksThin size={35}/>Каталог
+                        </button>
                         {isOpen && <Catalog />}
                     </div>
 
@@ -141,14 +140,16 @@ function Header() {
 
                     <nav className={styles.nav}>
                         <ul className={`${styles.downNavUl} ${styles.navUl}`}>
-                            <li>
+                            <li className={styles.profileItem} ref={profileRef}>
                                 <button
-                                    onClick={handleAuthClick}
+                                    onClick={handleProfileIconClick}
                                     className={styles.avatar}
                                 >
-                                    {isAuthenticated ? <BsDoorOpen size={30}/> : <RxAvatar size={30}/>}
+                                    {isAuthenticated ? <RxAvatar size={30}/> : <BsDoorOpen size={30}/>}
                                 </button>
+                                {isProfileOpen && isAuthenticated && <ProfileMenu />}
                             </li>
+
                             <li>
                                 <Link to={ROUTES.CART}><BsHandbag size={30}/></Link>
                             </li>
@@ -163,7 +164,6 @@ function Header() {
                         </ul>
                     </nav>
                 </div>
-
             </div>
         </header>
     )

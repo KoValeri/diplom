@@ -17,7 +17,7 @@ export const cartApi = createApi({
     }
   }),
 
-  tagTypes: ["Cart"],
+  tagTypes: ["Cart", "Orders"],
 
   endpoints: (builder) => ({
     getCart: builder.query({
@@ -66,7 +66,12 @@ export const cartApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Cart"],
+      invalidatesTags: ["Cart", "Orders"],
+    }),
+
+    getOrders: builder.query({
+      query: () => "/cart/my-orders",
+      providesTags: ["Orders"],
     }),
   }),
 });
@@ -77,5 +82,6 @@ export const {
   useIncreaseQuantityMutation,
   useDecreaseQuantityMutation,
   useClearCartMutation,
-  useCheckoutMutation
+  useCheckoutMutation,
+  useGetOrdersQuery
 } = cartApi;

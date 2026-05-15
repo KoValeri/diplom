@@ -26,7 +26,7 @@ export default function Banner() {
                 <img className={styles.image} src={truck} alt="truck" />
                 <div className={styles.text}>
                     <span className={styles.title}>Бесплатная доставка</span>
-                    <span>При заказе от 50 рублей</span>
+                    <span>При заказе от 100 рублей</span>
                 </div>
             </div>
         </div>

@@ -2,6 +2,11 @@
 USE book_store;
 GO
 
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS cart_items;
+GO
+
 ALTER TABLE book_genres DROP CONSTRAINT FK_book_genres_books;
 ALTER TABLE book_genres DROP CONSTRAINT FK_book_genres_genres;
 
@@ -138,13 +143,9 @@ CREATE TABLE orders (
     id INT IDENTITY(1,1) PRIMARY KEY,
     userId INT NOT NULL,
     createdAt DATETIME DEFAULT GETDATE(),
-
-    status NVARCHAR(50) DEFAULT 'new',
-
+    status NVARCHAR(50) DEFAULT 'принято',
     totalPrice DECIMAL(10,2) NOT NULL DEFAULT 0,
-
-    firstName NVARCHAR(50),
-    lastName NVARCHAR(50),
+	fullName NVARCHAR(150),
     email NVARCHAR(100),
     phone NVARCHAR(50),
     address NVARCHAR(255),
@@ -276,3 +277,6 @@ INSERT INTO book_additional_images (bookId, imageUrl) VALUES
 (22, '/books_extra_photos/empire_of_the_damned2.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned3.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned4.jpg');
+
+DELETE FROM users
+WHERE id = 3;
