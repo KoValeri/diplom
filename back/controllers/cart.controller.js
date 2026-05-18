@@ -281,23 +281,42 @@ exports.createOrder = async (req, res) => {
 
       const user = userData.recordset[0];
 
+      const orderItemsResult = await pool.request()
+        .input("orderId", orderId)
+        .query(`
+          SELECT 
+            oi.quantity,
+            oi.price,
+            b.title
+          FROM order_items oi
+          JOIN books b ON b.id = oi.bookId
+          WHERE oi.orderId = @orderId
+        `);
+
+      const orderItems = orderItemsResult.recordset;
+
       const { sendOrderEmail } = require("../services/mailService");
 
-      await sendOrderEmail(user.email, user.firstName, orderId);
+      await sendOrderEmail(
+        user.email,
+        user.firstName,
+        orderId,
+        orderItems
+      );
 
-    } catch (err) {
-      console.error("Ошибка отправки email:", err);
-    }
+      } catch (err) {
+        console.error("Ошибка отправки email:", err);
+      }
 
-    res.json({
-      success: true,
-      orderId
-    });
+        res.json({
+          success: true,
+          orderId
+        });
 
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Ошибка сервера");
-  }
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Ошибка сервера");
+      }
 };
 
 exports.getUserOrders = async (req, res) => {

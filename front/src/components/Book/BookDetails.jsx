@@ -97,7 +97,7 @@ export default function BookDetails() {
                             <span className={styles.infoPoint}>Издательство:</span> {book.publishingHouse}
                         </div>
                         <div>
-                            <span className={styles.infoPoint}>Год идзания:</span> {book.yearOfPublication}
+                            <span className={styles.infoPoint}>Год издания:</span> {book.yearOfPublication}
                         </div>
                         <div>
                             <span className={styles.infoPoint}>Количество страниц:</span> {book.pages}
