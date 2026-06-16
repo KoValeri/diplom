@@ -1,17 +1,39 @@
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { useGetBooksFilteredQuery } from '../api/api';
 import BookList from "../components/Book/BookList";
 import Headline from "../components/Headline/Headline";
 import ButtonBack from "../components/ButtonBack/ButtonBack";
 import BookFilter from "../components/Book/BookFilter";
+import Pagination from "../components/Pagination/Pagination";
 
 export default function BestelleersPage() {
     const filters = useSelector(state => state.bookFilters);
+    const [page, setPage] = useState(1);
     const queryFilters = {
         ...filters,
-        minRating: 4.8
+        minRating: 4.8,
+        page,
+        limit: 12
     };
-    const { data: allBestsellers = [], isLoading, isError } = useGetBooksFilteredQuery(queryFilters);
+    const { data = {books: [],
+                    total: 0,
+                    totalPages: 1}, 
+            isLoading, isError } 
+    = useGetBooksFilteredQuery(queryFilters);
+
+    useEffect(() => {
+        setPage(1);
+    }, [filters]);
+
+    useEffect(() => {
+        if (!isLoading) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        }
+    }, [page, isLoading]);
 
     return(
         <div className="pageContent">
@@ -22,14 +44,15 @@ export default function BestelleersPage() {
                 
                 <div className="pageColumnsFlex">
                     <div >
-                        <div style={{ marginBottom: '20px', color: '#8a8988' }}>{allBestsellers.length} товаров</div>
+                        <div style={{ marginBottom: '20px', color: '#8a8988' }}>{data.total} товаров</div>
                         <BookFilter />
                     </div>
                     <div className="pageBookColumn">
-                        {allBestsellers.length === 0 ?
+                        {data.books.length === 0 ?
                         <p style={{ marginBottom: '40px'}}>В данный момент таких книг нет в нашем магазине</p>
                         :
-                        <BookList books={allBestsellers} isLoading={isLoading} isError={isError} hasFilters={true}/>}
+                        <BookList books={data.books} isLoading={isLoading} isError={isError} hasFilters={true}/>}
+                        <Pagination currentPage={page} totalPages={data.totalPages} onPageChange={setPage}/>
                     </div>
                 </div>
         

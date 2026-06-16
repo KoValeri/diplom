@@ -1,0 +1,21 @@
+.pagination{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:40px;
+}
+
+.pagination button{
+    min-width: 40px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #3B2F2F;
+}
+
+.pagination .active{
+    color: #C76146;
+}

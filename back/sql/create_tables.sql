@@ -278,5 +278,29 @@ INSERT INTO book_additional_images (bookId, imageUrl) VALUES
 (22, '/books_extra_photos/empire_of_the_damned3.jpg'),
 (22, '/books_extra_photos/empire_of_the_damned4.jpg');
 
+INSERT INTO book_additional_images (bookId, imageUrl) VALUES
+(1, '/books_extra_photos/empire_of_the_vampire1.jpg'),
+(1, '/books_extra_photos/empire_of_the_vampire2.jpg'),
+(1, '/books_extra_photos/empire_of_the_vampire3.jpg');
+
+INSERT INTO book_additional_images (bookId, imageUrl) VALUES
+(21, '/books_extra_photos/dracula1.jpg'),
+(21, '/books_extra_photos/dracula2.jpg'),
+(21, '/books_extra_photos/dracula3.jpg'),
+(32, '/books_extra_photos/jujutsu_kaisen15_1.jpg'),
+(32, '/books_extra_photos/jujutsu_kaisen15_2.jpg'),
+(32, '/books_extra_photos/jujutsu_kaisen15_3.jpg'),
+(32, '/books_extra_photos/jujutsu_kaisen15_4.jpg'),
+(6, '/books_extra_photos/jujutsu_kaisen13_1.jpg'),
+(6, '/books_extra_photos/jujutsu_kaisen13_2.jpg'),
+(6, '/books_extra_photos/jujutsu_kaisen13_3.jpg'),
+(33, '/books_extra_photos/how_to_catch_monster1.jpg'),
+(33, '/books_extra_photos/how_to_catch_monster2.jpg'),
+(33, '/books_extra_photos/how_to_catch_monster3.jpg'),
+(33, '/books_extra_photos/how_to_catch_monster4.jpg'),
+(18, '/books_extra_photos/alphabetical_murders1.jpg'),
+(18, '/books_extra_photos/alphabetical_murders2.jpg'),
+(18, '/books_extra_photos/alphabetical_murders3.jpg');
+
 DELETE FROM users
 WHERE id = 3;

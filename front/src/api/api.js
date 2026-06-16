@@ -72,6 +72,12 @@ export const booksApi = createApi({
         if (filters.yearOfPublication)
           params.append("yearOfPublication", filters.yearOfPublication);
 
+        if (filters.page)
+          params.append("page", filters.page);
+
+        if (filters.limit)
+          params.append("limit", filters.limit);
+
         return `${API_URLS.BOOKS}/filters?${params.toString()}`;
       },
     }),

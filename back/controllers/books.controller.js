@@ -199,12 +199,25 @@ exports.getBooksFiltered = async (req, res) => {
     await poolConnect;
 
     const request = pool.request();
-    const query = buildQuery(req.query, request);
 
-    const result = await request.query(query);
-    res.json(result.recordset);
+    const { dataQuery, countQuery } = buildQuery(req.query, request);
+
+    const result = await request.query(dataQuery);
+
+    const countResult = await request.query(countQuery);
+
+    const total = countResult.recordset[0].total;
+
+    res.json({
+      books: result.recordset,
+      total,
+      page: Number(req.query.page) || 1,
+      limit: Number(req.query.limit) || 12,
+      totalPages: Math.ceil(total / (Number(req.query.limit) || 12))
+    });
 
   } catch (err) {
+    console.error(err);
     res.status(500).send("Ошибка сервера");
   }
 };
