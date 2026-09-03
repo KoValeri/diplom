@@ -1,7 +1,4 @@
-# Recipes App
-
-A SPA application for displaying a list of recipes and detailed information about each recipe.
-The data is fetched from the DummyJSON API.
+# Diploma, book store "Liberty"
 
 ## Features
 - React 19 with hooks
