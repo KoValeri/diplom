@@ -303,4 +303,4 @@ INSERT INTO book_additional_images (bookId, imageUrl) VALUES
 (18, '/books_extra_photos/alphabetical_murders3.jpg');
 
 DELETE FROM users
-WHERE id = 3;
+WHERE id = 4;
